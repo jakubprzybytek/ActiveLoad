@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name JPConnectors)(type KiCad)(uri D:/Workspace/KiCad-JPLibs/footprints/JPConnectors.pretty)(options "")(descr ""))
+  (lib (name sparkfun)(type KiCad)(uri D:/Workspace/kicad-lib/footprints/sparkfun.pretty)(options "")(descr ""))
+)
