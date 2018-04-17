@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -40,6 +40,22 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
+    <avrtoolserialnumber>J41800020863</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x1E954C</avrdeviceexpectedsignature>
+    <avrtoolinterface>PDI</avrtoolinterface>
+    <com_atmel_avrdbg_tool_atmelice>
+      <ToolOptions>
+        <InterfaceProperties>
+          <PdiClock>4000000</PdiClock>
+        </InterfaceProperties>
+        <InterfaceName>PDI</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
+      <ToolNumber>J41800020863</ToolNumber>
+      <ToolName>Atmel-ICE</ToolName>
+    </com_atmel_avrdbg_tool_atmelice>
+    <avrtoolinterfaceclock>4000000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -154,7 +170,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="main.cpp">
+    <Compile Include="ActiveLoad.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Events.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Events.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="IO\Encoder.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="IO\Encoder.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ActiveLoad.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Peripheral\TWI.cpp">
@@ -178,8 +209,22 @@
     <Compile Include="SSD1306\SSD1306.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Tools\Switch.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tools\Switch.hpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tools\Timer.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tools\Timer.hpp">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="IO" />
+    <Folder Include="Tools" />
     <Folder Include="SSD1306" />
     <Folder Include="Resources" />
     <Folder Include="Peripheral" />

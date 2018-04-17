@@ -33,6 +33,8 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
+../IO \
+../Tools \
 ../SSD1306 \
 ../Resources \
 ../Peripheral
@@ -40,10 +42,14 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.cpp \
+../Events.cpp \
+../IO/Encoder.cpp \
+../ActiveLoad.cpp \
 ../Peripheral/TWI.cpp \
 ../Screen.cpp \
-../SSD1306/SSD1306.cpp
+../SSD1306/SSD1306.cpp \
+../Tools/Switch.cpp \
+../Tools/Timer.cpp
 
 
 PREPROCESSING_SRCS += 
@@ -53,28 +59,44 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o \
+Events.o \
+IO/Encoder.o \
+ActiveLoad.o \
 Peripheral/TWI.o \
 Screen.o \
-SSD1306/SSD1306.o
+SSD1306/SSD1306.o \
+Tools/Switch.o \
+Tools/Timer.o
 
 OBJS_AS_ARGS +=  \
-main.o \
+Events.o \
+IO/Encoder.o \
+ActiveLoad.o \
 Peripheral/TWI.o \
 Screen.o \
-SSD1306/SSD1306.o
+SSD1306/SSD1306.o \
+Tools/Switch.o \
+Tools/Timer.o
 
 C_DEPS +=  \
-main.d \
+Events.d \
+IO/Encoder.d \
+ActiveLoad.d \
 Peripheral/TWI.d \
 Screen.d \
-SSD1306/SSD1306.d
+SSD1306/SSD1306.d \
+Tools/Switch.d \
+Tools/Timer.d
 
 C_DEPS_AS_ARGS +=  \
-main.d \
+Events.d \
+IO/Encoder.d \
+ActiveLoad.d \
 Peripheral/TWI.d \
 Screen.d \
-SSD1306/SSD1306.d
+SSD1306/SSD1306.d \
+Tools/Switch.d \
+Tools/Timer.d
 
 OUTPUT_FILE_PATH +=ActiveLoad.elf
 
@@ -99,7 +121,22 @@ LINKER_SCRIPT_DEP+=
 
 
 
+
+
+
+
+
+
+
+
 ./%.o: .././%.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=2000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atxmega32e5 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\gcc\dev\atxmega32e5" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+IO/%.o: ../IO/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=2000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atxmega32e5 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\gcc\dev\atxmega32e5" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -114,6 +151,13 @@ Peripheral/%.o: ../Peripheral/%.cpp
 	
 
 SSD1306/%.o: ../SSD1306/%.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=2000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atxmega32e5 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\gcc\dev\atxmega32e5" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Tools/%.o: ../Tools/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=2000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atxmega32e5 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.2.51\gcc\dev\atxmega32e5" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
