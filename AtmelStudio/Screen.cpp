@@ -5,10 +5,19 @@
 * Author: Rodos
 */
 
+#include <stdio.h>
 #include <string.h>
 
 #include "Screen.h"
 #include "Resources/font6x8.h"
+
+void Screen::setTemperature(uint8_t temperature) {
+	if (temperature != temperatureBuffer) {
+		sprintf(textBuffer, "t=%dC", temperature);
+		drawTextLine(7, textBuffer);
+		temperatureBuffer = temperature;
+	}
+}
 
 void Screen::drawTextLine(uint8_t lineNumber, const char * textLine) {
 	sdd1306.setDrawingArea(0, 127, lineNumber, lineNumber);
@@ -23,7 +32,7 @@ void Screen::drawTextLine(uint8_t lineNumber, const char * textLine) {
 
 	sdd1306.sendFramebuffer(buffer, 128);
 }
-
+/*
 void Screen::appendTextLine(const char * textLine) {
 
 	memset(buffer, 0, 128);
@@ -42,3 +51,4 @@ void Screen::appendTextLine(const char * textLine) {
 
 	sdd1306.sendFramebuffer(buffer, col);
 }
+*/

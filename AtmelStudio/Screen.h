@@ -11,7 +11,7 @@
 
 #include <avr/io.h>
 
-#include "SSD1306/SSD1306.h"
+#include "Devices/SSD1306.h"
 
 class Screen {
 private:
@@ -19,10 +19,15 @@ private:
 
 	uint8_t currentLineNumber;
 	uint8_t buffer[128];
+	char textBuffer[20];
+
+	uint8_t temperatureBuffer;
 
 public:
 	Screen() : currentLineNumber(0) {};
-	
+
+	void setTemperature(uint8_t temperature);
+
 	void drawTextLine(uint8_t lineNumber, const char * textLine);
 	void appendTextLine(const char * textLine);
 };

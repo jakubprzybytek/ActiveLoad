@@ -173,6 +173,12 @@
     <Compile Include="ActiveLoad.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Devices\TC74.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Devices\TC74.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Events.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -203,10 +209,10 @@
     <Compile Include="Screen.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SSD1306\SSD1306.cpp">
+    <Compile Include="Devices\SSD1306.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SSD1306\SSD1306.h">
+    <Compile Include="Devices\SSD1306.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Tools\Switch.cpp">
@@ -225,7 +231,7 @@
   <ItemGroup>
     <Folder Include="IO" />
     <Folder Include="Tools" />
-    <Folder Include="SSD1306" />
+    <Folder Include="Devices" />
     <Folder Include="Resources" />
     <Folder Include="Peripheral" />
   </ItemGroup>

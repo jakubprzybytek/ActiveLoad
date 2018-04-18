@@ -89,8 +89,8 @@ void SSD1306::invert(uint8_t inverted) {
 }
 
 void SSD1306::setDisplayOffset(uint8_t offsetLine) {
-		sendCommand(SSD1306_SETDISPLAYOFFSET);
-		sendCommand(offsetLine << 3);
+	sendCommand(SSD1306_SETDISPLAYOFFSET);
+	sendCommand(offsetLine << 3);
 }
 
 void SSD1306::setDrawingArea(uint8_t startCol, uint8_t endCol, uint8_t startPage, uint8_t endPage) {

@@ -18,6 +18,8 @@
 
 #include "IO/Encoder.hpp"
 
+#include "Devices/TC74.h"
+
 #include "Screen.h"
 #include "Events.hpp"
 
@@ -77,10 +79,11 @@ void processTimerInterrupt() {
 }
 
 int main(void) {
-	char buffer[20];
+//	char buffer[20];
 
 	Screen screen;
-
+	TC74 termometer;
+/*
 	screen.appendTextLine("Hello World!");
 
 	for (uint16_t i = 0; i < 20; i++) {
@@ -90,7 +93,7 @@ int main(void) {
 		_delay_ms(10);
 	}
 	screen.appendTextLine("I am done.");
-
+*/
 	oscillationCancellingTimer.Init();
 
 	encoder.Init();
@@ -106,15 +109,15 @@ int main(void) {
 		eventsStatus = events.getStatus();
 
 		if (eventsStatus == Events::ENCODER_LEFT) {
-			screen.appendTextLine("Go left.");
+			screen.setTemperature(termometer.ReadTemperature());
 		}
 
 		if (eventsStatus == Events::ENCODER_RIGHT) {
-			screen.appendTextLine("Go right.");
+			//screen.appendTextLine("Go right.");
 		}
 
 		if (eventsStatus == Events::ENCODER_PRESSED) {
-			screen.appendTextLine("Pressed.");
+			//screen.appendTextLine("Pressed.");
 		}
 	}
 
