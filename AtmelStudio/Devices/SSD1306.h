@@ -70,7 +70,7 @@ class SSD1306{
 	
 	void setDisplayOffset(uint8_t offsetLine);
 	void setDrawingArea(uint8_t startCol, uint8_t endCol, uint8_t startPage, uint8_t endPage);
-	void sendFramebuffer(uint8_t *buffer, uint8_t size);
+	void sendFramebuffer(uint8_t *buffer, uint16_t size);
 	void invert(uint8_t inverted);
 
 private:

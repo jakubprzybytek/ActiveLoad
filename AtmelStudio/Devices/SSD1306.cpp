@@ -103,7 +103,7 @@ void SSD1306::setDrawingArea(uint8_t startCol, uint8_t endCol, uint8_t startPage
 	sendCommand(endPage);
 }
 
-void SSD1306::sendFramebuffer(uint8_t *buffer, uint8_t size) {
+void SSD1306::sendFramebuffer(uint8_t *buffer, uint16_t size) {
 	do {
 		uint8_t bytesToWrite = size < 16 ? size : 16;
 		TWI_write_reg(SSD1306_DEFAULT_ADDRESS, 0x40, buffer, bytesToWrite);

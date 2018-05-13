@@ -12,11 +12,11 @@
 class Timer {
 
 private:
-	TC4_t* timer;
+	TC5_t* timer;
 	uint16_t per;
 
 public:
-	Timer (TC4_t* timer, uint16_t per) : timer(timer), per(per) {}
+	Timer (TC5_t* timer, uint16_t per) : timer(timer), per(per) {}
 
 	void Init();
 

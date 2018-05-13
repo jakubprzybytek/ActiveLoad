@@ -10,6 +10,10 @@ IO\Encoder.cpp
 
 ActiveLoad.cpp
 
+IO\Metter.cpp
+
+Peripheral\ADC.cpp
+
 Peripheral\TWI.cpp
 
 Screen.cpp

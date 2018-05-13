@@ -11,10 +11,10 @@
 class Encoder {
 
 private: 
-	TC5_t * tc;
+	TC4_t * tc;
 
 public:
-	Encoder(TC5_t * tc) : tc(tc) {};
+	Encoder(TC4_t * tc) : tc(tc) {};
 
 	void Init();
 

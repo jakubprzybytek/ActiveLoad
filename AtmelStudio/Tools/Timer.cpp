@@ -15,9 +15,10 @@ void Timer::Init() {
 
 void Timer::Enable() {
 	timer->CTRLA = TC_CLKSEL_DIV1024_gc;
+	timer->INTFLAGS = TC5_OVFIF_bm;
 }
 
 void Timer::Disable() {
 	timer->CTRLA = TC_CLKSEL_OFF_gc;
-	timer->INTFLAGS = TC4_OVFIF_bm;
+	timer->INTFLAGS = TC5_OVFIF_bm;
 }

@@ -46,6 +46,8 @@ C_SRCS +=  \
 ../Events.cpp \
 ../IO/Encoder.cpp \
 ../ActiveLoad.cpp \
+../IO/Metter.cpp \
+../Peripheral/ADC.cpp \
 ../Peripheral/TWI.cpp \
 ../Screen.cpp \
 ../Devices/SSD1306.cpp \
@@ -64,6 +66,8 @@ Devices/TC74.o \
 Events.o \
 IO/Encoder.o \
 ActiveLoad.o \
+IO/Metter.o \
+Peripheral/ADC.o \
 Peripheral/TWI.o \
 Screen.o \
 Devices/SSD1306.o \
@@ -75,6 +79,8 @@ Devices/TC74.o \
 Events.o \
 IO/Encoder.o \
 ActiveLoad.o \
+IO/Metter.o \
+Peripheral/ADC.o \
 Peripheral/TWI.o \
 Screen.o \
 Devices/SSD1306.o \
@@ -86,6 +92,8 @@ Devices/TC74.d \
 Events.d \
 IO/Encoder.d \
 ActiveLoad.d \
+IO/Metter.d \
+Peripheral/ADC.d \
 Peripheral/TWI.d \
 Screen.d \
 Devices/SSD1306.d \
@@ -97,6 +105,8 @@ Devices/TC74.d \
 Events.d \
 IO/Encoder.d \
 ActiveLoad.d \
+IO/Metter.d \
+Peripheral/ADC.d \
 Peripheral/TWI.d \
 Screen.d \
 Devices/SSD1306.d \
@@ -117,6 +127,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 

@@ -194,10 +194,25 @@
     <Compile Include="ActiveLoad.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="IO\Metter.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="IO\Metter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripheral\ADC.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripheral\ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Peripheral\TWI.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Peripheral\TWI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Resources\font12x16.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Resources\font6x8.h">
