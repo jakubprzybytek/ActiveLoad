@@ -17,13 +17,18 @@ private:
 	ADC adc;
 
 public:
+	bool voltageInput;
+
 	uint16_t voltageValue;
+	uint16_t currentValue;
 
 public:
 	void init();
+
+	void toggleInput();
 	void start();
 
-	void readVoltage();
+	void storeReadout();
 
 };
 

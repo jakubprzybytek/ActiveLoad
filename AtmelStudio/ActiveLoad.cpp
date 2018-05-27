@@ -24,6 +24,9 @@
 #include "Screen.h"
 #include "Events.hpp"
 
+#define LED_INIT	PORTD.DIRSET = PIN3_bm
+#define LED_TOGGLE	PORTD.OUTTGL = PIN3_bm
+
 // Timers
 Timer oscillationCancellingTimer(&TCC5, 600);
 Timer heartbeat(&TCD5, 500);
@@ -79,7 +82,7 @@ ISR (TCD5_OVF_vect) {
  * ADCA: Conversion Complete interrupt
  ***************** */
 ISR (ADCA_CH0_vect) {
- 	metter.readVoltage();
+ 	metter.storeReadout();
 }
 
 void processSwitchInterrupt() {
@@ -99,6 +102,8 @@ void processTimerInterrupt() {
 int main(void) {
 	Screen screen;
 	TC74 termometer;
+
+	LED_INIT;
 
 	oscillationCancellingTimer.Init();
 	heartbeat.Init();
@@ -135,7 +140,7 @@ int main(void) {
 		eventsStatus = events.getStatus();
 
 		if (eventsStatus == Events::ENCODER_LEFT) {
-			drain = drain < 10 ? 0 : drain - 10;
+			drain = drain < 50 ? 0 : drain - 50;
 			fan = fan < 50 ? 0 : fan - 50;
 			screen.drawDrainSetting(drain);
 			screen.drawFanSetting(fan);
@@ -148,7 +153,7 @@ DACA.CH0DATA = fan;
 		}
 
 		if (eventsStatus == Events::ENCODER_RIGHT) {
-			drain = drain > 990 ? 1000 : drain + 10;
+			drain = drain > 2990 ? 3000 : drain + 50;
 			fan = fan > 3950 ? 4000 : fan + 50;
 			screen.drawDrainSetting(drain);
 			screen.drawFanSetting(fan);
@@ -165,9 +170,13 @@ DACA.CH0DATA = fan;
 		}
 
 		if (eventsStatus == Events::TIMER_DOWN) {
+			LED_TOGGLE;
+
 			screen.drawTemperature(termometer.ReadTemperature());
 			screen.drawVoltage(metter.voltageValue);
+			screen.drawCurrent(metter.currentValue);
 
+			metter.toggleInput();
 			metter.start();
 		}
 	}

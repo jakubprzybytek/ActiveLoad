@@ -28,6 +28,14 @@ void Screen::drawVoltage(uint16_t voltage) {
 	}
 }
 
+void Screen::drawCurrent(uint16_t current) {
+	if (current != currentBuffer) {
+		sprintf(textBuffer, "Ii=%d.%dA", current / 10, current % 10);
+		drawTextLine12x16(2, textBuffer);
+		currentBuffer = current;
+	}
+}
+
 void Screen::drawDrainSetting(uint16_t drainSetting) {
 	if (drainSetting != drainSettingBuffer) {
 		sprintf(textBuffer, "drainDAC=%dC", drainSetting);

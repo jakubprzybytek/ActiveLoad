@@ -23,6 +23,7 @@ private:
 
 	uint8_t temperatureBuffer;
 	uint16_t voltageBuffer;
+	uint16_t currentBuffer;
 	uint16_t drainSettingBuffer;
 	uint16_t fanSettingBuffer;
 
@@ -31,6 +32,7 @@ public:
 
 	void drawTemperature(uint8_t temperature);
 	void drawVoltage(uint16_t voltage);
+	void drawCurrent(uint16_t current);
 	void drawDrainSetting(uint16_t drainSetting);
 	void drawFanSetting(uint16_t drainSetting);
 
