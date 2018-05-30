@@ -17,11 +17,12 @@ class ADC {
 	
 public:
 	void init();
-	void setInput(uint8_t input);
 
+	void setInput(uint8_t input);
 	void start();
 
 	uint16_t readCH0();
+	
 };
 
 #endif /* ADC_H_ */

@@ -44,10 +44,12 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../Devices/TC74.cpp \
 ../Events.cpp \
+../IO/AnalogDrivers.cpp \
 ../IO/Encoder.cpp \
 ../ActiveLoad.cpp \
 ../IO/Metter.cpp \
 ../Peripheral/ADC.cpp \
+../Peripheral/DAC.cpp \
 ../Peripheral/TWI.cpp \
 ../Screen.cpp \
 ../Devices/SSD1306.cpp \
@@ -64,10 +66,12 @@ ASM_SRCS +=
 OBJS +=  \
 Devices/TC74.o \
 Events.o \
+IO/AnalogDrivers.o \
 IO/Encoder.o \
 ActiveLoad.o \
 IO/Metter.o \
 Peripheral/ADC.o \
+Peripheral/DAC.o \
 Peripheral/TWI.o \
 Screen.o \
 Devices/SSD1306.o \
@@ -77,10 +81,12 @@ Tools/Timer.o
 OBJS_AS_ARGS +=  \
 Devices/TC74.o \
 Events.o \
+IO/AnalogDrivers.o \
 IO/Encoder.o \
 ActiveLoad.o \
 IO/Metter.o \
 Peripheral/ADC.o \
+Peripheral/DAC.o \
 Peripheral/TWI.o \
 Screen.o \
 Devices/SSD1306.o \
@@ -90,10 +96,12 @@ Tools/Timer.o
 C_DEPS +=  \
 Devices/TC74.d \
 Events.d \
+IO/AnalogDrivers.d \
 IO/Encoder.d \
 ActiveLoad.d \
 IO/Metter.d \
 Peripheral/ADC.d \
+Peripheral/DAC.d \
 Peripheral/TWI.d \
 Screen.d \
 Devices/SSD1306.d \
@@ -103,10 +111,12 @@ Tools/Timer.d
 C_DEPS_AS_ARGS +=  \
 Devices/TC74.d \
 Events.d \
+IO/AnalogDrivers.d \
 IO/Encoder.d \
 ActiveLoad.d \
 IO/Metter.d \
 Peripheral/ADC.d \
+Peripheral/DAC.d \
 Peripheral/TWI.d \
 Screen.d \
 Devices/SSD1306.d \
@@ -127,6 +137,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 

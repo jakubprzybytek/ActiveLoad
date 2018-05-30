@@ -185,6 +185,12 @@
     <Compile Include="Events.hpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="IO\AnalogDrivers.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="IO\AnalogDrivers.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="IO\Encoder.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -204,6 +210,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Peripheral\ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripheral\DAC.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripheral\DAC.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Peripheral\TWI.cpp">

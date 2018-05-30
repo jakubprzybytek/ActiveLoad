@@ -22,7 +22,7 @@ void Screen::drawTemperature(uint8_t temperature) {
 
 void Screen::drawVoltage(uint16_t voltage) {
 	if (voltage != voltageBuffer) {
-		sprintf(textBuffer, "Ui=%d.%dV", voltage / 10, voltage % 10);
+		sprintf(textBuffer, "Ui=%u.%uV", voltage / 10, voltage % 10);
 		drawTextLine12x16(0, textBuffer);
 		voltageBuffer = voltage;
 	}
@@ -30,7 +30,7 @@ void Screen::drawVoltage(uint16_t voltage) {
 
 void Screen::drawCurrent(uint16_t current) {
 	if (current != currentBuffer) {
-		sprintf(textBuffer, "Ii=%d.%dA", current / 10, current % 10);
+		sprintf(textBuffer, "Ii=%u", current);
 		drawTextLine12x16(2, textBuffer);
 		currentBuffer = current;
 	}
@@ -38,7 +38,7 @@ void Screen::drawCurrent(uint16_t current) {
 
 void Screen::drawDrainSetting(uint16_t drainSetting) {
 	if (drainSetting != drainSettingBuffer) {
-		sprintf(textBuffer, "drainDAC=%dC", drainSetting);
+		sprintf(textBuffer, "drainDAC=%uC", drainSetting);
 		drawTextLine(5, textBuffer);
 		drainSettingBuffer = drainSetting;
 	}
@@ -46,7 +46,7 @@ void Screen::drawDrainSetting(uint16_t drainSetting) {
 
 void Screen::drawFanSetting(uint16_t fanSetting) {
 	if (fanSetting != fanSettingBuffer) {
-		sprintf(textBuffer, "fanDAC=%dC", fanSetting);
+		sprintf(textBuffer, "fanDAC=%uC", fanSetting);
 		drawTextLine(4, textBuffer);
 		fanSettingBuffer = fanSetting;
 	}

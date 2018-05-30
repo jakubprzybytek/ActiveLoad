@@ -6,6 +6,8 @@ Devices\TC74.cpp
 
 Events.cpp
 
+IO\AnalogDrivers.cpp
+
 IO\Encoder.cpp
 
 ActiveLoad.cpp
@@ -13,6 +15,8 @@ ActiveLoad.cpp
 IO\Metter.cpp
 
 Peripheral\ADC.cpp
+
+Peripheral\DAC.cpp
 
 Peripheral\TWI.cpp
 

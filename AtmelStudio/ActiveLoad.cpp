@@ -18,6 +18,7 @@
 
 #include "IO/Encoder.hpp"
 #include "IO/Metter.h"
+#include "IO/AnalogDrivers.h"
 
 #include "Devices/TC74.h"
 
@@ -102,6 +103,7 @@ void processTimerInterrupt() {
 int main(void) {
 	Screen screen;
 	TC74 termometer;
+	AnalogDrivers analogDrivers;
 
 	LED_INIT;
 
@@ -112,6 +114,7 @@ int main(void) {
 	encoderSwitch.Init();
 
 	metter.init();
+	analogDrivers.init();
 
 	// enable interrupts
 	PMIC.CTRL = PMIC_HILVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_LOLVLEN_bm;
@@ -120,20 +123,12 @@ int main(void) {
 	heartbeat.Enable();
 	metter.start();
 
-	PORTA.DIRSET = PIN2_bm | PIN3_bm;
-
-	DACA.CTRLB = DAC_CHSEL_DUAL_gc;
-	DACA.CTRLC = DAC_REFSEL_INT1V_gc;
-	DACA.CTRLA = DAC_CH0EN_bm | DAC_CH1EN_bm | DAC_ENABLE_bm;
-
-	while ( (DACA.STATUS & DAC_CH0DRE_bm) == false );
-	DACA.CH0DATA = 2000;
-
-	while ( (DACA.STATUS & DAC_CH1DRE_bm) == false );
-	DACA.CH1DATA = 0;
-
 	uint16_t drain = 0;
 	uint16_t fan = 200;
+
+	analogDrivers.setFan(fan);
+	analogDrivers.setDrain(drain);
+
 	uint8_t eventsStatus;
 	while(1)
 	{
@@ -145,11 +140,8 @@ int main(void) {
 			screen.drawDrainSetting(drain);
 			screen.drawFanSetting(fan);
 
-while ( (DACA.STATUS & DAC_CH0DRE_bm) == false );
-DACA.CH0DATA = fan;
-
-			while ( (DACA.STATUS & DAC_CH1DRE_bm) == false );
-			DACA.CH1DATA = drain;
+			analogDrivers.setFan(fan);
+			analogDrivers.setDrain(drain);
 		}
 
 		if (eventsStatus == Events::ENCODER_RIGHT) {
@@ -158,11 +150,8 @@ DACA.CH0DATA = fan;
 			screen.drawDrainSetting(drain);
 			screen.drawFanSetting(fan);
 
-while ( (DACA.STATUS & DAC_CH0DRE_bm) == false );
-DACA.CH0DATA = fan;
-
-			while ( (DACA.STATUS & DAC_CH1DRE_bm) == false );
-			DACA.CH1DATA = drain;
+			analogDrivers.setFan(fan);
+			analogDrivers.setDrain(drain);
 		}
 
 		if (eventsStatus == Events::ENCODER_PRESSED) {
