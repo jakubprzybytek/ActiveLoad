@@ -36,18 +36,34 @@ void Screen::drawCurrent(uint16_t current) {
 	}
 }
 
-void Screen::drawDrainSetting(uint16_t drainSetting) {
-	if (drainSetting != drainSettingBuffer) {
-		sprintf(textBuffer, "drainDAC=%uC", drainSetting);
-		drawTextLine(5, textBuffer);
+void Screen::drawDrainSetting(uint16_t drainSetting, bool highlight, bool forceDraw) {
+	if (forceDraw || drainSetting != drainSettingBuffer) {
+		if (highlight) {
+			sprintf(textBuffer, "d=%u", drainSetting);
+			drawTextLine12x16(4, textBuffer);
+		} else {
+			sprintf(textBuffer, "drainDAC=%u", drainSetting);
+			drawTextLine(4, textBuffer);
+		}
 		drainSettingBuffer = drainSetting;
 	}
 }
 
-void Screen::drawFanSetting(uint16_t fanSetting) {
-	if (fanSetting != fanSettingBuffer) {
-		sprintf(textBuffer, "fanDAC=%uC", fanSetting);
-		drawTextLine(4, textBuffer);
+void Screen::drawFanSetting(uint16_t fanSetting, bool highlight, bool forceDraw) {
+	if (forceDraw || fanSetting != fanSettingBuffer) {
+
+		if (fanSetting == 0) {
+			sprintf(textBuffer, "f=off");
+		} else {
+			sprintf(textBuffer, "f=%u%%", fanSetting);
+		}
+
+		if (highlight) {
+			drawTextLine12x16(5, textBuffer);
+		} else {
+			drawTextLine(6, textBuffer);
+		}
+
 		fanSettingBuffer = fanSetting;
 	}
 }

@@ -1705,4 +1705,8 @@ Text Notes 5750 1250 0    60   ~ 0
 Max Voltage\nL78M12 - 35V\nUA78M33 - 25V\nOPA2170 - 36V\nLM7321 - 32V
 Text Notes 8450 1150 0    60   ~ 0
 Iq2=22mA
+Text Notes 9550 1150 0    60   ~ 0
+Collector\nto case
+Text Notes 10650 4900 0    60   ~ 0
+Collector\nto case
 $EndSCHEMATC

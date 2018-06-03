@@ -11,8 +11,8 @@ void AnalogDrivers::init() {
 	dac.init();
 }
 
-void AnalogDrivers::setFan(uint16_t newValue) {
-	dac.sendToChannel0(newValue);
+void AnalogDrivers::setFan(uint8_t fanPercentage) {
+	dac.sendToChannel0(fanPercentage == 0 ? 0 : FAN_DAC_MIN + fanPercentage * FAN_DAC_PERCENTILE_SIZE);
 }
 
 void AnalogDrivers::setDrain(uint16_t newValue) {

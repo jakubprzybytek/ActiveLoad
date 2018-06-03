@@ -10,6 +10,10 @@
 #ifndef ANALOGDRIVERS_H_
 #define ANALOGDRIVERS_H_
 
+#define FAN_DAC_MIN 1795
+#define FAN_DAC_MAX 4095
+#define FAN_DAC_PERCENTILE_SIZE (uint16_t)((FAN_DAC_MAX - FAN_DAC_MIN) / 100)
+
 class AnalogDrivers {
 
 private:
@@ -18,7 +22,7 @@ private:
 public:
 	void init();
 	
-	void setFan(uint16_t newValue);
+	void setFan(uint8_t fanPercentage);
 	void setDrain(uint16_t newValue);
 };
 

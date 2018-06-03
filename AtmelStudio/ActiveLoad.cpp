@@ -123,11 +123,16 @@ int main(void) {
 	heartbeat.Enable();
 	metter.start();
 
-	uint16_t drain = 0;
-	uint16_t fan = 200;
+	bool inDrainEditMode = false;
 
-	analogDrivers.setFan(fan);
+	uint16_t drain = 0;
+	uint8_t fanPercentage = 0;
+
+	analogDrivers.setFan(fanPercentage);
 	analogDrivers.setDrain(drain);
+
+	screen.drawDrainSetting(drain, inDrainEditMode, true);
+	screen.drawFanSetting(fanPercentage, !inDrainEditMode, true);
 
 	uint8_t eventsStatus;
 	while(1)
@@ -135,27 +140,34 @@ int main(void) {
 		eventsStatus = events.getStatus();
 
 		if (eventsStatus == Events::ENCODER_LEFT) {
-			drain = drain < 50 ? 0 : drain - 50;
-			fan = fan < 50 ? 0 : fan - 50;
-			screen.drawDrainSetting(drain);
-			screen.drawFanSetting(fan);
-
-			analogDrivers.setFan(fan);
-			analogDrivers.setDrain(drain);
+			if (inDrainEditMode) {
+				drain = drain < 50 ? 0 : drain - 50;
+				analogDrivers.setDrain(drain);
+				screen.drawDrainSetting(drain, inDrainEditMode, false);
+			} else {
+				fanPercentage = fanPercentage < 10 ? 0 : fanPercentage - 10;
+				analogDrivers.setFan(fanPercentage);
+				screen.drawFanSetting(fanPercentage, !inDrainEditMode, false);
+			}
 		}
 
 		if (eventsStatus == Events::ENCODER_RIGHT) {
-			drain = drain > 2990 ? 3000 : drain + 50;
-			fan = fan > 3950 ? 4000 : fan + 50;
-			screen.drawDrainSetting(drain);
-			screen.drawFanSetting(fan);
-
-			analogDrivers.setFan(fan);
-			analogDrivers.setDrain(drain);
+			if (inDrainEditMode) {
+				drain = drain > 2990 ? 3000 : drain + 50;
+				analogDrivers.setDrain(drain);
+				screen.drawDrainSetting(drain, inDrainEditMode, false);
+			} else {
+				fanPercentage = fanPercentage > 90 ? 100 : fanPercentage + 10;
+				analogDrivers.setFan(fanPercentage);
+				screen.drawFanSetting(fanPercentage, !inDrainEditMode, false);
+			}
 		}
 
 		if (eventsStatus == Events::ENCODER_PRESSED) {
-			screen.drawTemperature(termometer.ReadTemperature());
+			inDrainEditMode = !inDrainEditMode;
+
+			screen.drawDrainSetting(drain, inDrainEditMode, true);
+			screen.drawFanSetting(fanPercentage, !inDrainEditMode, true);
 		}
 
 		if (eventsStatus == Events::TIMER_DOWN) {
