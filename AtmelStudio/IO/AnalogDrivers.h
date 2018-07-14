@@ -27,7 +27,7 @@ public:
 	void init();
 	
 	void setFan(uint8_t fanPercentage);
-	void setDrain(uint16_t newValue);
+	void setDrain(uint8_t drainPercentage);
 };
 
 #endif /* ANALOGDRIVERS_H_ */

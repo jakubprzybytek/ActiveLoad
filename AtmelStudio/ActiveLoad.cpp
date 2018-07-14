@@ -125,13 +125,13 @@ int main(void) {
 
 	bool inDrainEditMode = false;
 
-	uint16_t drain = 0;
+	uint8_t drainPercentage = 0;
 	uint8_t fanPercentage = 0;
 
 	analogDrivers.setFan(fanPercentage);
-	analogDrivers.setDrain(drain);
+	analogDrivers.setDrain(drainPercentage);
 
-	screen.drawDrainSetting(drain, inDrainEditMode, true);
+	screen.drawDrainSetting(drainPercentage, inDrainEditMode, true);
 	screen.drawFanSetting(fanPercentage, !inDrainEditMode, true);
 
 	uint8_t eventsStatus;
@@ -141,9 +141,9 @@ int main(void) {
 
 		if (eventsStatus == Events::ENCODER_LEFT) {
 			if (inDrainEditMode) {
-				drain = drain < 50 ? 0 : drain - 50;
-				analogDrivers.setDrain(drain);
-				screen.drawDrainSetting(drain, inDrainEditMode, false);
+				drainPercentage = drainPercentage < 1 ? 0 : drainPercentage - 1;
+				analogDrivers.setDrain(drainPercentage);
+				screen.drawDrainSetting(drainPercentage, inDrainEditMode, false);
 			} else {
 				fanPercentage = fanPercentage < 10 ? 0 : fanPercentage - 10;
 				analogDrivers.setFan(fanPercentage);
@@ -153,9 +153,9 @@ int main(void) {
 
 		if (eventsStatus == Events::ENCODER_RIGHT) {
 			if (inDrainEditMode) {
-				drain = drain > 2990 ? 3000 : drain + 50;
-				analogDrivers.setDrain(drain);
-				screen.drawDrainSetting(drain, inDrainEditMode, false);
+				drainPercentage = drainPercentage > 99 ? 100 : drainPercentage + 1;
+				analogDrivers.setDrain(drainPercentage);
+				screen.drawDrainSetting(drainPercentage, inDrainEditMode, false);
 			} else {
 				fanPercentage = fanPercentage > 90 ? 100 : fanPercentage + 10;
 				analogDrivers.setFan(fanPercentage);
@@ -166,7 +166,7 @@ int main(void) {
 		if (eventsStatus == Events::ENCODER_PRESSED) {
 			inDrainEditMode = !inDrainEditMode;
 
-			screen.drawDrainSetting(drain, inDrainEditMode, true);
+			screen.drawDrainSetting(drainPercentage, inDrainEditMode, true);
 			screen.drawFanSetting(fanPercentage, !inDrainEditMode, true);
 		}
 

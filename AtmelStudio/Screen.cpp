@@ -16,7 +16,7 @@
 
 void Screen::drawTemperature(uint8_t temperature) {
 	if (temperature != temperatureBuffer) {
-		sprintf(textBuffer, "t=%d$C", temperature);
+		sprintf(textBuffer, "              T=%d$C", temperature);
 		drawTextLine(7, textBuffer);
 		temperatureBuffer = temperature;
 	}
@@ -32,32 +32,38 @@ void Screen::drawVoltage(uint16_t voltage) {
 
 void Screen::drawCurrent(uint16_t current) {
 	if (current != currentBuffer) {
-		sprintf(textBuffer, "Ii=%u", current);
+		sprintf(textBuffer, "Ii=%umA", current);
 		drawTextLine12x16(2, textBuffer);
 		currentBuffer = current;
 	}
 }
 
-void Screen::drawDrainSetting(uint16_t drainSetting, bool highlight, bool forceDraw) {
+void Screen::drawDrainSetting(uint8_t drainSetting, bool highlight, bool forceDraw) {
 	if (forceDraw || drainSetting != drainSettingBuffer) {
+
+		if (drainSetting == 0) {
+			sprintf(textBuffer, "Drain=off");
+		} else {
+			sprintf(textBuffer, "Drain=%u%%", drainSetting);
+		}
+
 		if (highlight) {
-			sprintf(textBuffer, "d=%u", drainSetting);
 			drawTextLine12x16(4, textBuffer);
 		} else {
-			sprintf(textBuffer, "drainDAC=%u", drainSetting);
 			drawTextLine(4, textBuffer);
 		}
+
 		drainSettingBuffer = drainSetting;
 	}
 }
 
-void Screen::drawFanSetting(uint16_t fanSetting, bool highlight, bool forceDraw) {
+void Screen::drawFanSetting(uint8_t fanSetting, bool highlight, bool forceDraw) {
 	if (forceDraw || fanSetting != fanSettingBuffer) {
 
 		if (fanSetting == 0) {
-			sprintf(textBuffer, "f=off");
+			sprintf(textBuffer, "Fan=off");
 		} else {
-			sprintf(textBuffer, "f=%u%%", fanSetting);
+			sprintf(textBuffer, "Fan=%u%%", fanSetting);
 		}
 
 		if (highlight) {

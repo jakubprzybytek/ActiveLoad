@@ -33,8 +33,8 @@ public:
 	void drawTemperature(uint8_t temperature);
 	void drawVoltage(uint16_t voltage);
 	void drawCurrent(uint16_t current);
-	void drawDrainSetting(uint16_t drainSetting, bool highlight, bool forceDraw);
-	void drawFanSetting(uint16_t drainSetting, bool highlight, bool forceDraw);
+	void drawDrainSetting(uint8_t drainSetting, bool highlight, bool forceDraw);
+	void drawFanSetting(uint8_t fanSetting, bool highlight, bool forceDraw);
 
 	void drawTextLine(uint8_t lineNumber, const char * textLine);
 	void drawTextLine12x16(uint8_t lineNumber, const char * textLine);
