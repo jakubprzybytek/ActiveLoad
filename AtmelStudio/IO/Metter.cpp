@@ -8,7 +8,7 @@
 #include "Metter.h"
 
 #define VOLTAGE_FACTOR 6.49
-#define CURRENT_FACTOR 1.6
+#define CURRENT_FACTOR 0.16
 
 void Metter::init() {
 	adc.init();
