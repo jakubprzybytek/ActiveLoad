@@ -57,13 +57,17 @@ void Screen::drawDrainSetting(uint8_t drainSetting, bool highlight, bool forceDr
 	}
 }
 
-void Screen::drawFanSetting(uint8_t fanSetting, bool highlight, bool forceDraw) {
+void Screen::drawFanSetting(uint8_t fanSetting, bool autoFan, bool highlight, bool forceDraw) {
 	if (forceDraw || fanSetting != fanSettingBuffer) {
 
 		if (fanSetting == 0) {
 			sprintf(textBuffer, "Fan=off");
 		} else {
 			sprintf(textBuffer, "Fan=%u%%", fanSetting);
+		}
+
+		if (autoFan) {
+			sprintf(textBuffer + strlen(textBuffer), " A");
 		}
 
 		if (highlight) {

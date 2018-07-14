@@ -28,6 +28,9 @@
 #define LED_INIT	PORTD.DIRSET = PIN3_bm
 #define LED_TOGGLE	PORTD.OUTTGL = PIN3_bm
 
+#define  AUTO_FAN_MIN_TEMP 30
+#define  AUTO_FAN_MAX_TEMP 60
+
 // Timers
 Timer oscillationCancellingTimer(&TCC5, 600);
 Timer heartbeat(&TCD5, 500);
@@ -123,7 +126,8 @@ int main(void) {
 	heartbeat.Enable();
 	metter.start();
 
-	bool inDrainEditMode = false;
+	bool inDrainEditMode = true;
+	bool autoFan = true;
 
 	uint8_t drainPercentage = 0;
 	uint8_t fanPercentage = 0;
@@ -132,7 +136,7 @@ int main(void) {
 	analogDrivers.setDrain(drainPercentage);
 
 	screen.drawDrainSetting(drainPercentage, inDrainEditMode, true);
-	screen.drawFanSetting(fanPercentage, !inDrainEditMode, true);
+	screen.drawFanSetting(fanPercentage, autoFan, !inDrainEditMode, true);
 
 	uint8_t eventsStatus;
 	while(1)
@@ -140,26 +144,40 @@ int main(void) {
 		eventsStatus = events.getStatus();
 
 		if (eventsStatus == Events::ENCODER_LEFT) {
-			if (inDrainEditMode) {
+			if (inDrainEditMode) { // Drain Edit Mode
 				drainPercentage = drainPercentage < 1 ? 0 : drainPercentage - 1;
 				analogDrivers.setDrain(drainPercentage);
 				screen.drawDrainSetting(drainPercentage, inDrainEditMode, false);
-			} else {
-				fanPercentage = fanPercentage < 10 ? 0 : fanPercentage - 10;
+			} else { // Fan Edit Mode (0=off, Auto, 10-100)
+				if (autoFan) {
+					autoFan = false;
+					fanPercentage = 0;
+				} else if (fanPercentage == 10) {
+					autoFan = true;
+				} else {				
+					fanPercentage = fanPercentage < 10 ? 0 : fanPercentage - 10;
+				}
 				analogDrivers.setFan(fanPercentage);
-				screen.drawFanSetting(fanPercentage, !inDrainEditMode, false);
+				screen.drawFanSetting(fanPercentage, autoFan, !inDrainEditMode, false);
 			}
 		}
 
 		if (eventsStatus == Events::ENCODER_RIGHT) {
-			if (inDrainEditMode) {
+			if (inDrainEditMode) { // Drain Edit Mode
 				drainPercentage = drainPercentage > 99 ? 100 : drainPercentage + 1;
 				analogDrivers.setDrain(drainPercentage);
 				screen.drawDrainSetting(drainPercentage, inDrainEditMode, false);
-			} else {
-				fanPercentage = fanPercentage > 90 ? 100 : fanPercentage + 10;
+			} else { // Fan Edit Mode (0=off, Auto, 10-100)
+				if (autoFan) {
+					autoFan = false;
+					fanPercentage = 10;
+				} else if (fanPercentage == 0) {
+					autoFan = true;
+				} else {
+					fanPercentage = fanPercentage > 90 ? 100 : fanPercentage + 10;
+				}
 				analogDrivers.setFan(fanPercentage);
-				screen.drawFanSetting(fanPercentage, !inDrainEditMode, false);
+				screen.drawFanSetting(fanPercentage, autoFan, !inDrainEditMode, false);
 			}
 		}
 
@@ -167,15 +185,22 @@ int main(void) {
 			inDrainEditMode = !inDrainEditMode;
 
 			screen.drawDrainSetting(drainPercentage, inDrainEditMode, true);
-			screen.drawFanSetting(fanPercentage, !inDrainEditMode, true);
+			screen.drawFanSetting(fanPercentage, autoFan, !inDrainEditMode, true);
 		}
 
 		if (eventsStatus == Events::TIMER_DOWN) {
 			LED_TOGGLE;
 
-			screen.drawTemperature(termometer.ReadTemperature());
+			uint8_t temperature = termometer.ReadTemperature();
+			screen.drawTemperature(temperature);
 			screen.drawVoltage(metter.voltageValue);
 			screen.drawCurrent(metter.currentValue);
+
+			if (autoFan) {
+				fanPercentage = temperature < AUTO_FAN_MIN_TEMP ? 0 : temperature > AUTO_FAN_MAX_TEMP ? 100 : (uint16_t)(temperature - AUTO_FAN_MIN_TEMP) * 100 / (AUTO_FAN_MAX_TEMP - AUTO_FAN_MIN_TEMP);
+				analogDrivers.setFan(fanPercentage);
+				screen.drawFanSetting(fanPercentage, autoFan, !inDrainEditMode, false);
+			}
 
 			metter.toggleInput();
 			metter.start();
