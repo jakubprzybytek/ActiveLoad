@@ -9,17 +9,16 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
-#include "Peripheral/ADC.h"
-
 #include "IO/Display.h"
+#include "IO/Metter.h"
 
 #include "Tools/Timer.hpp"
 
 #define LED_INIT	PORTC.DIRSET = PIN2_bm
 #define LED_TOGGLE	PORTC.OUTTGL = PIN2_bm
 
-ADC adc;
 Display display;
+Metter metter;
 
 /* *****************
  * TCC5: Display refresh timer interrupt
@@ -34,8 +33,10 @@ ISR (TCC5_OVF_vect) {
  ***************** */
 ISR (TCD5_OVF_vect) {
 	TCD5.INTFLAGS = TC5_OVFIF_bm;
-	adc.setInput(ADC11);
-	adc.start();
+
+	metter.toggleInput();
+	metter.start();
+
 	LED_TOGGLE;
 }
 
@@ -43,8 +44,11 @@ ISR (TCD5_OVF_vect) {
  * ADCA: Conversion Complete interrupt
  ***************** */
 ISR (ADCA_CH0_vect) {
- 	uint16_t a = adc.readCH0();
-	 
+	metter.storeReadout();
+
+	uint16_t readout = metter.currentValue;
+	display.setLeftNumber(readout / 1000);
+	display.setRightNumber(readout % 1000); 
 }
 
 int main(void)
@@ -52,40 +56,38 @@ int main(void)
     LED_INIT;
 
 	Timer displayTimer(&TCC5, 2);
-	Timer adcTimer(&TCD5, 200);
-
-	display.init();
+	Timer adcTimer(&TCD5, 400);
 
 	displayTimer.Init();
 	adcTimer.Init();
 
-	adc.init();
-
-	adc.setInput(ADC11);
-	adc.start();
+	display.init();
 
 	// enable interrupts
-	PMIC.CTRL = PMIC_HILVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_LOLVLEN_bm;
+	PMIC.CTRL = PMIC_HILVLEN_bm | PMIC_MEDLVLEN_bm;
 	sei();
 
 	displayTimer.Enable();
-	adcTimer.Enable();
 
 	display.setLeftNumber(12);
 	display.setRightNumber(12);
 	_delay_ms(200);
 
-	display.setLeftNumber(345);
-	display.setRightNumber(345);
+	display.setLeftNumber(234);
+	display.setRightNumber(234);
 	_delay_ms(200);
 
-	display.setLeftNumber(678);
-	display.setRightNumber(678);
+	display.setLeftNumber(456);
+	display.setRightNumber(456);
 	_delay_ms(200);
 
-	display.setLeftNumber(990);
-	display.setRightNumber(990);
+	display.setLeftNumber(789);
+	display.setRightNumber(789);
 	_delay_ms(200);
+
+	metter.init();
+
+	adcTimer.Enable();
 
     while (1) {}
 }

@@ -9,7 +9,7 @@
 
 uint8_t leftDigitPatterns[] = {95, 65, 157, 217, 195, 218, 222, 73, 223, 219, 0};
 
-uint8_t rightDigitPatterns[] = {219, 24, 179, 186, 122, 234, 235, 152, 251, 250, 0};
+uint8_t rightDigitPatterns[] = {219, 24, 179, 186, 120, 234, 235, 152, 251, 250, 0};
 
 void Display::init() {
 	sct.init();

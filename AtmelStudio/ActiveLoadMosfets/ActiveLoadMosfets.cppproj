@@ -185,6 +185,12 @@
     <Compile Include="ActiveLoadMosfets.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="IO\Metter.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="IO\Metter.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Peripheral\ADC.cpp">
       <SubType>compile</SubType>
     </Compile>
