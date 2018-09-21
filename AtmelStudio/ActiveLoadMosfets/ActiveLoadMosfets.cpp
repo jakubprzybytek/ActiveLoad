@@ -46,9 +46,11 @@ ISR (TCD5_OVF_vect) {
 ISR (ADCA_CH0_vect) {
 	metter.storeReadout();
 
-	uint16_t readout = metter.currentValue;
-	display.setLeftNumber(readout / 1000);
-	display.setRightNumber(readout % 1000); 
+	uint16_t readout = metter.voltageValue;
+	display.setLeftNumber(readout % 1000);
+
+	readout = metter.currentValue;
+	display.setRightNumber(readout % 1000);
 }
 
 int main(void)
@@ -56,7 +58,7 @@ int main(void)
     LED_INIT;
 
 	Timer displayTimer(&TCC5, 2);
-	Timer adcTimer(&TCD5, 400);
+	Timer adcTimer(&TCD5, 100);
 
 	displayTimer.Init();
 	adcTimer.Init();

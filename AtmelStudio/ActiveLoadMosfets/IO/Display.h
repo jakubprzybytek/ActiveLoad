@@ -23,13 +23,16 @@ private:
 	SCT sct;
 	uint8_t currentColumn;
 
+	uint8_t leftDotPosition;
+	uint8_t rightDotPosition;
+
 	uint8_t leftDigits[3];
 	uint8_t rightDigits[3];
 
 public:
 	void init();
 	void drawNextColumn();
-	
+
 	void setLeftNumber(uint16_t value);
 	void setRightNumber(uint16_t value);
 };

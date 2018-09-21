@@ -7,19 +7,25 @@
 
 #include "Display.h"
 
-uint8_t leftDigitPatterns[] = {95, 65, 157, 217, 195, 218, 222, 73, 223, 219, 0};
+uint8_t leftDigitPatterns[] = {95, 65, 157, 217, 195, 218, 222, 73, 223, 219, 32, 0};
 
-uint8_t rightDigitPatterns[] = {219, 24, 179, 186, 120, 234, 235, 152, 251, 250, 0};
+uint8_t rightDigitPatterns[] = {219, 24, 179, 186, 120, 234, 235, 152, 251, 250, 4, 0};
 
 void Display::init() {
 	sct.init();
 	DIGITS_INIT;
+
+	this->leftDotPosition = 1;
+	this->rightDotPosition = 0;
 }
 
 void Display::drawNextColumn() {
 	currentColumn = (currentColumn + 1) % 3;
 
-	sct.send(rightDigitPatterns[rightDigits[currentColumn]], leftDigitPatterns[leftDigits[currentColumn]]);
+	uint8_t rightDigitPattern = rightDigitPatterns[rightDigits[currentColumn]] + (currentColumn == rightDotPosition ? rightDigitPatterns[10] : 0);
+	uint8_t leftDigitPattern = leftDigitPatterns[leftDigits[currentColumn]] + (currentColumn == leftDotPosition ? leftDigitPatterns[10] : 0);
+
+	sct.send(rightDigitPattern, leftDigitPattern);
 	
 	DIGITS_OFF;
 

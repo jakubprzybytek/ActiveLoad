@@ -7,9 +7,10 @@
 
 #include "Metter.h"
 
-#define VOLTAGE_FACTOR 1.0
-#define CURRENT_A_FACTOR 1.7
-#define CURRENT_B_FACTOR -268.75
+#define VOLTAGE_A_FACTOR 0.10388
+#define VOLTAGE_B_FACTOR -18.028
+#define CURRENT_A_FACTOR 0.1753
+#define CURRENT_B_FACTOR -24.509
 
 void Metter::init() {
 	adc.init();
@@ -27,7 +28,7 @@ void Metter::start() {
 
 void Metter::storeReadout() {
 	if (voltageInput) {
-		voltageValue = adc.readCH0() / VOLTAGE_FACTOR;
+		voltageValue = adc.readCH0() * VOLTAGE_A_FACTOR + VOLTAGE_B_FACTOR;
 	} else {
 		currentValue = adc.readCH0() * CURRENT_A_FACTOR + CURRENT_B_FACTOR;
 	}	
