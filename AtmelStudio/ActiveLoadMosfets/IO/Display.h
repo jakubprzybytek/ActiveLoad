@@ -17,6 +17,8 @@
 #define DIGIT2_ON	PORTA.OUTCLR = PIN6_bm
 #define DIGIT3_ON	PORTA.OUTCLR = PIN7_bm
 
+#define DOT_POSITION_OFF 3
+
 class Display {
 
 private:
@@ -30,11 +32,16 @@ private:
 	uint8_t rightDigits[3];
 
 public:
-	void init();
+	void init(uint8_t leftDotPosition, uint8_t rightDotPosition);
 	void drawNextColumn();
 
 	void setLeftNumber(uint16_t value);
 	void setRightNumber(uint16_t value);
+
+	void setLeftPO();
+
+	void setLeftDotPosition(uint8_t value);
+	void setRightDotPosition(uint8_t value);
 };
 
 #endif /* DISPLAY_H_ */

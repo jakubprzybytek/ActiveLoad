@@ -755,7 +755,7 @@ F 3 "~" H 3500 1350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L myLib:LED-3digits U4
+L ActiveLoadMosfets-rescue:LED-3digits-myLib U4
 U 1 1 5B775CCD
 P 10700 4750
 F 0 "U4" H 11128 4788 40  0000 L CNN
@@ -766,7 +766,7 @@ F 3 "" H 10700 4750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MCU_Microchip_ATmega:ATxmega32E5-AU U3
+L ActiveLoadMosfets-rescue:ATxmega32E5-AU-MCU_Microchip_ATmega U3
 U 1 1 5B775F7C
 P 3450 6100
 F 0 "U3" H 3450 4914 50  0000 C CNN
@@ -986,7 +986,7 @@ F 3 "" H 2600 4900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L myLib:SCT2167 U6
+L ActiveLoadMosfets-rescue:SCT2167-myLib U6
 U 1 1 5B7BA647
 P 9650 5800
 F 0 "U6" H 9350 6250 40  0000 C CNN
@@ -1453,7 +1453,7 @@ $EndComp
 Wire Wire Line
 	8100 2600 8100 2700
 $Comp
-L myLib:LED-3digits U8
+L ActiveLoadMosfets-rescue:LED-3digits-myLib U8
 U 1 1 5BB37628
 P 8100 4750
 F 0 "U8" H 8528 4788 40  0000 L CNN
@@ -1464,7 +1464,7 @@ F 3 "" H 8100 4750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L myLib:SCT2167 U7
+L ActiveLoadMosfets-rescue:SCT2167-myLib U7
 U 1 1 5BB3762E
 P 7050 5800
 F 0 "U7" H 6750 6300 40  0000 C CNN

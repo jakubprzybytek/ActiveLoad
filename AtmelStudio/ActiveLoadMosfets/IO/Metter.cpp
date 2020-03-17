@@ -9,8 +9,8 @@
 
 #define VOLTAGE_A_FACTOR 0.10388
 #define VOLTAGE_B_FACTOR -18.028
-#define CURRENT_A_FACTOR 0.1753
-#define CURRENT_B_FACTOR -24.509
+#define CURRENT_A_FACTOR 0.237886
+#define CURRENT_B_FACTOR -36.769
 
 void Metter::init() {
 	adc.init();

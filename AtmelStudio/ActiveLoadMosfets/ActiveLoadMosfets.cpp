@@ -13,12 +13,17 @@
 #include "IO/Metter.h"
 
 #include "Tools/Timer.hpp"
+#include "Tools/Switch.hpp"
 
 #define LED_INIT	PORTC.DIRSET = PIN2_bm
 #define LED_TOGGLE	PORTC.OUTTGL = PIN2_bm
 
+InterruptSwitch button(&PORTC, PIN3_bm, &(PORTC.PIN3CTRL));	
+
 Display display;
 Metter metter;
+
+bool displayPowerMode;
 
 /* *****************
  * TCC5: Display refresh timer interrupt
@@ -46,11 +51,31 @@ ISR (TCD5_OVF_vect) {
 ISR (ADCA_CH0_vect) {
 	metter.storeReadout();
 
-	uint16_t readout = metter.voltageValue;
-	display.setLeftNumber(readout % 1000);
+	if (displayPowerMode) {
+		uint32_t power = ((uint32_t) metter.voltageValue) * metter.currentValue / 1000;
+		display.setRightNumber(power % 1000);
+	} else {
+		display.setLeftNumber(metter.voltageValue % 1000);
+		display.setRightNumber(metter.currentValue % 1000);
+	}
+}
 
-	readout = metter.currentValue;
-	display.setRightNumber(readout % 1000);
+/* *****************
+ * Port C: Switch 0 int
+ ***************** */
+ISR (PORTC_INT_vect) {
+	button.enableInterrupt();
+	
+	displayPowerMode = !displayPowerMode;
+
+	if (displayPowerMode) {
+		display.setLeftPO();
+		display.setLeftDotPosition(DOT_POSITION_OFF);
+		display.setRightDotPosition(DOT_POSITION_OFF);
+	} else {
+		display.setLeftDotPosition(1);
+		display.setRightDotPosition(0);
+	}
 }
 
 int main(void)
@@ -63,29 +88,21 @@ int main(void)
 	displayTimer.Init();
 	adcTimer.Init();
 
-	display.init();
+	display.init(1, 0);
+
+	button.init();
 
 	// enable interrupts
-	PMIC.CTRL = PMIC_HILVLEN_bm | PMIC_MEDLVLEN_bm;
+	PMIC.CTRL = PMIC_HILVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_LOLVLEN_bm;
 	sei();
 
 	displayTimer.Enable();
 
-	display.setLeftNumber(12);
-	display.setRightNumber(12);
-	_delay_ms(200);
-
-	display.setLeftNumber(234);
-	display.setRightNumber(234);
-	_delay_ms(200);
-
-	display.setLeftNumber(456);
-	display.setRightNumber(456);
-	_delay_ms(200);
-
-	display.setLeftNumber(789);
-	display.setRightNumber(789);
-	_delay_ms(200);
+	for (uint16_t testValue = 0; testValue < 1000; testValue += 111) {
+		display.setLeftNumber(testValue);
+		display.setRightNumber(testValue);
+		_delay_ms(75);
+	}
 
 	metter.init();
 

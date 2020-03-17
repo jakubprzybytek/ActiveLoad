@@ -27,4 +27,5 @@
   (lib (name contrib)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/contrib.lib)(options "")(descr ""))
   (lib (name valves)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/valves.lib)(options "")(descr ""))
   (lib (name sparkfun)(type Legacy)(uri D:/Workspace/kicad-lib/components/sparkfun.lib)(options "")(descr ""))
+  (lib (name ActiveLoad-rescue)(type Legacy)(uri ${KIPRJMOD}/ActiveLoad-rescue.lib)(options "")(descr ""))
 )
