@@ -65,7 +65,7 @@ U 1 1 5E63EB3C
 P 4950 8000
 F 0 "U8" H 4823 8038 40  0000 R CNN
 F 1 "TC74" H 4823 7962 40  0000 R CNN
-F 2 "Package_TO_SOT_THT:TO-220-5_Vertical" H 4950 8000 60  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 4950 8000 60  0001 C CNN
 F 3 "" H 4950 8000 60  0000 C CNN
 	1    4950 8000
 	1    0    0    -1  
@@ -278,11 +278,11 @@ F 3 "~" H 4300 8000 50  0001 C CNN
 	1    4300 8000
 	1    0    0    -1  
 $EndComp
-Text GLabel 5400 7950 2    50   Input ~ 0
+Text GLabel 5400 8050 2    50   Input ~ 0
 SCL
 Text GLabel 6250 2300 2    50   Input ~ 0
 SCL
-Text GLabel 5400 8050 2    50   Input ~ 0
+Text GLabel 5400 7950 2    50   Input ~ 0
 SDA
 Wire Wire Line
 	5400 8050 5250 8050
@@ -890,7 +890,7 @@ U 1 1 5E85C9EE
 P 12800 2650
 F 0 "J4" H 12850 4067 50  0000 C CNN
 F 1 "RVT28AETNWC00" H 12850 3976 50  0000 C CNN
-F 2 "JPConnectors:Hirose_FH12-50S-0.5SH_1x50-1MP_P0.50mm_Horizontal" H 12800 2650 50  0001 C CNN
+F 2 "JPConnectors:Molex-50S-0.5SH_1x50-P0.50mm_Horizontal" H 12800 2650 50  0001 C CNN
 F 3 "~" H 12800 2650 50  0001 C CNN
 	1    12800 2650
 	1    0    0    -1  
@@ -4063,7 +4063,7 @@ Wire Wire Line
 Connection ~ 1000 6000
 Wire Wire Line
 	1000 6000 1000 6150
-Text Label 9850 4300 0    50   ~ 0
+Text Label 9850 4200 0    50   ~ 0
 LCD_RESET
 Wire Wire Line
 	9600 3700 9850 3700
@@ -5110,21 +5110,21 @@ F 3 "" H 6500 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x04 J?
+L Connector_Generic:Conn_01x04 J10
 U 1 1 647B93F7
 P 6100 1100
-F 0 "J?" H 6018 675 50  0000 C CNN
-F 1 "Conn_01x04" H 6018 766 50  0000 C CNN
-F 2 "" H 6100 1100 50  0001 C CNN
+F 0 "J10" H 6018 675 50  0000 C CNN
+F 1 "I2C" H 6018 766 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 6100 1100 50  0001 C CNN
 F 3 "~" H 6100 1100 50  0001 C CNN
 	1    6100 1100
 	1    0    0    1   
 $EndComp
 $Comp
-L power:GNDD #PWR?
+L power:GNDD #PWR0212
 U 1 1 647BB6DC
 P 5900 1100
-F 0 "#PWR?" H 5900 850 50  0001 C CNN
+F 0 "#PWR0212" H 5900 850 50  0001 C CNN
 F 1 "GNDD" V 5904 990 50  0000 R CNN
 F 2 "" H 5900 1100 50  0001 C CNN
 F 3 "" H 5900 1100 50  0001 C CNN
@@ -5132,10 +5132,10 @@ F 3 "" H 5900 1100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L power:+3.3V #PWR0213
 U 1 1 647BBBC7
 P 5900 1200
-F 0 "#PWR?" H 5900 1050 50  0001 C CNN
+F 0 "#PWR0213" H 5900 1050 50  0001 C CNN
 F 1 "+3.3V" V 5915 1328 50  0000 L CNN
 F 2 "" H 5900 1200 50  0001 C CNN
 F 3 "" H 5900 1200 50  0001 C CNN

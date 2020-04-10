@@ -65,7 +65,7 @@ U 1 1 5E63EB3C
 P 4950 8000
 F 0 "U8" H 4823 8038 40  0000 R CNN
 F 1 "TC74" H 4823 7962 40  0000 R CNN
-F 2 "Package_TO_SOT_THT:TO-220-5_Vertical" H 4950 8000 60  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 4950 8000 60  0001 C CNN
 F 3 "" H 4950 8000 60  0000 C CNN
 	1    4950 8000
 	1    0    0    -1  
@@ -278,11 +278,11 @@ F 3 "~" H 4300 8000 50  0001 C CNN
 	1    4300 8000
 	1    0    0    -1  
 $EndComp
-Text GLabel 5400 7950 2    50   Input ~ 0
+Text GLabel 5400 8050 2    50   Input ~ 0
 SCL
 Text GLabel 6250 2300 2    50   Input ~ 0
 SCL
-Text GLabel 5400 8050 2    50   Input ~ 0
+Text GLabel 5400 7950 2    50   Input ~ 0
 SDA
 Wire Wire Line
 	5400 8050 5250 8050
@@ -890,7 +890,7 @@ U 1 1 5E85C9EE
 P 12800 2650
 F 0 "J4" H 12850 4067 50  0000 C CNN
 F 1 "RVT28AETNWC00" H 12850 3976 50  0000 C CNN
-F 2 "JPConnectors:Hirose_FH12-50S-0.5SH_1x50-1MP_P0.50mm_Horizontal" H 12800 2650 50  0001 C CNN
+F 2 "JPConnectors:Molex-50S-0.5SH_1x50-P0.50mm_Horizontal" H 12800 2650 50  0001 C CNN
 F 3 "~" H 12800 2650 50  0001 C CNN
 	1    12800 2650
 	1    0    0    -1  
@@ -4063,7 +4063,7 @@ Wire Wire Line
 Connection ~ 1000 6000
 Wire Wire Line
 	1000 6000 1000 6150
-Text Label 9850 4300 0    50   ~ 0
+Text Label 9850 4200 0    50   ~ 0
 LCD_RESET
 Wire Wire Line
 	9600 3700 9850 3700
@@ -4193,7 +4193,7 @@ U 1 1 61CA03F1
 P 1700 12000
 F 0 "SW2" H 1700 12285 50  0000 C CNN
 F 1 "SW_Push" H 1700 12194 50  0000 C CNN
-F 2 "Button_Switch_SMD:SW_SPST_EVQP0" H 1700 12200 50  0001 C CNN
+F 2 "Button_Switch_SMD:SW_SPST_B3S-1000" H 1700 12200 50  0001 C CNN
 F 3 "~" H 1700 12200 50  0001 C CNN
 	1    1700 12000
 	1    0    0    -1  
