@@ -74,6 +74,18 @@ void Error_Handler(void);
 #define LED_GPIO_Port GPIOB
 #define Encoder_Switch_Pin GPIO_PIN_8
 #define Encoder_Switch_GPIO_Port GPIOA
+#define Display_LED_Ctrl_Pin GPIO_PIN_12
+#define Display_LED_Ctrl_GPIO_Port GPIOA
+#define Display_Reset_Pin GPIO_PIN_15
+#define Display_Reset_GPIO_Port GPIOA
+#define Display_Read_Pin GPIO_PIN_5
+#define Display_Read_GPIO_Port GPIOB
+#define Display_Write_Pin GPIO_PIN_6
+#define Display_Write_GPIO_Port GPIOB
+#define Display_Data_Command_Pin GPIO_PIN_7
+#define Display_Data_Command_GPIO_Port GPIOB
+#define Display_Select_Pin GPIO_PIN_8
+#define Display_Select_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
