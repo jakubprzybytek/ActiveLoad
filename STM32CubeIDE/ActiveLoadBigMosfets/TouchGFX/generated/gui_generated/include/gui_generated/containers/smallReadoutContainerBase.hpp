@@ -10,11 +10,11 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
-class smallReadoutContainerBase : public touchgfx::Container
+class SmallReadoutContainerBase : public touchgfx::Container
 {
 public:
-    smallReadoutContainerBase();
-    virtual ~smallReadoutContainerBase() {}
+    SmallReadoutContainerBase();
+    virtual ~SmallReadoutContainerBase() {}
     virtual void initialize();
 
 protected:

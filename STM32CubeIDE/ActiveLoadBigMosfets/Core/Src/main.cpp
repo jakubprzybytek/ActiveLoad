@@ -26,6 +26,8 @@
 #include <touchgfx/hal/OSWrappers.hpp>
 #include "app_touchgfx.h"
 
+#include "LoadState.hpp"
+
 #include "stdio.h"
 #include "ssd1306.h"
 
@@ -60,6 +62,8 @@ TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
+
+LoadState loadState;
 
 INA233 ina233(&hi2c2);
 RVT28AETNWC00 display;
@@ -131,8 +135,8 @@ int main(void)
   display.init();
   HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_SET);
 
+/*
   HAL_Delay(500);
-
   int8_t tempBuff;
   char stringBuff[20];
 
@@ -146,10 +150,10 @@ int main(void)
   ssd1306_SetCursor(2, 26+18+10);
   ssd1306_WriteString("Font 6x8", Font_6x8, White);
   ssd1306_UpdateScreen();
-
   HAL_Delay(200);
 
   ssd1306_Fill(Black);
+*/
 
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
@@ -168,9 +172,12 @@ int main(void)
 	  touchgfx::OSWrappers::signalVSync();
 	  MX_TouchGFX_Process();
 
-/*
 	  HAL_Delay(250);
 	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+
+	  loadState.voltage = ina233.readVoltage();
+	  loadState.current = ina233.readCurrent();
+/*
 
 
 	  // temp

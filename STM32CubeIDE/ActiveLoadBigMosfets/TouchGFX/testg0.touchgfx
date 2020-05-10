@@ -23,7 +23,7 @@
             "Moveable": false
           },
           {
-            "CustomContainerDefinitionName": "smallReadoutContainer",
+            "CustomContainerDefinitionName": "SmallReadoutContainer",
             "Name": "voltageReadoutContainer",
             "X": 0,
             "Y": 42,
@@ -37,7 +37,7 @@
             "Moveable": false
           },
           {
-            "CustomContainerDefinitionName": "smallReadoutContainer",
+            "CustomContainerDefinitionName": "SmallReadoutContainer",
             "Name": "currentReadoutContainer",
             "X": 120,
             "Y": 42,
@@ -52,7 +52,7 @@
           }
         ],
         "Interactions": [],
-        "Name": "screen",
+        "Name": "Main",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
       }
@@ -62,14 +62,14 @@
         "Components": [
           {
             "Color": {
-              "Red": 100,
-              "Green": 100,
-              "Blue": 100
+              "Red": 65,
+              "Green": 65,
+              "Blue": 65
             },
             "BorderColor": {
-              "Red": 168,
-              "Green": 168,
-              "Blue": 168
+              "Red": 134,
+              "Green": 134,
+              "Blue": 134
             },
             "BorderSize": 1,
             "Alpha": 255,
@@ -122,7 +122,7 @@
             "Name": "labelTextArea",
             "X": 6,
             "Y": 0,
-            "Width": 52,
+            "Width": 61,
             "Height": 18,
             "Type": "TextArea",
             "Visible": true,
@@ -140,16 +140,16 @@
               "Blue": 218
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "UseBuffer": false,
               "BufferSize": 0
             },
             "Name": "valueTextArea",
-            "X": 74,
+            "X": 6,
             "Y": 21,
-            "Width": 22,
+            "Width": 91,
             "Height": 20,
             "Type": "TextArea",
             "Visible": true,
@@ -160,7 +160,7 @@
           }
         ],
         "Interactions": [],
-        "Name": "smallReadoutContainer",
+        "Name": "SmallReadoutContainer",
         "X": 0,
         "Y": 0,
         "Width": 120,
@@ -179,6 +179,22 @@
       {
         "TextEntryId": "SingleUseId6",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "voltage",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "current",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "voltUnit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "ampUnit",
+        "IsResource": true
       }
     ],
     "Name": "testg0",
@@ -187,7 +203,7 @@
       "Height": 320
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "screen",
+    "StartupScreenName": "Main",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

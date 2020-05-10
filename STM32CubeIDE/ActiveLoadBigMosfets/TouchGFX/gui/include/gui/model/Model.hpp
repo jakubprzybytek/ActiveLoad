@@ -5,6 +5,10 @@ class ModelListener;
 
 class Model
 {
+private:
+	float voltage;
+	float current;
+
 public:
     Model();
 

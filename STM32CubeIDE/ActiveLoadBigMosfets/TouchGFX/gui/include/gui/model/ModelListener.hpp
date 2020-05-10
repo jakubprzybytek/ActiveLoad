@@ -14,6 +14,10 @@ public:
     {
         model = m;
     }
+
+    virtual void voltageChanged(float voltage) {}
+    virtual void currentChanged(float current) {}
+
 protected:
     Model* model;
 };
