@@ -23,6 +23,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <touchgfx/hal/OSWrappers.hpp>
+#include "app_touchgfx.h"
+
 #include "stdio.h"
 #include "ssd1306.h"
 
@@ -45,6 +48,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+CRC_HandleTypeDef hcrc;
+
 DAC_HandleTypeDef hdac;
 
 I2C_HandleTypeDef hi2c2;
@@ -69,6 +74,7 @@ static void MX_TIM3_Init(void);
 static void MX_DAC_Init(void);
 static void MX_RTC_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_CRC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -111,7 +117,10 @@ int main(void)
   MX_DAC_Init();
   MX_RTC_Init();
   MX_TIM2_Init();
+  MX_CRC_Init();
   /* USER CODE BEGIN 2 */
+
+  MX_TouchGFX_Init();
 
   HAL_DAC_Start(&hdac,DAC_CHANNEL_1);
   HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,0);
@@ -156,6 +165,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  touchgfx::OSWrappers::signalVSync();
+	  MX_TouchGFX_Process();
+
+/*
 	  HAL_Delay(250);
 	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 
@@ -200,6 +213,7 @@ int main(void)
 	  ssd1306_WriteString(stringBuff, Font_6x8, White);
 
 	  HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,TIM3->CNT * 10);
+*/
   }
   /* USER CODE END 3 */
 }
@@ -247,6 +261,32 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief CRC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CRC_Init(void)
+{
+
+  /* USER CODE BEGIN CRC_Init 0 */
+
+  /* USER CODE END CRC_Init 0 */
+
+  /* USER CODE BEGIN CRC_Init 1 */
+
+  /* USER CODE END CRC_Init 1 */
+  hcrc.Instance = CRC;
+  if (HAL_CRC_Init(&hcrc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CRC_Init 2 */
+
+  /* USER CODE END CRC_Init 2 */
+
 }
 
 /**

@@ -59,7 +59,7 @@ void RVT28AETNWC00::init() {
 	writeData(0xbe);
 	//--------------Memory Access Control--------------
 	writeCommand(0x36); //Memory Access Control
-	writeData(0x48); //my, mx, mv, ml, BGR, mh, 0.0
+	writeData(0b01001000); //my, mx, mv, ml, BGR, mh, 0.0
 	writeCommand(0x3a); // Pixel Format set
 	writeData(0x55); // 16bit /pixel
 
@@ -187,9 +187,7 @@ void RVT28AETNWC00::writeCommand(uint8_t command) {
 	HAL_GPIO_WritePin(Display_Data_Command_GPIO_Port, Display_Data_Command_Pin, GPIO_PIN_RESET);
 
 	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_RESET);
-
 	GPIOC->ODR = command;
-
 	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_SET);
 }
 
@@ -198,8 +196,34 @@ void RVT28AETNWC00::writeData(uint16_t data) {
 	HAL_GPIO_WritePin(Display_Data_Command_GPIO_Port, Display_Data_Command_Pin, GPIO_PIN_SET);
 
 	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_RESET);
-
 	GPIOC->ODR = data;
-
 	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_SET);
+}
+
+void RVT28AETNWC00::writeData(uint16_t *pixels, uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
+
+	uint16_t endY = y + height - 1;
+
+	writeCommand(0x2a); // Column set
+	writeData(0x00);
+	writeData(x);
+	writeData(0x00);
+	writeData(x + width - 1);
+
+	writeCommand(0x2b); // Page address set
+	writeData(y >> 8);
+	writeData(y);
+	writeData(endY >> 8);
+	writeData(endY);
+
+	writeCommand(0x2c);
+
+	HAL_GPIO_WritePin(Display_Data_Command_GPIO_Port, Display_Data_Command_Pin, GPIO_PIN_SET);
+
+	for (uint16_t i = 0; i < width * height; i++) {
+		HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_RESET);
+		GPIOC->ODR = pixels[i];
+		HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_SET);
+	}
+
 }
