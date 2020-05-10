@@ -3,24 +3,49 @@
 /*********************************************************************************/
 #include <gui_generated/main_screen/MainViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 MainViewBase::MainViewBase()
 {
 
     background.setPosition(0, 0, 240, 320);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(46, 46, 46));
+    background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
+    background.setBorderSize(2);
 
-    voltageReadoutContainer.setXY(0, 42);
+    voltageReadoutContainer.setXY(0, 26);
 
-    currentReadoutContainer.setXY(120, 42);
+    currentReadoutContainer.setXY(120, 26);
+
+    powerReadoutContainer.setXY(0, 72);
+
+    temperatureReadoutContainer.setXY(0, 148);
+
+    digitalClock.setPosition(81, 6, 79, 20);
+    digitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
+    digitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID10));
+    digitalClock.displayLeadingZeroForHourIndicator(true);
+    digitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
+    digitalClock.setTime24Hour(0, 0, 0);
+
+    textArea1.setXY(11, 6);
+    textArea1.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T_ELAPSED));
 
     add(background);
     add(voltageReadoutContainer);
     add(currentReadoutContainer);
+    add(powerReadoutContainer);
+    add(temperatureReadoutContainer);
+    add(digitalClock);
+    add(textArea1);
 }
 
 void MainViewBase::setupScreen()
 {
     voltageReadoutContainer.initialize();
     currentReadoutContainer.initialize();
+    powerReadoutContainer.initialize();
+    temperatureReadoutContainer.initialize();
 }

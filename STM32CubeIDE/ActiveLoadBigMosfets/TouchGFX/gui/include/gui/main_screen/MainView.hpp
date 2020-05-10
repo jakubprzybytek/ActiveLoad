@@ -12,8 +12,13 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
+    void setTime(uint8_t hour, uint8_t minute, uint8_t second);
+
     void setVoltage(float voltage);
     void setCurrent(float current);
+    void setPower(float power);
+
+    void setTemperature(int8_t temperature);
 
 protected:
 };

@@ -26,12 +26,11 @@
 #include <touchgfx/hal/OSWrappers.hpp>
 #include "app_touchgfx.h"
 
-#include "LoadState.hpp"
-
 #include "stdio.h"
-#include "ssd1306.h"
+#include "ApplicationState.hpp"
 
 #include "devices/INA233.hpp"
+#include "devices/TC74.hpp"
 #include "devices/RVT28AETNWC00.hpp"
 /* USER CODE END Includes */
 
@@ -63,9 +62,10 @@ TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
 
-LoadState loadState;
+ApplicationState applicationState;
 
 INA233 ina233(&hi2c2);
+TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 
 /* USER CODE END PV */
@@ -135,26 +135,6 @@ int main(void)
   display.init();
   HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_SET);
 
-/*
-  HAL_Delay(500);
-  int8_t tempBuff;
-  char stringBuff[20];
-
-  ssd1306_Init();
-  ssd1306_SetCursor(2, 0);
-  ssd1306_WriteString("Font 16x26", Font_16x26, White);
-  ssd1306_SetCursor(2, 26);
-  ssd1306_WriteString("Font 11x18", Font_11x18, White);
-  ssd1306_SetCursor(2, 26+18);
-  ssd1306_WriteString("Font 7x10", Font_7x10, White);
-  ssd1306_SetCursor(2, 26+18+10);
-  ssd1306_WriteString("Font 6x8", Font_6x8, White);
-  ssd1306_UpdateScreen();
-  HAL_Delay(200);
-
-  ssd1306_Fill(Black);
-*/
-
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
 
@@ -172,39 +152,18 @@ int main(void)
 	  touchgfx::OSWrappers::signalVSync();
 	  MX_TouchGFX_Process();
 
-	  HAL_Delay(250);
 	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 
-	  loadState.voltage = ina233.readVoltage();
-	  loadState.current = ina233.readCurrent();
-/*
+	  applicationState.voltage = ina233.readVoltage();
+	  applicationState.current = ina233.readCurrent();
 
-
-	  // temp
-	  HAL_I2C_Mem_Read(&hi2c2, 0b10010000, 0x00, 1, (uint8_t*) &tempBuff, 1, HAL_MAX_DELAY);
-	  sprintf(stringBuff, "Temp: %d C", tempBuff);
-	  ssd1306_SetCursor(2, 0);
-	  ssd1306_WriteString(stringBuff, Font_11x18, White);
-	  ssd1306_UpdateScreen();
+	  applicationState.temperature = tc74.readTemperature();
 
 	  // rtc
-	  RTC_TimeTypeDef time;
 	  RTC_DateTypeDef date;
-	  HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+	  HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
 	  HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-	  sprintf(stringBuff, "Up time: %02u:%02u:%02u", time.Hours, time.Minutes, time.Seconds);
-	  ssd1306_SetCursor(2, 26);
-	  ssd1306_WriteString(stringBuff, Font_6x8, White);
-
-	  // INA233 - Voltage
-	  ssd1306_SetCursor(2, 46);
-	  sprintf(stringBuff, "Uin: %.3fV", ina233.readVoltage());
-	  ssd1306_WriteString(stringBuff, Font_6x8, White);
-
-	  // INA233 - Current
-	  ssd1306_SetCursor(2, 36);
-	  sprintf(stringBuff, "Iin: %.3fA", ina233.readCurrent());
-	  ssd1306_WriteString(stringBuff, Font_6x8, White);
+/*
 
 	  // Encoder
 	  if (HAL_GPIO_ReadPin(Encoder_Switch_GPIO_Port, Encoder_Switch_Pin) == GPIO_PIN_RESET) {
@@ -221,6 +180,7 @@ int main(void)
 
 	  HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,TIM3->CNT * 10);
 */
+	  HAL_Delay(250);
   }
   /* USER CODE END 3 */
 }

@@ -9,13 +9,19 @@
               "Green": 46,
               "Blue": 46
             },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 2,
             "Alpha": 255,
             "Name": "background",
             "X": 0,
             "Y": 0,
             "Width": 240,
             "Height": 320,
-            "Type": "Box",
+            "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -26,9 +32,9 @@
             "CustomContainerDefinitionName": "SmallReadoutContainer",
             "Name": "voltageReadoutContainer",
             "X": 0,
-            "Y": 42,
-            "Width": 120,
-            "Height": 44,
+            "Y": 26,
+            "Width": 118,
+            "Height": 46,
             "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
@@ -40,10 +46,87 @@
             "CustomContainerDefinitionName": "SmallReadoutContainer",
             "Name": "currentReadoutContainer",
             "X": 120,
-            "Y": 42,
-            "Width": 120,
-            "Height": 44,
+            "Y": 26,
+            "Width": 118,
+            "Height": 46,
             "Type": "CustomContainerInstance",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "LargeReadoutContainer",
+            "Name": "powerReadoutContainer",
+            "X": 0,
+            "Y": 72,
+            "Width": 240,
+            "Height": 76,
+            "Type": "CustomContainerInstance",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "SmallReadoutContainer",
+            "Name": "temperatureReadoutContainer",
+            "X": 0,
+            "Y": 148,
+            "Width": 118,
+            "Height": 46,
+            "Type": "CustomContainerInstance",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextColor": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "TextId": "SingleUseId10",
+            "DisplaySeconds": true,
+            "DisplayLeadingZeroForHourIndicator": true,
+            "Alpha": 255,
+            "UseAmPm": false,
+            "InitialHour": 0,
+            "InitialMinute": 0,
+            "InitialSecond": 0,
+            "Name": "digitalClock",
+            "X": 81,
+            "Y": 6,
+            "Width": 79,
+            "Height": 20,
+            "Type": "DigitalClock",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "elapsed",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea1",
+            "X": 11,
+            "Y": 6,
+            "Width": 61,
+            "Height": 18,
+            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -62,22 +145,22 @@
         "Components": [
           {
             "Color": {
-              "Red": 65,
-              "Green": 65,
-              "Blue": 65
+              "Red": 58,
+              "Green": 58,
+              "Blue": 58
             },
             "BorderColor": {
-              "Red": 134,
-              "Green": 134,
-              "Blue": 134
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
             },
             "BorderSize": 1,
             "Alpha": 255,
             "Name": "background",
             "X": 4,
             "Y": 19,
-            "Width": 96,
-            "Height": 25,
+            "Width": 88,
+            "Height": 27,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -94,12 +177,12 @@
               "Blue": 157
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Name": "unitTextArea",
-            "X": 103,
-            "Y": 19,
-            "Width": 14,
+            "X": 95,
+            "Y": 20,
+            "Width": 24,
             "Height": 25,
             "Type": "TextArea",
             "Visible": true,
@@ -117,12 +200,12 @@
               "Blue": 179
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Name": "labelTextArea",
             "X": 6,
             "Y": 0,
-            "Width": 61,
+            "Width": 113,
             "Height": 18,
             "Type": "TextArea",
             "Visible": true,
@@ -149,8 +232,8 @@
             "Name": "valueTextArea",
             "X": 6,
             "Y": 21,
-            "Width": 91,
-            "Height": 20,
+            "Width": 78,
+            "Height": 22,
             "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
@@ -163,8 +246,116 @@
         "Name": "SmallReadoutContainer",
         "X": 0,
         "Y": 0,
-        "Width": 120,
-        "Height": 44
+        "Width": 118,
+        "Height": 46
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 58,
+              "Green": 58,
+              "Blue": 58
+            },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "background",
+            "X": 4,
+            "Y": 26,
+            "Width": 210,
+            "Height": 50,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId7",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "unitTextArea",
+            "X": 215,
+            "Y": 45,
+            "Width": 20,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId8",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "valueTextArea",
+            "X": 6,
+            "Y": 29,
+            "Width": 198,
+            "Height": 46,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId9",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 6,
+            "Y": 0,
+            "Width": 111,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "LargeReadoutContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 240,
+        "Height": 76
       }
     ],
     "TextEntries": [
@@ -194,6 +385,42 @@
       },
       {
         "TextEntryId": "ampUnit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId7",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId8",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "power",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "powerUnit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "temperature",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "temperatureUnit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId10",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "elapsed",
         "IsResource": true
       }
     ],

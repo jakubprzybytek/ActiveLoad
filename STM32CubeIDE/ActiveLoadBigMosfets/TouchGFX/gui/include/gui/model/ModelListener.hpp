@@ -15,8 +15,13 @@ public:
         model = m;
     }
 
+    virtual void timeChanged(uint8_t hour, uint8_t minute, uint8_t second) {}
+
     virtual void voltageChanged(float voltage) {}
     virtual void currentChanged(float current) {}
+    virtual void powerChanged(float power) {}
+
+    virtual void temperatureChanged(int8_t temperature) {}
 
 protected:
     Model* model;

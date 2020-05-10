@@ -27,8 +27,13 @@ public:
 
     virtual ~MainPresenter() {};
 
-    virtual void voltageChanged(float voltage);
-    virtual void currentChanged(float current);
+    void timeChanged(uint8_t hour, uint8_t minute, uint8_t second);
+
+    void voltageChanged(float voltage);
+    void currentChanged(float current);
+    void powerChanged(float power);
+
+    void temperatureChanged(int8_t temperature);
 
 private:
     MainPresenter();

@@ -18,6 +18,7 @@ public:
     void setLabel(TypedText text);
     void setUnit(TypedText text);
     void setValue(float value);
+    void setValue(int8_t value);
 
 protected:
 };

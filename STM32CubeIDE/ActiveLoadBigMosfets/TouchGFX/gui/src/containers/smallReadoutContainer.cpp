@@ -23,3 +23,8 @@ void SmallReadoutContainer::setValue(float value) {
 	Unicode::snprintfFloat(valueAreaBuffer, TEXTAREA_SIZE, "%f", value);
 	valueTextArea.invalidate();
 }
+
+void SmallReadoutContainer::setValue(int8_t value) {
+	Unicode::snprintf(valueAreaBuffer, TEXTAREA_SIZE, "%d", value);
+	valueTextArea.invalidate();
+}

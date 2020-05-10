@@ -7,8 +7,11 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <mvp/View.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
-#include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <gui/containers/SmallReadoutContainer.hpp>
+#include <gui/containers/LargeReadoutContainer.hpp>
+#include <touchgfx/containers/clock/DigitalClock.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -25,9 +28,13 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::Box background;
+    touchgfx::BoxWithBorder background;
     SmallReadoutContainer voltageReadoutContainer;
     SmallReadoutContainer currentReadoutContainer;
+    LargeReadoutContainer powerReadoutContainer;
+    SmallReadoutContainer temperatureReadoutContainer;
+    touchgfx::DigitalClock digitalClock;
+    touchgfx::TextArea textArea1;
 
 private:
 

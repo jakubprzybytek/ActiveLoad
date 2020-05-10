@@ -172,9 +172,6 @@
     <Filter Include="Header Files\generated\gui_generated\containers">
       <UniqueIdentifier>A39516B2-77E0-5EC7-36C3-BB5824DC8D69</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\mainscreen_screen">
-      <UniqueIdentifier>41DF2690-56DA-2E34-1B58-4EB7DEFD9CBF</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\main_screen">
       <UniqueIdentifier>19E2C874-F6DB-A51B-394D-E2BA6EEE9E2D</UniqueIdentifier>
     </Filter>
@@ -216,9 +213,6 @@
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\mainscreen_screen\MainScreenView.cpp">
-      <Filter>Source Files\gui\mainscreen_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\SmallReadoutContainer.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
@@ -233,6 +227,12 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\main_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\LargeReadoutContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\LargeReadoutContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -681,6 +681,12 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\main_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\LargeReadoutContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\LargeReadoutContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
