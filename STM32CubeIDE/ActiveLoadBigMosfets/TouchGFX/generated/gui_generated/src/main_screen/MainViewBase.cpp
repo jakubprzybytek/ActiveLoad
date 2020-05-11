@@ -19,8 +19,6 @@ MainViewBase::MainViewBase()
 
     powerReadoutContainer.setXY(0, 72);
 
-    temperatureReadoutContainer.setXY(0, 148);
-
     digitalClock.setPosition(81, 6, 79, 20);
     digitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     digitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID10));
@@ -33,13 +31,18 @@ MainViewBase::MainViewBase()
     textArea1.setLinespacing(0);
     textArea1.setTypedText(touchgfx::TypedText(T_ELAPSED));
 
+    temperatureReadoutContainer.setXY(2, 148);
+
+    fanDutyCycleReadoutContainer.setXY(79, 148);
+
     add(background);
     add(voltageReadoutContainer);
     add(currentReadoutContainer);
     add(powerReadoutContainer);
-    add(temperatureReadoutContainer);
     add(digitalClock);
     add(textArea1);
+    add(temperatureReadoutContainer);
+    add(fanDutyCycleReadoutContainer);
 }
 
 void MainViewBase::setupScreen()
@@ -48,4 +51,5 @@ void MainViewBase::setupScreen()
     currentReadoutContainer.initialize();
     powerReadoutContainer.initialize();
     temperatureReadoutContainer.initialize();
+    fanDutyCycleReadoutContainer.initialize();
 }

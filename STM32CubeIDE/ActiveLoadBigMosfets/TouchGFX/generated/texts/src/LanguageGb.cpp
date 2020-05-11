@@ -10,19 +10,27 @@ TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE =
 {
     68, // T_SingleUseId4
-    57, // T_SingleUseId5
-    33, // T_SingleUseId6
-    43, // T_voltage
-    35, // T_current
+    39, // T_SingleUseId5
+    21, // T_SingleUseId6
+    23, // T_voltage
+    31, // T_current
     68, // T_voltUnit
-    70, // T_ampUnit
+    64, // T_ampUnit
     66, // T_SingleUseId7
-    33, // T_SingleUseId8
+    21, // T_SingleUseId8
     0, // T_SingleUseId9
-    51, // T_power
+    45, // T_power
     66, // T_powerUnit
-    12, // T_temperature
-    63, // T_temperatureUnit
-    33, // T_SingleUseId10
-    24  // T_elapsed
+    51, // T_temperature
+    61, // T_temperatureUnit
+    21, // T_SingleUseId10
+    12, // T_elapsed
+    68, // T_SingleUseId11
+    39, // T_SingleUseId12
+    21, // T_SingleUseId13
+    57, // T_fanDutyCycle
+    70, // T_fanDutyCycleUnit
+    68, // T_SingleUseId14
+    39, // T_SingleUseId15
+    21  // T_SingleUseId16
 };

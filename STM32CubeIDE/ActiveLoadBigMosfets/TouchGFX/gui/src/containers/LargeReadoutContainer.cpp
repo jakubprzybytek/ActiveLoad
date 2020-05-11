@@ -1,8 +1,6 @@
 #include <gui/containers/LargeReadoutContainer.hpp>
 
-LargeReadoutContainer::LargeReadoutContainer() {
-
-}
+LargeReadoutContainer::LargeReadoutContainer() { }
 
 void LargeReadoutContainer::initialize() {
     LargeReadoutContainerBase::initialize();

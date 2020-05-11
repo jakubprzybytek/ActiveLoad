@@ -8,6 +8,7 @@ void MainPresenter::activate() {
 	this->view.setVoltage(this->model->getVoltage());
 	this->view.setCurrent(this->model->getCurrent());
 	this->view.setTemperature(this->model->getTemperature());
+	this->view.setDutyCycle(this->model->getDutyCycle());
 }
 
 void MainPresenter::deactivate() {

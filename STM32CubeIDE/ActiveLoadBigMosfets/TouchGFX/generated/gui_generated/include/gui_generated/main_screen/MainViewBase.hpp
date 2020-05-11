@@ -12,6 +12,7 @@
 #include <gui/containers/LargeReadoutContainer.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <gui/containers/OneThirdReadoutContainer.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -32,9 +33,10 @@ protected:
     SmallReadoutContainer voltageReadoutContainer;
     SmallReadoutContainer currentReadoutContainer;
     LargeReadoutContainer powerReadoutContainer;
-    SmallReadoutContainer temperatureReadoutContainer;
     touchgfx::DigitalClock digitalClock;
     touchgfx::TextArea textArea1;
+    OneThirdReadoutContainer temperatureReadoutContainer;
+    OneThirdReadoutContainer fanDutyCycleReadoutContainer;
 
 private:
 

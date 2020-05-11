@@ -1,13 +1,9 @@
 #include <gui/main_screen/MainView.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
-MainView::MainView()
-{
+MainView::MainView() { }
 
-}
-
-void MainView::setupScreen()
-{
+void MainView::setupScreen() {
     MainViewBase::setupScreen();
 
     voltageReadoutContainer.setLabel(touchgfx::TypedText(T_VOLTAGE));
@@ -19,10 +15,11 @@ void MainView::setupScreen()
 
     temperatureReadoutContainer.setLabel(touchgfx::TypedText(T_TEMPERATURE));
     temperatureReadoutContainer.setUnit(touchgfx::TypedText(T_TEMPERATUREUNIT));
+    fanDutyCycleReadoutContainer.setLabel(touchgfx::TypedText(T_FANDUTYCYCLE));
+    fanDutyCycleReadoutContainer.setUnit(touchgfx::TypedText(T_FANDUTYCYCLEUNIT));
 }
 
-void MainView::tearDownScreen()
-{
+void MainView::tearDownScreen() {
     MainViewBase::tearDownScreen();
 }
 
@@ -44,4 +41,8 @@ void MainView::setPower(float power) {
 
 void MainView::setTemperature(int8_t temperature) {
 	temperatureReadoutContainer.setValue(temperature);
+}
+
+void MainView::setDutyCycle(uint8_t dutyCycle) {
+	fanDutyCycleReadoutContainer.setValue(dutyCycle);
 }

@@ -71,20 +71,6 @@
             "Moveable": false
           },
           {
-            "CustomContainerDefinitionName": "SmallReadoutContainer",
-            "Name": "temperatureReadoutContainer",
-            "X": 0,
-            "Y": 148,
-            "Width": 118,
-            "Height": 46,
-            "Type": "CustomContainerInstance",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "TextColor": {
               "Red": 221,
               "Green": 218,
@@ -127,6 +113,34 @@
             "Width": 61,
             "Height": 18,
             "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "OneThirdReadoutContainer",
+            "Name": "temperatureReadoutContainer",
+            "X": 2,
+            "Y": 148,
+            "Width": 78,
+            "Height": 46,
+            "Type": "CustomContainerInstance",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "OneThirdReadoutContainer",
+            "Name": "fanDutyCycleReadoutContainer",
+            "X": 79,
+            "Y": 148,
+            "Width": 78,
+            "Height": 46,
+            "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -356,6 +370,114 @@
         "Y": 0,
         "Width": 240,
         "Height": 76
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 58,
+              "Green": 58,
+              "Blue": 58
+            },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "background",
+            "X": 4,
+            "Y": 19,
+            "Width": 52,
+            "Height": 26,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId14",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "unitTextArea",
+            "X": 58,
+            "Y": 20,
+            "Width": 22,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId15",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 6,
+            "Y": 0,
+            "Width": 72,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId16",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "valueTextArea",
+            "X": 6,
+            "Y": 21,
+            "Width": 44,
+            "Height": 24,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "OneThirdReadoutContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 78,
+        "Height": 46
       }
     ],
     "TextEntries": [
@@ -422,6 +544,38 @@
       {
         "TextEntryId": "elapsed",
         "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId11",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId12",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId13",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "fanDutyCycle",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "fanDutyCycleUnit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId14",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId15",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId16",
+        "IsResource": false
       }
     ],
     "Name": "testg0",

@@ -16,6 +16,7 @@ private:
 	float current;
 
 	int8_t temperature;
+	uint8_t fanDutyCycle;
 
 public:
     Model();
@@ -48,6 +49,10 @@ public:
 
     int8_t getTemperature() {
     	return this->temperature;
+    }
+
+    uint8_t getDutyCycle() {
+    	return this->fanDutyCycle;
     }
 
 protected:

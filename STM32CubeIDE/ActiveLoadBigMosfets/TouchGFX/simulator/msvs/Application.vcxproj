@@ -27,6 +27,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\LargeReadoutContainer.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\LargeReadoutContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\OneThirdReadoutContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\OneThirdReadoutContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -181,6 +183,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\LargeReadoutContainer.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\LargeReadoutContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\OneThirdReadoutContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\OneThirdReadoutContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

@@ -19,6 +19,7 @@ public:
     void setPower(float power);
 
     void setTemperature(int8_t temperature);
+    void setDutyCycle(uint8_t dutyCycle);
 
 protected:
 };
