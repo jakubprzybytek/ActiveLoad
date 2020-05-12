@@ -1,7 +1,9 @@
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 
-MainPresenter::MainPresenter(MainView& v) : view(v) {}
+MainPresenter::MainPresenter(MainView &v) :
+		view(v) {
+}
 
 void MainPresenter::activate() {
 	this->view.setTime(this->model->getHour(), this->model->getMinute(), this->model->getSecond());
@@ -12,7 +14,6 @@ void MainPresenter::activate() {
 }
 
 void MainPresenter::deactivate() {
-
 }
 
 void MainPresenter::timeChanged(uint8_t hour, uint8_t minute, uint8_t second) {

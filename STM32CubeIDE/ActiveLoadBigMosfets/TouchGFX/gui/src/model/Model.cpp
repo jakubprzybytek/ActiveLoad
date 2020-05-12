@@ -5,9 +5,7 @@
 
 extern ApplicationState applicationState;
 
-Model::Model() : modelListener(0) {
-
-}
+Model::Model() : modelListener(0) { }
 
 void Model::tick() {
 

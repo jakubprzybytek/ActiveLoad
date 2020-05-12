@@ -72,6 +72,8 @@ void Error_Handler(void);
 #define Fan_Sensor_GPIO_Port GPIOB
 #define LED_Pin GPIO_PIN_12
 #define LED_GPIO_Port GPIOB
+#define Fan_Power_Ctrl_Pin GPIO_PIN_14
+#define Fan_Power_Ctrl_GPIO_Port GPIOB
 #define Encoder_Switch_Pin GPIO_PIN_8
 #define Encoder_Switch_GPIO_Port GPIOA
 #define Display_LED_Ctrl_Pin GPIO_PIN_12

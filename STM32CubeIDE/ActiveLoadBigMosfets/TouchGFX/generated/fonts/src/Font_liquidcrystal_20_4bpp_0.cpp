@@ -5,6 +5,8 @@ KEEP extern const uint8_t unicodes_liquidcrystal_20_4bpp_0[] FONT_GLYPH_LOCATION
 {
     // Unicode: [0x0020, space]
     // (Has no glyph data)
+    // Unicode: [0x002D, hyphen]
+    0xE5, 0xFF, 0xEF, 0x04, 0xF6, 0xFF, 0xEF, 0x04,
     // Unicode: [0x002E, period]
     0xC9, 0x02, 0xFC, 0x02,
     // Unicode: [0x0030, zero]

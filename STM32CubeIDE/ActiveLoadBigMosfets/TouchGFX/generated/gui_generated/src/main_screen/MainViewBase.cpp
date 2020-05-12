@@ -13,43 +13,27 @@ MainViewBase::MainViewBase()
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(2);
 
-    voltageReadoutContainer.setXY(0, 26);
+    termpControlContainer.setXY(122, 120);
 
-    currentReadoutContainer.setXY(120, 26);
+    inputReadoutContainer.setXY(4, 26);
 
-    powerReadoutContainer.setXY(0, 72);
+    capacityReadoutContainer.setXY(4, 120);
 
-    digitalClock.setPosition(81, 6, 79, 20);
-    digitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
-    digitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID10));
-    digitalClock.displayLeadingZeroForHourIndicator(true);
-    digitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
-    digitalClock.setTime24Hour(0, 0, 0);
-
-    textArea1.setXY(11, 6);
-    textArea1.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T_ELAPSED));
-
-    temperatureReadoutContainer.setXY(2, 148);
-
-    fanDutyCycleReadoutContainer.setXY(79, 148);
+    titleTextArea.setPosition(0, 0, 240, 25);
+    titleTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 199, 255));
+    titleTextArea.setLinespacing(0);
+    titleTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID47));
 
     add(background);
-    add(voltageReadoutContainer);
-    add(currentReadoutContainer);
-    add(powerReadoutContainer);
-    add(digitalClock);
-    add(textArea1);
-    add(temperatureReadoutContainer);
-    add(fanDutyCycleReadoutContainer);
+    add(termpControlContainer);
+    add(inputReadoutContainer);
+    add(capacityReadoutContainer);
+    add(titleTextArea);
 }
 
 void MainViewBase::setupScreen()
 {
-    voltageReadoutContainer.initialize();
-    currentReadoutContainer.initialize();
-    powerReadoutContainer.initialize();
-    temperatureReadoutContainer.initialize();
-    fanDutyCycleReadoutContainer.initialize();
+    termpControlContainer.initialize();
+    inputReadoutContainer.initialize();
+    capacityReadoutContainer.initialize();
 }

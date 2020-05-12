@@ -8,11 +8,10 @@
 #include <mvp/View.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
-#include <gui/containers/SmallReadoutContainer.hpp>
-#include <gui/containers/LargeReadoutContainer.hpp>
-#include <touchgfx/containers/clock/DigitalClock.hpp>
+#include <gui/containers/TermpControlContainer.hpp>
+#include <gui/containers/InputReadoutContainer.hpp>
+#include <gui/containers/CapacityReadoutContainer.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
-#include <gui/containers/OneThirdReadoutContainer.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -30,13 +29,10 @@ protected:
      * Member Declarations
      */
     touchgfx::BoxWithBorder background;
-    SmallReadoutContainer voltageReadoutContainer;
-    SmallReadoutContainer currentReadoutContainer;
-    LargeReadoutContainer powerReadoutContainer;
-    touchgfx::DigitalClock digitalClock;
-    touchgfx::TextArea textArea1;
-    OneThirdReadoutContainer temperatureReadoutContainer;
-    OneThirdReadoutContainer fanDutyCycleReadoutContainer;
+    TermpControlContainer termpControlContainer;
+    InputReadoutContainer inputReadoutContainer;
+    CapacityReadoutContainer capacityReadoutContainer;
+    touchgfx::TextArea titleTextArea;
 
 private:
 

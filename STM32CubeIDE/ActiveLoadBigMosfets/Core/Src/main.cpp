@@ -491,8 +491,8 @@ static void MX_GPIO_Init(void)
                           |GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LED_Pin|Display_Read_Pin|Display_Write_Pin|Display_Data_Command_Pin 
-                          |Display_Select_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LED_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin|Display_Write_Pin 
+                          |Display_Data_Command_Pin|Display_Select_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, Display_LED_Ctrl_Pin|Display_Reset_Pin, GPIO_PIN_RESET);
@@ -516,10 +516,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(Fan_Sensor_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_Pin Display_Read_Pin Display_Write_Pin Display_Data_Command_Pin 
-                           Display_Select_Pin */
-  GPIO_InitStruct.Pin = LED_Pin|Display_Read_Pin|Display_Write_Pin|Display_Data_Command_Pin 
-                          |Display_Select_Pin;
+  /*Configure GPIO pins : LED_Pin Fan_Power_Ctrl_Pin Display_Read_Pin Display_Write_Pin 
+                           Display_Data_Command_Pin Display_Select_Pin */
+  GPIO_InitStruct.Pin = LED_Pin|Display_Read_Pin|Display_Write_Pin
+                          |Display_Data_Command_Pin|Display_Select_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
