@@ -909,7 +909,7 @@ F 3 "" H 6500 5650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 4000 5750
-Text GLabel 5150 5000 0    50   Input ~ 0
+Text GLabel 4950 5000 0    50   Input ~ 0
 FanPowerCtrl
 Text GLabel 9850 3300 2    50   Input ~ 0
 FanPWM
@@ -5142,7 +5142,7 @@ Wire Wire Line
 Connection ~ 11750 7000
 Wire Wire Line
 	11750 7000 11750 7100
-Text GLabel 11450 7300 0    50   Input ~ 0
+Text GLabel 11250 7300 0    50   Input ~ 0
 LoadOpAmpsPowerCtrl
 $Comp
 L power:GNDA #PWR0189
@@ -5439,6 +5439,61 @@ F 3 "" H 7950 3850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	9600 5400 9850 5400
+$Comp
+L Device:R R?
+U 1 1 5EC4AE22
+P 11350 7550
+F 0 "R?" H 11280 7504 50  0000 R CNN
+F 1 "100k" H 11280 7595 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 11280 7550 50  0001 C CNN
+F 3 "~" H 11350 7550 50  0001 C CNN
+	1    11350 7550
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	11250 7300 11350 7300
+Wire Wire Line
+	11350 7400 11350 7300
+Connection ~ 11350 7300
+Wire Wire Line
+	11350 7300 11450 7300
+$Comp
+L power:GNDA #PWR?
+U 1 1 5ED5E84F
+P 11350 7700
+F 0 "#PWR?" H 11350 7450 50  0001 C CNN
+F 1 "GNDA" H 11355 7527 50  0000 C CNN
+F 2 "" H 11350 7700 50  0001 C CNN
+F 3 "" H 11350 7700 50  0001 C CNN
+	1    11350 7700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5ED5ED19
+P 5050 5200
+F 0 "R?" H 4980 5154 50  0000 R CNN
+F 1 "100k" H 4980 5245 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4980 5200 50  0001 C CNN
+F 3 "~" H 5050 5200 50  0001 C CNN
+	1    5050 5200
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GNDA #PWR?
+U 1 1 5ED5F4B1
+P 5050 5350
+F 0 "#PWR?" H 5050 5100 50  0001 C CNN
+F 1 "GNDA" H 5055 5177 50  0000 C CNN
+F 2 "" H 5050 5350 50  0001 C CNN
+F 3 "" H 5050 5350 50  0001 C CNN
+	1    5050 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 5000 5050 5000
+Wire Wire Line
+	5050 5050 5050 5000
 Wire Bus Line
 	17050 4300 17050 4650
 Wire Bus Line
@@ -5447,4 +5502,7 @@ Wire Bus Line
 	13750 1550 13750 4050
 Wire Bus Line
 	7850 4600 7850 6650
+Connection ~ 5050 5000
+Wire Wire Line
+	5050 5000 5150 5000
 $EndSCHEMATC

@@ -28,6 +28,7 @@
 
 #include "stdio.h"
 #include "ApplicationState.hpp"
+#include "FanController.hpp"
 
 #include "devices/INA233.hpp"
 #include "devices/TC74.hpp"
@@ -63,6 +64,7 @@ TIM_HandleTypeDef htim3;
 /* USER CODE BEGIN PV */
 
 ApplicationState applicationState;
+FanController fanController(&htim2);
 
 INA233 ina233(&hi2c2);
 TC74 tc74(&hi2c2);
@@ -124,6 +126,8 @@ int main(void)
   MX_CRC_Init();
   /* USER CODE BEGIN 2 */
 
+  fanController.setSpeed(0);
+
   MX_TouchGFX_Init();
 
   HAL_DAC_Start(&hdac,DAC_CHANNEL_1);
@@ -136,7 +140,6 @@ int main(void)
   HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_SET);
 
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
 
   ina233.init();
 
@@ -180,7 +183,7 @@ int main(void)
 
 	  HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,TIM3->CNT * 10);
 */
-	  HAL_Delay(250);
+	  HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
@@ -518,7 +521,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : LED_Pin Fan_Power_Ctrl_Pin Display_Read_Pin Display_Write_Pin 
                            Display_Data_Command_Pin Display_Select_Pin */
-  GPIO_InitStruct.Pin = LED_Pin|Display_Read_Pin|Display_Write_Pin
+  GPIO_InitStruct.Pin = LED_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin|Display_Write_Pin
                           |Display_Data_Command_Pin|Display_Select_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
