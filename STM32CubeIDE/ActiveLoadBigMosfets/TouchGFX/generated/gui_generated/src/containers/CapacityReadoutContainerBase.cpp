@@ -4,18 +4,19 @@
 #include <gui_generated/containers/CapacityReadoutContainerBase.hpp>
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
+#include "BitmapDatabase.hpp"
 
 CapacityReadoutContainerBase::CapacityReadoutContainerBase()
 {
     setWidth(114);
-    setHeight(93);
-    background.setPosition(0, 18, 114, 74);
+    setHeight(128);
+    background.setPosition(0, 18, 114, 110);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(58, 58, 58));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
     labelTextArea.setXY(2, 0);
-    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(139, 136, 182));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
@@ -46,6 +47,12 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase()
     digitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
     digitalClock.setTime24Hour(0, 0, 0);
 
+    buttonWithLabel1.setXY(27, 91);
+    buttonWithLabel1.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_60X36_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_PRESSED_60X36_ID));
+    buttonWithLabel1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID49));
+    buttonWithLabel1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel1.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+
     add(background);
     add(labelTextArea);
     add(currentUnitTextArea);
@@ -53,6 +60,7 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase()
     add(capacityLabelTextArea);
     add(elapsedTimeLabelTextArea);
     add(digitalClock);
+    add(buttonWithLabel1);
 }
 
 void CapacityReadoutContainerBase::initialize()

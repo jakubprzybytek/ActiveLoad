@@ -20,6 +20,8 @@ public:
 	float current;
 
 	int8_t temperature;
+	uint8_t fanDutyCycle;
+	uint16_t fanRPM;
 };
 
 #endif /* INC_APPLICATIONSTATE_HPP_ */

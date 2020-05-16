@@ -9,13 +9,13 @@ TermpControlContainerBase::TermpControlContainerBase()
 {
     setWidth(114);
     setHeight(128);
-    background.setPosition(0, 18, 114, 109);
+    background.setPosition(0, 18, 114, 110);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(58, 58, 58));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
     labelTextArea.setXY(2, 0);
-    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(129, 168, 119));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 

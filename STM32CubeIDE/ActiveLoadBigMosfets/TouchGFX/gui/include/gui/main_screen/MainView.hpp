@@ -19,7 +19,8 @@ public:
     void setPower(float power);
 
     void setTemperature(int8_t temperature);
-    void setDutyCycle(uint8_t dutyCycle);
+    void setFanDutyCycle(uint8_t fanDutyCycle);
+    void setFanRPM(uint16_t fanRPM);
 
 protected:
 };

@@ -1,3 +1,4 @@
+#include <texts/TextKeysAndLanguages.hpp>
 #include <gui/containers/TermpControlContainer.hpp>
 
 TermpControlContainer::TermpControlContainer() {
@@ -16,8 +17,13 @@ void TermpControlContainer::setRadiatorTemperature(int8_t radiatorTemperature) {
 }
 
 void TermpControlContainer::setFanDutyCycle(uint8_t fanDutyCycle) {
-	Unicode::snprintf(fanDutyCycleBuffer, TEXTAREA_SIZE, "%u", fanDutyCycle);
-	fanDutyCycleValueTextArea.invalidate();
+	if (fanDutyCycle > 0) {
+		Unicode::snprintf(fanDutyCycleBuffer, TEXTAREA_SIZE, "%u", fanDutyCycle);
+		fanDutyCycleValueTextArea.invalidate();
+	} else {
+		Unicode::strncpy(fanDutyCycleBuffer, TypedText(T_OFF).getText(), TEXTAREA_SIZE);
+		fanDutyCycleValueTextArea.invalidate();
+	}
 }
 
 void TermpControlContainer::setFanRPM(uint16_t fanRPM) {

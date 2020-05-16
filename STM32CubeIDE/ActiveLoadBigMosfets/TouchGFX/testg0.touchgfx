@@ -32,7 +32,7 @@
             "CustomContainerDefinitionName": "TermpControlContainer",
             "Name": "termpControlContainer",
             "X": 122,
-            "Y": 120,
+            "Y": 188,
             "Width": 114,
             "Height": 128,
             "Type": "CustomContainerInstance",
@@ -46,7 +46,7 @@
             "CustomContainerDefinitionName": "InputReadoutContainer",
             "Name": "inputReadoutContainer",
             "X": 4,
-            "Y": 26,
+            "Y": 4,
             "Width": 232,
             "Height": 92,
             "Type": "CustomContainerInstance",
@@ -60,9 +60,9 @@
             "CustomContainerDefinitionName": "CapacityReadoutContainer",
             "Name": "capacityReadoutContainer",
             "X": 4,
-            "Y": 120,
+            "Y": 188,
             "Width": 114,
-            "Height": 93,
+            "Height": 128,
             "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
@@ -84,9 +84,23 @@
             "Name": "titleTextArea",
             "X": 0,
             "Y": 0,
-            "Width": 240,
+            "Width": 236,
             "Height": 25,
             "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "LoadSettingsContainer",
+            "Name": "loadSettingsContainer1",
+            "X": 4,
+            "Y": 96,
+            "Width": 232,
+            "Height": 92,
+            "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -120,7 +134,7 @@
             "X": 0,
             "Y": 18,
             "Width": 114,
-            "Height": 109,
+            "Height": 110,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -132,9 +146,9 @@
             "TextId": "SingleUseId18",
             "TextRotation": "0",
             "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
+              "Red": 129,
+              "Green": 168,
+              "Blue": 119
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -409,9 +423,9 @@
             "TextId": "SingleUseId27",
             "TextRotation": "0",
             "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
+              "Red": 228,
+              "Green": 156,
+              "Blue": 156
             },
             "Alpha": 255,
             "AutoSize": false,
@@ -674,7 +688,7 @@
             "X": 0,
             "Y": 18,
             "Width": 114,
-            "Height": 74,
+            "Height": 110,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -686,9 +700,9 @@
             "TextId": "SingleUseId39",
             "TextRotation": "0",
             "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
+              "Red": 139,
+              "Green": 136,
+              "Blue": 182
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -826,6 +840,34 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Pressed": "Round_Edge_icon_button_pressed_60x36.png",
+            "Released": "Round_Edge_icon_button_60x36.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId49",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "buttonWithLabel1",
+            "X": 27,
+            "Y": 91,
+            "Width": 60,
+            "Height": 36,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [],
@@ -833,7 +875,290 @@
         "X": 0,
         "Y": 0,
         "Width": 114,
-        "Height": 93
+        "Height": 128
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 58,
+              "Green": 58,
+              "Blue": 58
+            },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 18,
+            "Width": 232,
+            "Height": 74,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId50",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 226,
+              "Green": 228,
+              "Blue": 156
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 2,
+            "Y": 0,
+            "Width": 113,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId51",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "currentUnitTextArea",
+            "X": 82,
+            "Y": 73,
+            "Width": 15,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 119,
+              "Green": 119,
+              "Blue": 119
+            },
+            "BorderColor": {
+              "Red": 141,
+              "Green": 181,
+              "Blue": 255
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "currentValueBorder",
+            "X": 14,
+            "Y": 69,
+            "Width": 66,
+            "Height": 21,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId52",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "currentValueTextArea",
+            "X": 20,
+            "Y": 68,
+            "Width": 57,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId53",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "currentLabelTextArea",
+            "X": 4,
+            "Y": 56,
+            "Width": 44,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId54",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageUnitTextArea",
+            "X": 82,
+            "Y": 38,
+            "Width": 12,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 119,
+              "Green": 119,
+              "Blue": 119
+            },
+            "BorderColor": {
+              "Red": 97,
+              "Green": 97,
+              "Blue": 97
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "voltageBorder",
+            "X": 14,
+            "Y": 33,
+            "Width": 66,
+            "Height": 21,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId55",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "voltageValueTextArea",
+            "X": 20,
+            "Y": 31,
+            "Width": 57,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId56",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageLabelTextArea",
+            "X": 4,
+            "Y": 19,
+            "Width": 44,
+            "Height": 15,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId57",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style1",
+            "Name": "buttonWithLabel1",
+            "X": 147,
+            "Y": 27,
+            "Width": 60,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "LoadSettingsContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 232,
+        "Height": 92
       }
     ],
     "TextEntries": [
@@ -943,6 +1268,46 @@
       },
       {
         "TextEntryId": "SingleUseId48",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "off",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId49",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId50",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId51",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId52",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId53",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId54",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId55",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId56",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId57",
         "IsResource": false
       }
     ],

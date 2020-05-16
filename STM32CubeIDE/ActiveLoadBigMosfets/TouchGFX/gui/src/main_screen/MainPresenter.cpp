@@ -10,7 +10,8 @@ void MainPresenter::activate() {
 	this->view.setVoltage(this->model->getVoltage());
 	this->view.setCurrent(this->model->getCurrent());
 	this->view.setTemperature(this->model->getTemperature());
-	this->view.setDutyCycle(this->model->getDutyCycle());
+	this->view.setFanDutyCycle(this->model->getFanDutyCycle());
+	this->view.setFanRPM(this->model->getFanRPM());
 }
 
 void MainPresenter::deactivate() {
@@ -34,4 +35,12 @@ void MainPresenter::powerChanged(float power) {
 
 void MainPresenter::temperatureChanged(int8_t temperature) {
 	this->view.setTemperature(temperature);
+}
+
+void MainPresenter::fanDutyCycleChanged(uint8_t fanDutyCycle) {
+	this->view.setFanDutyCycle(fanDutyCycle);
+}
+
+void MainPresenter::fanRPMChanged(uint16_t fanRPM) {
+	this->view.setFanRPM(fanRPM);
 }

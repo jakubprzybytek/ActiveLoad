@@ -15,13 +15,18 @@ void FanController::startFan() {
 }
 
 void FanController::stopFan() {
-	HAL_GPIO_WritePin(Fan_Power_Ctrl_GPIO_Port, Fan_Power_Ctrl_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(Fan_Power_Ctrl_GPIO_Port, Fan_Power_Ctrl_Pin, GPIO_PIN_RESET);
 	HAL_TIM_PWM_Stop(htim, TIM_CHANNEL_1);
 
 	this->running = false;
 }
 
 void FanController::setSpeed(uint8_t dutyCycle) {
+
+	if (dutyCycle > 50) {
+		dutyCycle = 50;
+	}
+
 	if (dutyCycle == 0 && running == true) {
 		stopFan();
 	}

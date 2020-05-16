@@ -31,5 +31,12 @@ void Model::tick() {
 		this->temperature = applicationState.temperature;
 		this->modelListener->temperatureChanged(this->temperature);
 	}
-
+	if (this->fanDutyCycle != applicationState.fanDutyCycle) {
+		this->fanDutyCycle = applicationState.fanDutyCycle;
+		this->modelListener->fanDutyCycleChanged(this->fanDutyCycle);
+	}
+	if (this->fanRPM != applicationState.fanRPM) {
+		this->fanRPM = applicationState.fanRPM;
+		this->modelListener->fanRPMChanged(this->fanRPM);
+	}
 }

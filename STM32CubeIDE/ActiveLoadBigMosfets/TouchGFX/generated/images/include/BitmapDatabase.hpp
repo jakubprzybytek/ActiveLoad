@@ -7,6 +7,10 @@
 #include <touchgfx/lcd/LCD.hpp>
 #include <touchgfx/Bitmap.hpp>
 
+const uint16_t BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID = 0;
+const uint16_t BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID = 1;
+const uint16_t BITMAP_ROUND_EDGE_ICON_BUTTON_60X36_ID = 2;
+const uint16_t BITMAP_ROUND_EDGE_ICON_BUTTON_PRESSED_60X36_ID = 3;
 
 namespace BitmapDatabase
 {

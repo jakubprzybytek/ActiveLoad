@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
 
 class CapacityReadoutContainerBase : public touchgfx::Container
 {
@@ -33,6 +34,7 @@ protected:
     touchgfx::TextArea capacityLabelTextArea;
     touchgfx::TextArea elapsedTimeLabelTextArea;
     touchgfx::DigitalClock digitalClock;
+    touchgfx::ButtonWithLabel buttonWithLabel1;
 
 private:
 

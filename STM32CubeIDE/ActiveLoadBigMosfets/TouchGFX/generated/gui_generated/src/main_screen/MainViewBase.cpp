@@ -13,22 +13,25 @@ MainViewBase::MainViewBase()
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(2);
 
-    termpControlContainer.setXY(122, 120);
+    termpControlContainer.setXY(122, 188);
 
-    inputReadoutContainer.setXY(4, 26);
+    inputReadoutContainer.setXY(4, 4);
 
-    capacityReadoutContainer.setXY(4, 120);
+    capacityReadoutContainer.setXY(4, 188);
 
-    titleTextArea.setPosition(0, 0, 240, 25);
+    titleTextArea.setPosition(0, 0, 236, 25);
     titleTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 199, 255));
     titleTextArea.setLinespacing(0);
     titleTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID47));
+
+    loadSettingsContainer1.setXY(4, 96);
 
     add(background);
     add(termpControlContainer);
     add(inputReadoutContainer);
     add(capacityReadoutContainer);
     add(titleTextArea);
+    add(loadSettingsContainer1);
 }
 
 void MainViewBase::setupScreen()
@@ -36,4 +39,5 @@ void MainViewBase::setupScreen()
     termpControlContainer.initialize();
     inputReadoutContainer.initialize();
     capacityReadoutContainer.initialize();
+    loadSettingsContainer1.initialize();
 }

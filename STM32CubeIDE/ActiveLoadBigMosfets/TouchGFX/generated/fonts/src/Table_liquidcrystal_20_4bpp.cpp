@@ -22,7 +22,9 @@ KEEP extern const touchgfx::GlyphNode glyphs_liquidcrystal_20_4bpp[] FONT_TABLE_
     {   731, 0x003F,  11,  14,  15,   0,  11,   0,   0, 0x00 },
     {   815, 0x0041,  11,  14,  15,   0,  11,   0,   0, 0x00 },
     {   899, 0x004D,  11,  15,  15,   0,  11,   0,   0, 0x00 },
-    {   989, 0x0050,  11,  14,  15,   0,  11,   0,   0, 0x00 }
+    {   989, 0x0050,  11,  14,  15,   0,  11,   0,   0, 0x00 },
+    {  1073, 0x0066,  10,  14,  15,   0,  11,   0,   0, 0x00 },
+    {  1143, 0x006F,  10,   9,  10,   0,  11,   0,   0, 0x00 }
 };
 
 // liquidcrystal_20_4bpp
@@ -37,6 +39,6 @@ touchgfx::GeneratedFont& getFont_liquidcrystal_20_4bpp();
 
 touchgfx::GeneratedFont& getFont_liquidcrystal_20_4bpp()
 {
-    static touchgfx::GeneratedFont liquidcrystal_20_4bpp(glyphs_liquidcrystal_20_4bpp, 18, 20, 0, 4, 1, 1, 1, unicodes_liquidcrystal_20_4bpp, kerning_liquidcrystal_20_4bpp, 63, 0, 0);
+    static touchgfx::GeneratedFont liquidcrystal_20_4bpp(glyphs_liquidcrystal_20_4bpp, 20, 20, 0, 4, 1, 1, 1, unicodes_liquidcrystal_20_4bpp, kerning_liquidcrystal_20_4bpp, 63, 0, 0);
     return liquidcrystal_20_4bpp;
 }

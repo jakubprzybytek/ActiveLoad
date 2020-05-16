@@ -12,6 +12,7 @@
 #include <gui/containers/InputReadoutContainer.hpp>
 #include <gui/containers/CapacityReadoutContainer.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <gui/containers/LoadSettingsContainer.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -33,6 +34,7 @@ protected:
     InputReadoutContainer inputReadoutContainer;
     CapacityReadoutContainer capacityReadoutContainer;
     touchgfx::TextArea titleTextArea;
+    LoadSettingsContainer loadSettingsContainer1;
 
 private:
 

@@ -15,7 +15,7 @@ InputReadoutContainerBase::InputReadoutContainerBase()
     background.setBorderSize(1);
 
     labelTextArea.setPosition(2, 0, 113, 18);
-    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(228, 156, 156));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 

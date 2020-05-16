@@ -22,6 +22,8 @@ public:
     virtual void powerChanged(float power) {}
 
     virtual void temperatureChanged(int8_t temperature) {}
+    virtual void fanDutyCycleChanged(uint8_t fanDutyCycle) {}
+    virtual void fanRPMChanged(uint16_t fanRPM) {}
 
 protected:
     Model* model;

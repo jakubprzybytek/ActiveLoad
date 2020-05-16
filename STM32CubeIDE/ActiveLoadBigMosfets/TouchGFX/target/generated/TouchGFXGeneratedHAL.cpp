@@ -38,8 +38,8 @@ extern void transmitFrameBufferBlock(uint8_t* pixels, uint16_t x, uint16_t y, ui
 extern uint8_t isTransmittingData();
 
 // Block Allocator for Partial Framebuffer strategy
-ManyBlockAllocator<7680, /* block size */
-                   3, /* number of blocks */
+ManyBlockAllocator<15360, /* block size */
+                   2, /* number of blocks */
                    2  /* bytes per pixel */
                    > blockAllocator;
 

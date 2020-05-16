@@ -23,16 +23,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <touchgfx/hal/OSWrappers.hpp>
-#include "app_touchgfx.h"
 
-#include "stdio.h"
-#include "ApplicationState.hpp"
-#include "FanController.hpp"
+#include "ActiveLoad.h"
 
-#include "devices/INA233.hpp"
-#include "devices/TC74.hpp"
-#include "devices/RVT28AETNWC00.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,15 +53,9 @@ RTC_HandleTypeDef hrtc;
 
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim5;
 
 /* USER CODE BEGIN PV */
-
-ApplicationState applicationState;
-FanController fanController(&htim2);
-
-INA233 ina233(&hi2c2);
-TC74 tc74(&hi2c2);
-RVT28AETNWC00 display;
 
 /* USER CODE END PV */
 
@@ -81,6 +68,7 @@ static void MX_DAC_Init(void);
 static void MX_RTC_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_CRC_Init(void);
+static void MX_TIM5_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -124,24 +112,10 @@ int main(void)
   MX_RTC_Init();
   MX_TIM2_Init();
   MX_CRC_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 
-  fanController.setSpeed(0);
-
-  MX_TouchGFX_Init();
-
-  HAL_DAC_Start(&hdac,DAC_CHANNEL_1);
-  HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,0);
-
-
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
-
-  display.init();
-  HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_SET);
-
-  HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
-
-  ina233.init();
+  ActiveLoad_init();
 
   /* USER CODE END 2 */
 
@@ -152,38 +126,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  touchgfx::OSWrappers::signalVSync();
-	  MX_TouchGFX_Process();
-
-	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-
-	  applicationState.voltage = ina233.readVoltage();
-	  applicationState.current = ina233.readCurrent();
-
-	  applicationState.temperature = tc74.readTemperature();
-
-	  // rtc
-	  RTC_DateTypeDef date;
-	  HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
-	  HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-/*
-
-	  // Encoder
-	  if (HAL_GPIO_ReadPin(Encoder_Switch_GPIO_Port, Encoder_Switch_Pin) == GPIO_PIN_RESET) {
-		  ssd1306_SetCursor(2, 56);
-		  ssd1306_WriteString("Enc Down", Font_6x8, White);
-	  } else {
-		  ssd1306_SetCursor(2, 56);
-		  ssd1306_WriteString("Enc Up  ", Font_6x8, White);
-	  }
-
-	  ssd1306_SetCursor(50, 56);
-	  sprintf(stringBuff, "Enc: %lu   ", TIM3->CNT);
-	  ssd1306_WriteString(stringBuff, Font_6x8, White);
-
-	  HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,TIM3->CNT * 10);
-*/
-	  HAL_Delay(500);
+	  ActiveLoad_loop();
   }
   /* USER CODE END 3 */
 }
@@ -474,6 +417,51 @@ static void MX_TIM3_Init(void)
 }
 
 /**
+  * @brief TIM5 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM5_Init(void)
+{
+
+  /* USER CODE BEGIN TIM5_Init 0 */
+
+  /* USER CODE END TIM5_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM5_Init 1 */
+
+  /* USER CODE END TIM5_Init 1 */
+  htim5.Instance = TIM5;
+  htim5.Init.Prescaler = 1999;
+  htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim5.Init.Period = 50;
+  htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+  htim5.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim5) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim5, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim5, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM5_Init 2 */
+
+  /* USER CODE END TIM5_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -494,11 +482,11 @@ static void MX_GPIO_Init(void)
                           |GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LED_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin|Display_Write_Pin 
-                          |Display_Data_Command_Pin|Display_Select_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LED_Pin|Load_Op_Amps_Ctrl_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin 
+                          |Display_Write_Pin|Display_Data_Command_Pin|Display_Select_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, Display_LED_Ctrl_Pin|Display_Reset_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, TouchPad_Reset_Pin|Display_LED_Ctrl_Pin|Display_Reset_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PC13 PC14 PC15 PC0 
                            PC1 PC2 PC3 PC4 
@@ -519,10 +507,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(Fan_Sensor_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_Pin Fan_Power_Ctrl_Pin Display_Read_Pin Display_Write_Pin 
-                           Display_Data_Command_Pin Display_Select_Pin */
-  GPIO_InitStruct.Pin = LED_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin|Display_Write_Pin
-                          |Display_Data_Command_Pin|Display_Select_Pin;
+  /*Configure GPIO pins : LED_Pin Load_Op_Amps_Ctrl_Pin Fan_Power_Ctrl_Pin Display_Read_Pin 
+                           Display_Write_Pin Display_Data_Command_Pin Display_Select_Pin */
+  GPIO_InitStruct.Pin = LED_Pin|Load_Op_Amps_Ctrl_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin 
+                          |Display_Write_Pin|Display_Data_Command_Pin|Display_Select_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -534,12 +522,22 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(Encoder_Switch_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Display_LED_Ctrl_Pin Display_Reset_Pin */
-  GPIO_InitStruct.Pin = Display_LED_Ctrl_Pin|Display_Reset_Pin;
+  /*Configure GPIO pins : TouchPad_Reset_Pin Display_LED_Ctrl_Pin Display_Reset_Pin */
+  GPIO_InitStruct.Pin = TouchPad_Reset_Pin|Display_LED_Ctrl_Pin|Display_Reset_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : TouchPad_Interrupt_Pin */
+  GPIO_InitStruct.Pin = TouchPad_Interrupt_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(TouchPad_Interrupt_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 

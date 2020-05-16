@@ -32,6 +32,10 @@ void MainView::setTemperature(int8_t temperature) {
 	termpControlContainer.setRadiatorTemperature(temperature);
 }
 
-void MainView::setDutyCycle(uint8_t dutyCycle) {
-	termpControlContainer.setFanDutyCycle(dutyCycle);
+void MainView::setFanDutyCycle(uint8_t fanDutyCycle) {
+	termpControlContainer.setFanDutyCycle(fanDutyCycle);
+}
+
+void MainView::setFanRPM(uint16_t fanRPM) {
+	termpControlContainer.setFanRPM(fanRPM);
 }

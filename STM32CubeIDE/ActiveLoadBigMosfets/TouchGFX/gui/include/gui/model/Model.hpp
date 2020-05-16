@@ -17,6 +17,7 @@ private:
 
 	int8_t temperature;
 	uint8_t fanDutyCycle;
+	uint16_t fanRPM;
 
 public:
     Model();
@@ -51,8 +52,12 @@ public:
     	return this->temperature;
     }
 
-    uint8_t getDutyCycle() {
+    uint8_t getFanDutyCycle() {
     	return this->fanDutyCycle;
+    }
+
+    uint16_t getFanRPM() {
+    	return this->fanRPM;
     }
 
 protected:

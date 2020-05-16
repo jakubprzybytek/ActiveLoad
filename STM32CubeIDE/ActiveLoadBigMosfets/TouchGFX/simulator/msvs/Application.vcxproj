@@ -29,6 +29,8 @@
     <ClCompile Include="..\..\gui\src\containers\CapacityReadoutContainer.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\CapacityReadoutContainerBase.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\TermpControlContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\LoadSettingsContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\LoadSettingsContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -185,6 +187,8 @@
     <ClInclude Include="..\..\gui\include\gui\containers\CapacityReadoutContainer.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CapacityReadoutContainerBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\TermpControlContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\LoadSettingsContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\LoadSettingsContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>
