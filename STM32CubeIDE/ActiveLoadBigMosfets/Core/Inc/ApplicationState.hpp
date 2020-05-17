@@ -22,6 +22,10 @@ public:
 	int8_t temperature;
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;
+
+	bool touched;
+	int32_t touchX;
+	int32_t touchY;
 };
 
 #endif /* INC_APPLICATIONSTATE_HPP_ */

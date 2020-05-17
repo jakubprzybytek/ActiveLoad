@@ -11,7 +11,7 @@
 
 void INA233::init() {
 	// set up averaging
-	uint16_t mfrAdcCondigValue = 0b0100100100100111; // averaging across 128 samples
+	uint16_t mfrAdcCondigValue = 0b0100101100100111; // averaging across 256 samples
 	HAL_I2C_Mem_Write(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_MFR_ADC_CONFIG, 1, (uint8_t*) &mfrAdcCondigValue, 2, HAL_MAX_DELAY);
 
 	// calibrate

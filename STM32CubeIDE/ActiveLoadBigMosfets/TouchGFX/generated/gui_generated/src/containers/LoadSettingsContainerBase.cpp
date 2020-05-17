@@ -6,12 +6,13 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-LoadSettingsContainerBase::LoadSettingsContainerBase()
+LoadSettingsContainerBase::LoadSettingsContainerBase() :
+    buttonCallback(this, &LoadSettingsContainerBase::buttonCallbackHandler)
 {
     setWidth(232);
     setHeight(92);
     background.setPosition(0, 18, 232, 74);
-    background.setColor(touchgfx::Color::getColorFrom24BitRGB(58, 58, 58));
+    background.setColor(touchgfx::Color::getColorFrom24BitRGB(45, 45, 45));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
@@ -25,10 +26,10 @@ LoadSettingsContainerBase::LoadSettingsContainerBase()
     currentUnitTextArea.setLinespacing(0);
     currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
 
-    currentValueBorder.setPosition(14, 69, 66, 21);
-    currentValueBorder.setColor(touchgfx::Color::getColorFrom24BitRGB(119, 119, 119));
-    currentValueBorder.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(141, 181, 255));
-    currentValueBorder.setBorderSize(2);
+    currentValueBox.setPosition(14, 69, 66, 21);
+    currentValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(80, 80, 80));
+    currentValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(141, 181, 255));
+    currentValueBox.setBorderSize(2);
 
     currentValueTextArea.setPosition(20, 68, 57, 20);
     currentValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
@@ -45,10 +46,10 @@ LoadSettingsContainerBase::LoadSettingsContainerBase()
     voltageUnitTextArea.setLinespacing(0);
     voltageUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID54));
 
-    voltageBorder.setPosition(14, 33, 66, 21);
-    voltageBorder.setColor(touchgfx::Color::getColorFrom24BitRGB(119, 119, 119));
-    voltageBorder.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
-    voltageBorder.setBorderSize(2);
+    voltageValueBox.setPosition(14, 33, 66, 21);
+    voltageValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(80, 80, 80));
+    voltageValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
+    voltageValueBox.setBorderSize(2);
 
     voltageValueTextArea.setPosition(20, 31, 57, 20);
     voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
@@ -60,26 +61,49 @@ LoadSettingsContainerBase::LoadSettingsContainerBase()
     voltageLabelTextArea.setLinespacing(0);
     voltageLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID56));
 
-    buttonWithLabel1.setXY(147, 27);
-    buttonWithLabel1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
-    buttonWithLabel1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID57));
-    buttonWithLabel1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel1.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    startStopButton.setXY(166, 26);
+    startStopButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    startStopButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID57));
+    startStopButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    startStopButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+
+    voltageLimitEnabledButton.setXY(110, 33);
+    voltageLimitEnabledButton.setBitmaps(touchgfx::Bitmap(BITMAP_CHECKBOX_UNCHECKED_ID), touchgfx::Bitmap(BITMAP_CHECKBOX_CHECKED_ID));
+    voltageLimitEnabledButton.setAction(buttonCallback);
+
+    voltageLabelTextArea_1.setPosition(86, 19, 44, 15);
+    voltageLabelTextArea_1.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    voltageLabelTextArea_1.setLinespacing(0);
+    voltageLabelTextArea_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID67));
 
     add(background);
     add(labelTextArea);
     add(currentUnitTextArea);
-    add(currentValueBorder);
+    add(currentValueBox);
     add(currentValueTextArea);
     add(currentLabelTextArea);
     add(voltageUnitTextArea);
-    add(voltageBorder);
+    add(voltageValueBox);
     add(voltageValueTextArea);
     add(voltageLabelTextArea);
-    add(buttonWithLabel1);
+    add(startStopButton);
+    add(voltageLimitEnabledButton);
+    add(voltageLabelTextArea_1);
 }
 
 void LoadSettingsContainerBase::initialize()
 {
 
+}
+
+void LoadSettingsContainerBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &voltageLimitEnabledButton)
+    {
+        //voltageLimitTriggerInteraction
+        //When voltageLimitEnabledButton clicked execute C++ code
+        //Execute C++ code
+        voltageValueBox.setVisible(voltageLimitEnabledButton.getState());
+        voltageValueBox.invalidate();
+    }
 }

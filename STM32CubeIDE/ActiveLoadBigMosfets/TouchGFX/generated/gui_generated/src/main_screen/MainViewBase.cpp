@@ -4,8 +4,11 @@
 #include <gui_generated/main_screen/MainViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
+#include "BitmapDatabase.hpp"
 
-MainViewBase::MainViewBase()
+MainViewBase::MainViewBase() :
+    buttonCallback(this, &MainViewBase::buttonCallbackHandler),
+    capacityReadoutContainerRequestTimerResetCallback(this, &MainViewBase::capacityReadoutContainerRequestTimerResetCallbackHandler)
 {
 
     background.setPosition(0, 0, 240, 320);
@@ -18,20 +21,52 @@ MainViewBase::MainViewBase()
     inputReadoutContainer.setXY(4, 4);
 
     capacityReadoutContainer.setXY(4, 188);
+    capacityReadoutContainer.setRequestTimerResetCallback(capacityReadoutContainerRequestTimerResetCallback);
 
     titleTextArea.setPosition(0, 0, 236, 25);
     titleTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 199, 255));
     titleTextArea.setLinespacing(0);
     titleTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID47));
 
-    loadSettingsContainer1.setXY(4, 96);
+    loadSettingsContainer.setXY(4, 96);
+
+    resetConfirmationModalWindow.setBackground(touchgfx::BitmapId(BITMAP_MY_MODAL_BACKGROUND_ID), 18, 88);
+    resetConfirmationModalWindow.setShadeColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
+    resetConfirmationModalWindow.setShadeAlpha(0);
+    resetConfirmationModalWindow.hide();
+
+    resetButton.setXY(113, 70);
+    resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    resetButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID64));
+    resetButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    resetButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    resetConfirmationModalWindow.add(resetButton);
+
+    warningImage.setXY(10, 15);
+    warningImage.setBitmap(touchgfx::Bitmap(BITMAP_DARK_ICONS_ALERT_32_ID));
+    resetConfirmationModalWindow.add(warningImage);
+
+    cancelButton.setXY(28, 70);
+    cancelButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    cancelButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID65));
+    cancelButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    cancelButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    cancelButton.setAction(buttonCallback);
+    resetConfirmationModalWindow.add(cancelButton);
+
+    resetTextArea.setXY(64, 23);
+    resetTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(83, 83, 83));
+    resetTextArea.setLinespacing(0);
+    resetTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID66));
+    resetConfirmationModalWindow.add(resetTextArea);
 
     add(background);
     add(termpControlContainer);
     add(inputReadoutContainer);
     add(capacityReadoutContainer);
     add(titleTextArea);
-    add(loadSettingsContainer1);
+    add(loadSettingsContainer);
+    add(resetConfirmationModalWindow);
 }
 
 void MainViewBase::setupScreen()
@@ -39,5 +74,26 @@ void MainViewBase::setupScreen()
     termpControlContainer.initialize();
     inputReadoutContainer.initialize();
     capacityReadoutContainer.initialize();
-    loadSettingsContainer1.initialize();
+    loadSettingsContainer.initialize();
+}
+
+void MainViewBase::capacityReadoutContainerRequestTimerResetCallbackHandler()
+{
+    //ShowResetConfirmationModalWindowInteraction
+    //When capacityReadoutContainer requestTimerReset show resetConfirmationModalWindow
+    //Show resetConfirmationModalWindow
+    resetConfirmationModalWindow.setVisible(true);
+    resetConfirmationModalWindow.invalidate();
+}
+
+void MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &cancelButton)
+    {
+        //HideResetConfirmationModelWindowInteraction
+        //When cancelButton clicked hide resetConfirmationModalWindow
+        //Hide resetConfirmationModalWindow
+        resetConfirmationModalWindow.setVisible(false);
+        resetConfirmationModalWindow.invalidate();
+    }
 }

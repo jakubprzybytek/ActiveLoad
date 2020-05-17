@@ -24,7 +24,7 @@ public:
 	void init();
 
 	bool checkIfTouched();
-	uint16_t getTouch();
+	void getTouch(int32_t &x, int32_t &y);
 
 };
 

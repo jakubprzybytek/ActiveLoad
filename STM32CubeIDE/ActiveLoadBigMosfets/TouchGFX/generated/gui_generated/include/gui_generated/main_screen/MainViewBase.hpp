@@ -13,6 +13,10 @@
 #include <gui/containers/CapacityReadoutContainer.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <gui/containers/LoadSettingsContainer.hpp>
+#include <touchgfx/containers/ModalWindow.hpp>
+#include <touchgfx/Color.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -34,9 +38,26 @@ protected:
     InputReadoutContainer inputReadoutContainer;
     CapacityReadoutContainer capacityReadoutContainer;
     touchgfx::TextArea titleTextArea;
-    LoadSettingsContainer loadSettingsContainer1;
+    LoadSettingsContainer loadSettingsContainer;
+    touchgfx::ModalWindow resetConfirmationModalWindow;
+    touchgfx::ButtonWithLabel resetButton;
+    touchgfx::Image warningImage;
+    touchgfx::ButtonWithLabel cancelButton;
+    touchgfx::TextArea resetTextArea;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<MainViewBase> capacityReadoutContainerRequestTimerResetCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void capacityReadoutContainerRequestTimerResetCallbackHandler();
 
 };
 

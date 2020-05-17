@@ -10,6 +10,8 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/mixins/ClickListener.hpp>
 
 class LoadSettingsContainerBase : public touchgfx::Container
 {
@@ -29,16 +31,28 @@ protected:
     touchgfx::BoxWithBorder background;
     touchgfx::TextArea labelTextArea;
     touchgfx::TextArea currentUnitTextArea;
-    touchgfx::BoxWithBorder currentValueBorder;
+    touchgfx::ClickListener< touchgfx::BoxWithBorder > currentValueBox;
     touchgfx::TextAreaWithOneWildcard currentValueTextArea;
     touchgfx::TextArea currentLabelTextArea;
     touchgfx::TextArea voltageUnitTextArea;
-    touchgfx::BoxWithBorder voltageBorder;
+    touchgfx::ClickListener< touchgfx::BoxWithBorder > voltageValueBox;
     touchgfx::TextAreaWithOneWildcard voltageValueTextArea;
     touchgfx::TextArea voltageLabelTextArea;
-    touchgfx::ButtonWithLabel buttonWithLabel1;
+    touchgfx::ButtonWithLabel startStopButton;
+    touchgfx::ToggleButton voltageLimitEnabledButton;
+    touchgfx::TextArea voltageLabelTextArea_1;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<LoadSettingsContainerBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

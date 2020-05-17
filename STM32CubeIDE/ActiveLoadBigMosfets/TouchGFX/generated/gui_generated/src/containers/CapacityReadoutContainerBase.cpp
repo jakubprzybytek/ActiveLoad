@@ -6,12 +6,14 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-CapacityReadoutContainerBase::CapacityReadoutContainerBase()
+CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
+    buttonCallback(this, &CapacityReadoutContainerBase::buttonCallbackHandler),
+    requestTimerResetCallback(0)
 {
     setWidth(114);
     setHeight(128);
     background.setPosition(0, 18, 114, 110);
-    background.setColor(touchgfx::Color::getColorFrom24BitRGB(58, 58, 58));
+    background.setColor(touchgfx::Color::getColorFrom24BitRGB(45, 45, 45));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
@@ -47,11 +49,12 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase()
     digitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
     digitalClock.setTime24Hour(0, 0, 0);
 
-    buttonWithLabel1.setXY(27, 91);
-    buttonWithLabel1.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_60X36_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_PRESSED_60X36_ID));
-    buttonWithLabel1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID49));
-    buttonWithLabel1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel1.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    resetButton.setXY(27, 91);
+    resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_60X36_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_PRESSED_60X36_ID));
+    resetButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID49));
+    resetButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    resetButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    resetButton.setAction(buttonCallback);
 
     add(background);
     add(labelTextArea);
@@ -60,10 +63,21 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase()
     add(capacityLabelTextArea);
     add(elapsedTimeLabelTextArea);
     add(digitalClock);
-    add(buttonWithLabel1);
+    add(resetButton);
 }
 
 void CapacityReadoutContainerBase::initialize()
 {
 
+}
+
+void CapacityReadoutContainerBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &resetButton)
+    {
+        //timerRequestInteraction
+        //When resetButton clicked emit requestTimerReset callback
+        //Emit callback
+        emitRequestTimerResetCallback();
+    }
 }

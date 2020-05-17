@@ -18,8 +18,9 @@ bool FT6206::checkIfTouched() {
 	return buffor > 0 && buffor < 2;
 }
 
-uint16_t FT6206::getTouch() {
-	uint8_t buffer[2];
-	HAL_I2C_Mem_Read(this->hi2c, FT6206_I2C_ADDRESS, FT6206_COMMAND_P1_XH, 1, buffer, 2, HAL_MAX_DELAY);
-	return (buffer[0] & 0b00111111) << 8 | buffer[1];
+void FT6206::getTouch(int32_t &x, int32_t &y) {
+	uint8_t buffer[4];
+	HAL_I2C_Mem_Read(this->hi2c, FT6206_I2C_ADDRESS, FT6206_COMMAND_P1_XH, 1, buffer, 4, HAL_MAX_DELAY);
+	x = (buffer[0] & 0b00111111) << 8 | buffer[1];
+	y = (buffer[2] & 0b00111111) << 8 | buffer[3];
 }

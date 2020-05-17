@@ -10,7 +10,7 @@ InputReadoutContainerBase::InputReadoutContainerBase()
     setWidth(232);
     setHeight(92);
     background.setPosition(0, 18, 232, 74);
-    background.setColor(touchgfx::Color::getColorFrom24BitRGB(58, 58, 58));
+    background.setColor(touchgfx::Color::getColorFrom24BitRGB(45, 45, 45));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
@@ -49,7 +49,7 @@ InputReadoutContainerBase::InputReadoutContainerBase()
     voltageLabelTextArea.setLinespacing(0);
     voltageLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID35));
 
-    powerLabelTextArea.setPosition(103, 19, 40, 15);
+    powerLabelTextArea.setPosition(186, 19, 40, 15);
     powerLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     powerLabelTextArea.setLinespacing(0);
     powerLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID36));

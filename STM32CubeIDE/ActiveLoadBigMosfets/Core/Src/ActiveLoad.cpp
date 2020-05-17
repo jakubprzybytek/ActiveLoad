@@ -54,18 +54,6 @@ void ActiveLoad_init() {
 void ActiveLoad_loop() {
 	MX_TouchGFX_Process();
 	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-
-	// rtc
-	RTC_DateTypeDef date;
-	HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
-	HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-
-	applicationState.fanDutyCycle = TIM3->CNT;
-	fanController.setSpeed(applicationState.fanDutyCycle);
-
-	loadController.setLoad(applicationState.fanDutyCycle * 10);
-
-	//HAL_Delay(200);
 }
 
 // tick every 50ms
@@ -74,12 +62,25 @@ void ActiveLoad_tick() {
 	applicationState.voltage = ina233.readVoltage();
 	applicationState.current = ina233.readCurrent();
 
-	if (tick == 0) {
-		applicationState.temperature = tc74.readTemperature();
-	}
+	applicationState.fanDutyCycle = TIM3->CNT;
+	fanController.setSpeed(applicationState.fanDutyCycle);
+	loadController.setLoad(applicationState.fanDutyCycle * 10);
 
 	if (touchPad.checkIfTouched()) {
-		applicationState.fanRPM = touchPad.getTouch();
+		applicationState.touched = true;
+		touchPad.getTouch(applicationState.touchX, applicationState.touchY);
+	} else {
+		applicationState.touched = false;
+	}
+
+	// once a second
+	if (tick == 0) {
+		applicationState.temperature = tc74.readTemperature();
+
+		// rtc
+		RTC_DateTypeDef date;
+		HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
+		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 	}
 
 	touchgfx::OSWrappers::signalVSync();

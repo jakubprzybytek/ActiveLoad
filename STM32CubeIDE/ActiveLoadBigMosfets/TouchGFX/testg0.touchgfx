@@ -95,7 +95,7 @@
           },
           {
             "CustomContainerDefinitionName": "LoadSettingsContainer",
-            "Name": "loadSettingsContainer1",
+            "Name": "loadSettingsContainer",
             "X": 4,
             "Y": 96,
             "Width": 232,
@@ -106,9 +106,159 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
+                "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId64",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Style": "Style1",
+                "Name": "resetButton",
+                "X": 113,
+                "Y": 70,
+                "Width": 60,
+                "Height": 60,
+                "Type": "ButtonWithLabel",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "RelativeFilename": "__designer\\Dark_Icons_Alert_32.png",
+                "Alpha": 255,
+                "Name": "warningImage",
+                "X": 10,
+                "Y": 15,
+                "Width": 48,
+                "Height": 41,
+                "Type": "Image",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
+                "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId65",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Style": "Style1",
+                "Name": "cancelButton",
+                "X": 28,
+                "Y": 70,
+                "Width": 60,
+                "Height": 60,
+                "Type": "ButtonWithLabel",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId66",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 83,
+                  "Green": 83,
+                  "Blue": 83
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "resetTextArea",
+                "X": 64,
+                "Y": 23,
+                "Width": 127,
+                "Height": 25,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "FileName": "my_modal_background.png",
+            "Color": {
+              "Red": 97,
+              "Green": 97,
+              "Blue": 97
+            },
+            "ModalX": 18,
+            "ModalY": 88,
+            "ModalWidth": 204,
+            "ModalHeight": 144,
+            "ContX": 0,
+            "ContY": 0,
+            "Alpha": 0,
+            "Name": "resetConfirmationModalWindow",
+            "X": 0,
+            "Y": 0,
+            "Width": 240,
+            "Height": 320,
+            "Type": "ModalWindow",
+            "Visible": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "ShowResetConfirmationModalWindowInteraction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerCustomTypeName": "CapacityReadoutContainer requestTimerReset happens",
+              "TriggerComponent": "capacityReadoutContainer",
+              "Type": "TriggerCustom"
+            },
+            "Action": {
+              "ActionComponent": "resetConfirmationModalWindow",
+              "Type": "ActionShow"
+            }
+          },
+          {
+            "InteractionName": "HideResetConfirmationModelWindowInteraction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "cancelButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ActionComponent": "resetConfirmationModalWindow",
+              "Type": "ActionHide"
+            }
+          }
+        ],
         "Name": "Main",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
@@ -119,9 +269,9 @@
         "Components": [
           {
             "Color": {
-              "Red": 58,
-              "Green": 58,
-              "Blue": 58
+              "Red": 45,
+              "Green": 45,
+              "Blue": 45
             },
             "BorderColor": {
               "Red": 100,
@@ -396,9 +546,9 @@
         "Components": [
           {
             "Color": {
-              "Red": 58,
-              "Green": 58,
-              "Blue": 58
+              "Red": 45,
+              "Green": 45,
+              "Blue": 45
             },
             "BorderColor": {
               "Red": 100,
@@ -600,7 +750,7 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "powerLabelTextArea",
-            "X": 103,
+            "X": 186,
             "Y": 19,
             "Width": 40,
             "Height": 15,
@@ -673,9 +823,9 @@
         "Components": [
           {
             "Color": {
-              "Red": 58,
-              "Green": 58,
-              "Blue": 58
+              "Red": 45,
+              "Green": 45,
+              "Blue": 45
             },
             "BorderColor": {
               "Red": 100,
@@ -857,7 +1007,7 @@
               "Blue": 255
             },
             "TextRotation": "0",
-            "Name": "buttonWithLabel1",
+            "Name": "resetButton",
             "X": 27,
             "Y": 91,
             "Width": 60,
@@ -870,7 +1020,26 @@
             "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "timerRequestInteraction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "resetButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "TriggerCustomTypeName": "CapacityReadoutContainer requestTimerReset happens",
+              "Type": "ActionEmit"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "requestTimerReset",
+            "HasValue": false
+          }
+        ],
         "Name": "CapacityReadoutContainer",
         "X": 0,
         "Y": 0,
@@ -881,9 +1050,9 @@
         "Components": [
           {
             "Color": {
-              "Red": 58,
-              "Green": 58,
-              "Blue": 58
+              "Red": 45,
+              "Green": 45,
+              "Blue": 45
             },
             "BorderColor": {
               "Red": 100,
@@ -952,9 +1121,9 @@
           },
           {
             "Color": {
-              "Red": 119,
-              "Green": 119,
-              "Blue": 119
+              "Red": 80,
+              "Green": 80,
+              "Blue": 80
             },
             "BorderColor": {
               "Red": 141,
@@ -963,7 +1132,7 @@
             },
             "BorderSize": 2,
             "Alpha": 255,
-            "Name": "currentValueBorder",
+            "Name": "currentValueBox",
             "X": 14,
             "Y": 69,
             "Width": 66,
@@ -971,7 +1140,7 @@
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
-            "Clickable": false,
+            "Clickable": true,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1050,9 +1219,9 @@
           },
           {
             "Color": {
-              "Red": 119,
-              "Green": 119,
-              "Blue": 119
+              "Red": 80,
+              "Green": 80,
+              "Blue": 80
             },
             "BorderColor": {
               "Red": 97,
@@ -1061,7 +1230,7 @@
             },
             "BorderSize": 2,
             "Alpha": 255,
-            "Name": "voltageBorder",
+            "Name": "voltageValueBox",
             "X": 14,
             "Y": 33,
             "Width": 66,
@@ -1069,7 +1238,7 @@
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
-            "Clickable": false,
+            "Clickable": true,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1140,9 +1309,9 @@
             },
             "TextRotation": "0",
             "Style": "Style1",
-            "Name": "buttonWithLabel1",
-            "X": 147,
-            "Y": 27,
+            "Name": "startStopButton",
+            "X": 166,
+            "Y": 26,
             "Width": 60,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -1151,9 +1320,62 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "checkbox-checked.png",
+            "Released": "checkbox-unchecked.png",
+            "Alpha": 255,
+            "Name": "voltageLimitEnabledButton",
+            "X": 110,
+            "Y": 33,
+            "Width": 20,
+            "Height": 20,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId67",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageLabelTextArea_1",
+            "X": 86,
+            "Y": 19,
+            "Width": 44,
+            "Height": 15,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "voltageLimitTriggerInteraction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "voltageLimitEnabledButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "voltageValueBox.setVisible(voltageLimitEnabledButton.getState());\r\nvoltageValueBox.invalidate();",
+              "Type": "ActionExecuteCode"
+            }
+          }
+        ],
         "Name": "LoadSettingsContainer",
         "X": 0,
         "Y": 0,
@@ -1308,6 +1530,22 @@
       },
       {
         "TextEntryId": "SingleUseId57",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId64",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId65",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId66",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId67",
         "IsResource": false
       }
     ],

@@ -10,7 +10,7 @@ TermpControlContainerBase::TermpControlContainerBase()
     setWidth(114);
     setHeight(128);
     background.setPosition(0, 18, 114, 110);
-    background.setColor(touchgfx::Color::getColorFrom24BitRGB(58, 58, 58));
+    background.setColor(touchgfx::Color::getColorFrom24BitRGB(45, 45, 45));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 

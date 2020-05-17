@@ -19,9 +19,28 @@ public:
     virtual ~CapacityReadoutContainerBase() {}
     virtual void initialize();
 
+    /*
+     * Custom Trigger Callback Setters
+     */
+    void setRequestTimerResetCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->requestTimerResetCallback = &callback;
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
+    }
+
+    /*
+     * Custom Trigger Emitters
+     */
+    virtual void emitRequestTimerResetCallback()
+    {
+        if (requestTimerResetCallback && requestTimerResetCallback->isValid())
+        {
+            this->requestTimerResetCallback->execute();
+        }
     }
 
     /*
@@ -34,9 +53,24 @@ protected:
     touchgfx::TextArea capacityLabelTextArea;
     touchgfx::TextArea elapsedTimeLabelTextArea;
     touchgfx::DigitalClock digitalClock;
-    touchgfx::ButtonWithLabel buttonWithLabel1;
+    touchgfx::ButtonWithLabel resetButton;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<CapacityReadoutContainerBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Custom Trigger Callback Declarations
+     */
+    touchgfx::GenericCallback<>* requestTimerResetCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 
