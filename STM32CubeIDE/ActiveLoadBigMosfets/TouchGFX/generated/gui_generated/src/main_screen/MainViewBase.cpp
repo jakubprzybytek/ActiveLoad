@@ -23,7 +23,7 @@ MainViewBase::MainViewBase() :
     capacityReadoutContainer.setXY(4, 188);
     capacityReadoutContainer.setRequestTimerResetCallback(capacityReadoutContainerRequestTimerResetCallback);
 
-    titleTextArea.setPosition(0, 0, 236, 25);
+    titleTextArea.setPosition(0, 3, 236, 25);
     titleTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 199, 255));
     titleTextArea.setLinespacing(0);
     titleTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID47));

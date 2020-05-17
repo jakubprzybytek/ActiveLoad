@@ -36,7 +36,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     currentValueTextArea.setLinespacing(0);
     currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID52));
 
-    currentLabelTextArea.setPosition(4, 56, 44, 14);
+    currentLabelTextArea.setXY(4, 56);
     currentLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     currentLabelTextArea.setLinespacing(0);
     currentLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID53));
@@ -56,7 +56,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     voltageValueTextArea.setLinespacing(0);
     voltageValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID55));
 
-    voltageLabelTextArea.setPosition(4, 19, 44, 15);
+    voltageLabelTextArea.setXY(4, 19);
     voltageLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     voltageLabelTextArea.setLinespacing(0);
     voltageLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID56));
