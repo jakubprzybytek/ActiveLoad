@@ -294,7 +294,7 @@ static void MX_RTC_Init(void)
   */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
-  hrtc.Init.AsynchPrediv = 125;
+  hrtc.Init.AsynchPrediv = 124;
   hrtc.Init.SynchPrediv = 7999;
   hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
   hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
@@ -436,10 +436,10 @@ static void MX_TIM5_Init(void)
 
   /* USER CODE END TIM5_Init 1 */
   htim5.Instance = TIM5;
-  htim5.Init.Prescaler = 7999;
+  htim5.Init.Prescaler = 31999;
   htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim5.Init.Period = 50;
-  htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+  htim5.Init.Period = 19;
+  htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim5.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim5) != HAL_OK)
   {
@@ -503,12 +503,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : Fan_Sensor_Pin */
-  GPIO_InitStruct.Pin = Fan_Sensor_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(Fan_Sensor_GPIO_Port, &GPIO_InitStruct);
-
   /*Configure GPIO pins : LED_Pin Load_Op_Amps_Ctrl_Pin Fan_Power_Ctrl_Pin Display_Read_Pin 
                            Display_Write_Pin Display_Data_Command_Pin Display_Select_Pin */
   GPIO_InitStruct.Pin = LED_Pin|Load_Op_Amps_Ctrl_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin 
@@ -537,7 +531,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(TouchPad_Interrupt_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : Fan_Sensor_Pin */
+  GPIO_InitStruct.Pin = Fan_Sensor_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(Fan_Sensor_GPIO_Port, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 

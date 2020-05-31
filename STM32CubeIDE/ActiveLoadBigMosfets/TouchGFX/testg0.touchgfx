@@ -283,6 +283,569 @@
             "Name": "background",
             "X": 0,
             "Y": 18,
+            "Width": 232,
+            "Height": 74,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId27",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 228,
+              "Green": 156,
+              "Blue": 156
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 2,
+            "Y": 0,
+            "Width": 113,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId30",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "currentUnitTextArea",
+            "X": 86,
+            "Y": 71,
+            "Width": 15,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId31",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "currentValueTextArea",
+            "X": 4,
+            "Y": 60,
+            "Width": 80,
+            "Height": 30,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId33",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageUnitTextArea",
+            "X": 86,
+            "Y": 42,
+            "Width": 12,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId34",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "voltageValueTextArea",
+            "X": 4,
+            "Y": 32,
+            "Width": 80,
+            "Height": 30,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "voltageCurrent",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "voltageLabelTextArea",
+            "X": 4,
+            "Y": 19,
+            "Width": 95,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId36",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "powerLabelTextArea",
+            "X": 186,
+            "Y": 19,
+            "Width": 40,
+            "Height": 15,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId37",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "powerValueTextArea",
+            "X": 99,
+            "Y": 35,
+            "Width": 112,
+            "Height": 42,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId38",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "powerUnitTextArea",
+            "X": 211,
+            "Y": 52,
+            "Width": 26,
+            "Height": 21,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "InputReadoutContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 232,
+        "Height": 92
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 45,
+              "Green": 45,
+              "Blue": 45
+            },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 18,
+            "Width": 232,
+            "Height": 74,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId51",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "currentUnitTextArea",
+            "X": 82,
+            "Y": 69,
+            "Width": 15,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 80,
+              "Green": 80,
+              "Blue": 80
+            },
+            "BorderColor": {
+              "Red": 141,
+              "Green": 181,
+              "Blue": 255
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "currentValueBox",
+            "X": 8,
+            "Y": 62,
+            "Width": 72,
+            "Height": 27,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId52",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "currentValueTextArea",
+            "X": 8,
+            "Y": 59,
+            "Width": 70,
+            "Height": 30,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId57",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style1",
+            "Name": "startStopButton",
+            "X": 166,
+            "Y": 26,
+            "Width": 60,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "checkbox-checked.png",
+            "Released": "checkbox-unchecked.png",
+            "Alpha": 255,
+            "Name": "voltageLimitEnabledButton",
+            "X": 110,
+            "Y": 33,
+            "Width": 20,
+            "Height": 20,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId67",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageLimitEnableLabelTextArea",
+            "X": 99,
+            "Y": 19,
+            "Width": 44,
+            "Height": 15,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 80,
+              "Green": 80,
+              "Blue": 80
+            },
+            "BorderColor": {
+              "Red": 97,
+              "Green": 97,
+              "Blue": 97
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "voltageValueBox",
+            "X": 8,
+            "Y": 32,
+            "Width": 72,
+            "Height": 27,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId54",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageUnitTextArea",
+            "X": 82,
+            "Y": 41,
+            "Width": 12,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId68",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageValueTextArea",
+            "X": 8,
+            "Y": 29,
+            "Width": 70,
+            "Height": 30,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "voltageCurrent",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "voltageLabelTextArea",
+            "X": 4,
+            "Y": 19,
+            "Width": 95,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId50",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 226,
+              "Green": 228,
+              "Blue": 156
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 2,
+            "Y": 0,
+            "Width": 113,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "voltageLimitTriggerInteraction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "voltageLimitEnabledButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "voltageValueBox.setVisible(voltageLimitEnabledButton.getState());\r\nvoltageValueBox.invalidate();",
+              "Type": "ActionExecuteCode"
+            }
+          }
+        ],
+        "Name": "LoadSettingsContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 232,
+        "Height": 92
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 45,
+              "Green": 45,
+              "Blue": 45
+            },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 18,
             "Width": 114,
             "Height": 110,
             "Type": "BoxWithBorder",
@@ -560,283 +1123,6 @@
             "Name": "background",
             "X": 0,
             "Y": 18,
-            "Width": 232,
-            "Height": 74,
-            "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId27",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 228,
-              "Green": 156,
-              "Blue": 156
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "labelTextArea",
-            "X": 2,
-            "Y": 0,
-            "Width": 113,
-            "Height": 18,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId30",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "currentUnitTextArea",
-            "X": 82,
-            "Y": 73,
-            "Width": 15,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId31",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "currentValueTextArea",
-            "X": 20,
-            "Y": 69,
-            "Width": 57,
-            "Height": 22,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId32",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "currentLabelTextArea",
-            "X": 4,
-            "Y": 56,
-            "Width": 44,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId33",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "voltageUnitTextArea",
-            "X": 82,
-            "Y": 38,
-            "Width": 12,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId34",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "voltageValueTextArea",
-            "X": 20,
-            "Y": 32,
-            "Width": 57,
-            "Height": 22,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId35",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "voltageLabelTextArea",
-            "X": 4,
-            "Y": 19,
-            "Width": 44,
-            "Height": 15,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId36",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "powerLabelTextArea",
-            "X": 186,
-            "Y": 19,
-            "Width": 40,
-            "Height": 15,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId37",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "powerValueTextArea",
-            "X": 96,
-            "Y": 35,
-            "Width": 114,
-            "Height": 40,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId38",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "powerUnitTextArea",
-            "X": 211,
-            "Y": 52,
-            "Width": 26,
-            "Height": 21,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          }
-        ],
-        "Interactions": [],
-        "Name": "InputReadoutContainer",
-        "X": 0,
-        "Y": 0,
-        "Width": 232,
-        "Height": 92
-      },
-      {
-        "Components": [
-          {
-            "Color": {
-              "Red": 45,
-              "Green": 45,
-              "Blue": 45
-            },
-            "BorderColor": {
-              "Red": 100,
-              "Green": 100,
-              "Blue": 100
-            },
-            "BorderSize": 1,
-            "Alpha": 255,
-            "Name": "background",
-            "X": 0,
-            "Y": 18,
             "Width": 114,
             "Height": 110,
             "Type": "BoxWithBorder",
@@ -1045,342 +1331,6 @@
         "Y": 0,
         "Width": 114,
         "Height": 128
-      },
-      {
-        "Components": [
-          {
-            "Color": {
-              "Red": 45,
-              "Green": 45,
-              "Blue": 45
-            },
-            "BorderColor": {
-              "Red": 100,
-              "Green": 100,
-              "Blue": 100
-            },
-            "BorderSize": 1,
-            "Alpha": 255,
-            "Name": "background",
-            "X": 0,
-            "Y": 18,
-            "Width": 232,
-            "Height": 74,
-            "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId50",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 226,
-              "Green": 228,
-              "Blue": 156
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "labelTextArea",
-            "X": 2,
-            "Y": 0,
-            "Width": 113,
-            "Height": 18,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId51",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "currentUnitTextArea",
-            "X": 82,
-            "Y": 73,
-            "Width": 15,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Color": {
-              "Red": 80,
-              "Green": 80,
-              "Blue": 80
-            },
-            "BorderColor": {
-              "Red": 141,
-              "Green": 181,
-              "Blue": 255
-            },
-            "BorderSize": 2,
-            "Alpha": 255,
-            "Name": "currentValueBox",
-            "X": 14,
-            "Y": 69,
-            "Width": 66,
-            "Height": 21,
-            "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": true,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId52",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "currentValueTextArea",
-            "X": 20,
-            "Y": 68,
-            "Width": 57,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId53",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "currentLabelTextArea",
-            "X": 4,
-            "Y": 56,
-            "Width": 73,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId54",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "voltageUnitTextArea",
-            "X": 82,
-            "Y": 38,
-            "Width": 12,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Color": {
-              "Red": 80,
-              "Green": 80,
-              "Blue": 80
-            },
-            "BorderColor": {
-              "Red": 97,
-              "Green": 97,
-              "Blue": 97
-            },
-            "BorderSize": 2,
-            "Alpha": 255,
-            "Name": "voltageValueBox",
-            "X": 14,
-            "Y": 33,
-            "Width": 66,
-            "Height": 21,
-            "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": true,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId55",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "voltageValueTextArea",
-            "X": 20,
-            "Y": 31,
-            "Width": 57,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId56",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "voltageLabelTextArea",
-            "X": 4,
-            "Y": 19,
-            "Width": 72,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
-            "Alpha": 255,
-            "TextId": "SingleUseId57",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Style": "Style1",
-            "Name": "startStopButton",
-            "X": 166,
-            "Y": 26,
-            "Width": 60,
-            "Height": 60,
-            "Type": "ButtonWithLabel",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "InitialStatePressed": false,
-            "Pressed": "checkbox-checked.png",
-            "Released": "checkbox-unchecked.png",
-            "Alpha": 255,
-            "Name": "voltageLimitEnabledButton",
-            "X": 110,
-            "Y": 33,
-            "Width": 20,
-            "Height": 20,
-            "Type": "ToggleButton",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId67",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "voltageLabelTextArea_1",
-            "X": 86,
-            "Y": 19,
-            "Width": 44,
-            "Height": 15,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "voltageLimitTriggerInteraction",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "TriggerComponent": "voltageLimitEnabledButton",
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "Code": "voltageValueBox.setVisible(voltageLimitEnabledButton.getState());\r\nvoltageValueBox.invalidate();",
-              "Type": "ActionExecuteCode"
-            }
-          }
-        ],
-        "Name": "LoadSettingsContainer",
-        "X": 0,
-        "Y": 0,
-        "Width": 232,
-        "Height": 92
       }
     ],
     "TextEntries": [
@@ -1433,19 +1383,11 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId32",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId33",
         "IsResource": false
       },
       {
         "TextEntryId": "SingleUseId34",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId35",
         "IsResource": false
       },
       {
@@ -1513,19 +1455,7 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId53",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId54",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId55",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId56",
         "IsResource": false
       },
       {
@@ -1546,6 +1476,14 @@
       },
       {
         "TextEntryId": "SingleUseId67",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "voltageCurrent",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId68",
         "IsResource": false
       }
     ],

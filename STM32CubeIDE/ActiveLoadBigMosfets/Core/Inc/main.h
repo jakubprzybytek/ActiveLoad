@@ -68,8 +68,6 @@ void Error_Handler(void);
 #define Encoder_A_GPIO_Port GPIOA
 #define Encoder_B_Pin GPIO_PIN_7
 #define Encoder_B_GPIO_Port GPIOA
-#define Fan_Sensor_Pin GPIO_PIN_1
-#define Fan_Sensor_GPIO_Port GPIOB
 #define LED_Pin GPIO_PIN_12
 #define LED_GPIO_Port GPIOB
 #define Load_Op_Amps_Ctrl_Pin GPIO_PIN_13
@@ -95,6 +93,9 @@ void Error_Handler(void);
 #define Display_Data_Command_GPIO_Port GPIOB
 #define Display_Select_Pin GPIO_PIN_8
 #define Display_Select_GPIO_Port GPIOB
+#define Fan_Sensor_Pin GPIO_PIN_9
+#define Fan_Sensor_GPIO_Port GPIOB
+#define Fan_Sensor_EXTI_IRQn EXTI9_5_IRQn
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

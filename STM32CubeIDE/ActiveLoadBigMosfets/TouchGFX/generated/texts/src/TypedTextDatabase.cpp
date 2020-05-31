@@ -8,18 +8,20 @@
 extern touchgfx::GeneratedFont& getFont_verdana_20_4bpp();
 extern touchgfx::GeneratedFont& getFont_verdana_40_4bpp();
 extern touchgfx::GeneratedFont& getFont_verdana_14_4bpp();
-extern touchgfx::GeneratedFont& getFont_liquidcrystal_20_4bpp();
+extern touchgfx::GeneratedFont& getFont_liquidcrystal_28_4bpp();
 extern touchgfx::GeneratedFont& getFont_liquidcrystal_40_4bpp();
 extern touchgfx::GeneratedFont& getFont_verdana_11_4bpp();
+extern touchgfx::GeneratedFont& getFont_liquidcrystal_20_4bpp();
 
 const touchgfx::Font* _fonts[] =
 {
     &(getFont_verdana_20_4bpp()),
     &(getFont_verdana_40_4bpp()),
     &(getFont_verdana_14_4bpp()),
-    &(getFont_liquidcrystal_20_4bpp()),
+    &(getFont_liquidcrystal_28_4bpp()),
     &(getFont_liquidcrystal_40_4bpp()),
-    &(getFont_verdana_11_4bpp())
+    &(getFont_verdana_11_4bpp()),
+    &(getFont_liquidcrystal_20_4bpp())
 };
 
 extern const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[];
@@ -30,45 +32,42 @@ const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[] TEXT_LOCAT
 {
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 6, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 5, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 6, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 6, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 5, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 4, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 6, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 6, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 6, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 5, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR }
+    { 5, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR }
 };
 
 TEXT_LOCATION_FLASH_PRAGMA
@@ -115,13 +114,16 @@ void resetFont(touchgfx::FontId fontId)
         _fonts[2] = &(getFont_verdana_14_4bpp());
         break;
     case 3:
-        _fonts[3] = &(getFont_liquidcrystal_20_4bpp());
+        _fonts[3] = &(getFont_liquidcrystal_28_4bpp());
         break;
     case 4:
         _fonts[4] = &(getFont_liquidcrystal_40_4bpp());
         break;
     case 5:
         _fonts[5] = &(getFont_verdana_11_4bpp());
+        break;
+    case 6:
+        _fonts[6] = &(getFont_liquidcrystal_20_4bpp());
         break;
     }
 }

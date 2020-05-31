@@ -14,6 +14,7 @@ struct Typography
     static const touchgfx::FontId LCD_DEFAULT = 3;
     static const touchgfx::FontId LCD_LARGE = 4;
     static const touchgfx::FontId TINY = 5;
+    static const touchgfx::FontId LCD_SMALL = 6;
 };
 
 struct TypographyFontIndex
@@ -21,10 +22,11 @@ struct TypographyFontIndex
     static const touchgfx::FontId DEFAULT = 0;     // verdana_20_4bpp
     static const touchgfx::FontId LARGE = 1;       // verdana_40_4bpp
     static const touchgfx::FontId SMALL = 2;       // verdana_14_4bpp
-    static const touchgfx::FontId LCD_DEFAULT = 3; // liquidcrystal_20_4bpp
+    static const touchgfx::FontId LCD_DEFAULT = 3; // liquidcrystal_28_4bpp
     static const touchgfx::FontId LCD_LARGE = 4;   // liquidcrystal_40_4bpp
     static const touchgfx::FontId TINY = 5;        // verdana_11_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 6;
+    static const touchgfx::FontId LCD_SMALL = 6;   // liquidcrystal_20_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 7;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

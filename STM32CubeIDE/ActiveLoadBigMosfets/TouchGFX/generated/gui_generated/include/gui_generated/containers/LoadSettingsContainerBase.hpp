@@ -29,18 +29,17 @@ protected:
      * Member Declarations
      */
     touchgfx::BoxWithBorder background;
-    touchgfx::TextArea labelTextArea;
     touchgfx::TextArea currentUnitTextArea;
     touchgfx::ClickListener< touchgfx::BoxWithBorder > currentValueBox;
     touchgfx::TextAreaWithOneWildcard currentValueTextArea;
-    touchgfx::TextArea currentLabelTextArea;
-    touchgfx::TextArea voltageUnitTextArea;
-    touchgfx::ClickListener< touchgfx::BoxWithBorder > voltageValueBox;
-    touchgfx::TextAreaWithOneWildcard voltageValueTextArea;
-    touchgfx::TextArea voltageLabelTextArea;
     touchgfx::ButtonWithLabel startStopButton;
     touchgfx::ToggleButton voltageLimitEnabledButton;
-    touchgfx::TextArea voltageLabelTextArea_1;
+    touchgfx::TextArea voltageLimitEnableLabelTextArea;
+    touchgfx::ClickListener< touchgfx::BoxWithBorder > voltageValueBox;
+    touchgfx::TextArea voltageUnitTextArea;
+    touchgfx::TextArea voltageValueTextArea;
+    touchgfx::TextArea voltageLabelTextArea;
+    touchgfx::TextArea labelTextArea;
 
 private:
 

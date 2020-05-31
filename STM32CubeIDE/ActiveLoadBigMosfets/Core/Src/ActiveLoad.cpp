@@ -18,6 +18,7 @@ extern I2C_HandleTypeDef hi2c2;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim5;
+extern TIM_HandleTypeDef htim4;
 extern RTC_HandleTypeDef hrtc;
 
 ApplicationState applicationState;
@@ -47,8 +48,12 @@ void ActiveLoad_init() {
 
 	ina233.init();
 
+	// main ticks
 	HAL_NVIC_EnableIRQ(TIM5_IRQn);
 	HAL_TIM_Base_Start_IT(&htim5);
+
+	//HAL_TIM_Base_Start(&htim4);
+	//HAL_TIM_IC_Start(&htim4, TIM_CHANNEL_4);
 }
 
 void ActiveLoad_loop() {
@@ -56,7 +61,11 @@ void ActiveLoad_loop() {
 	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 }
 
-// tick every 50ms
+#define FAN_PULSES_COUNT 50
+uint16_t fanPulsesCount;
+uint16_t previousFanTick;
+
+// tick every 20ms
 void ActiveLoad_tick() {
 
 	applicationState.voltage = ina233.readVoltage();
@@ -64,7 +73,8 @@ void ActiveLoad_tick() {
 
 	applicationState.fanDutyCycle = TIM3->CNT;
 	fanController.setSpeed(applicationState.fanDutyCycle);
-	loadController.setLoad(applicationState.fanDutyCycle * 10);
+	//fanController.setSpeed(TIM3->CNT);
+	//loadController.setLoad(applicationState.fanDutyCycle * 10);
 
 	if (touchPad.checkIfTouched()) {
 		applicationState.touched = true;
@@ -84,9 +94,24 @@ void ActiveLoad_tick() {
 	}
 
 	touchgfx::OSWrappers::signalVSync();
-	tick = tick >= 20 ? 0 : tick + 1;
+	tick = tick >= 49 ? 0 : tick + 1;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if (GPIO_Pin == Fan_Sensor_Pin) {
+		fanPulsesCount++;
+		if (fanPulsesCount == FAN_PULSES_COUNT) {
+			uint16_t currentFanTick = HAL_GetTick();
+			uint16_t ticks = currentFanTick - previousFanTick;
+			applicationState.fanRPM = 60000 * (FAN_PULSES_COUNT / 2) / ticks;
+			previousFanTick = currentFanTick;
+			fanPulsesCount = 0;
+		}
+	}
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	ActiveLoad_tick();
+	if (htim == &htim5) {
+		ActiveLoad_tick();
+	}
 }

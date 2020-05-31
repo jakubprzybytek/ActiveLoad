@@ -29,7 +29,6 @@ protected:
     touchgfx::TextArea labelTextArea;
     touchgfx::TextArea currentUnitTextArea;
     touchgfx::TextAreaWithOneWildcard currentValueTextArea;
-    touchgfx::TextArea currentLabelTextArea;
     touchgfx::TextArea voltageUnitTextArea;
     touchgfx::TextAreaWithOneWildcard voltageValueTextArea;
     touchgfx::TextArea voltageLabelTextArea;

@@ -19,42 +19,37 @@ InputReadoutContainerBase::InputReadoutContainerBase()
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
-    currentUnitTextArea.setPosition(82, 73, 15, 20);
+    currentUnitTextArea.setPosition(86, 71, 15, 20);
     currentUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     currentUnitTextArea.setLinespacing(0);
     currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID30));
 
-    currentValueTextArea.setPosition(20, 69, 57, 22);
+    currentValueTextArea.setPosition(4, 60, 80, 30);
     currentValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     currentValueTextArea.setLinespacing(0);
     currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID31));
 
-    currentLabelTextArea.setPosition(4, 56, 44, 14);
-    currentLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
-    currentLabelTextArea.setLinespacing(0);
-    currentLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID32));
-
-    voltageUnitTextArea.setPosition(82, 38, 12, 20);
+    voltageUnitTextArea.setPosition(86, 42, 12, 20);
     voltageUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     voltageUnitTextArea.setLinespacing(0);
     voltageUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
 
-    voltageValueTextArea.setPosition(20, 32, 57, 22);
+    voltageValueTextArea.setPosition(4, 32, 80, 30);
     voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     voltageValueTextArea.setLinespacing(0);
     voltageValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID34));
 
-    voltageLabelTextArea.setPosition(4, 19, 44, 15);
+    voltageLabelTextArea.setXY(4, 19);
     voltageLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     voltageLabelTextArea.setLinespacing(0);
-    voltageLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID35));
+    voltageLabelTextArea.setTypedText(touchgfx::TypedText(T_VOLTAGECURRENT));
 
     powerLabelTextArea.setPosition(186, 19, 40, 15);
     powerLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     powerLabelTextArea.setLinespacing(0);
     powerLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID36));
 
-    powerValueTextArea.setPosition(96, 35, 114, 40);
+    powerValueTextArea.setPosition(99, 35, 112, 42);
     powerValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     powerValueTextArea.setLinespacing(0);
     powerValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID37));
@@ -68,7 +63,6 @@ InputReadoutContainerBase::InputReadoutContainerBase()
     add(labelTextArea);
     add(currentUnitTextArea);
     add(currentValueTextArea);
-    add(currentLabelTextArea);
     add(voltageUnitTextArea);
     add(voltageValueTextArea);
     add(voltageLabelTextArea);
