@@ -15,6 +15,8 @@ private:
 	float voltage;
 	float current;
 
+	float currentLimit;
+
 	int8_t temperature;
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;
@@ -46,6 +48,10 @@ public:
 
     float getCurrent() {
     	return this->current;
+    }
+
+    float getCurrentLimit() {
+    	return this->currentLimit;
     }
 
     int8_t getTemperature() {

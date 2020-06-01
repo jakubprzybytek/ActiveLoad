@@ -24,6 +24,10 @@ void MainView::setCurrent(float current) {
 	inputReadoutContainer.setCurrent(current);
 }
 
+void MainView::setCurrentLimit(float currentLimit) {
+	loadSettingsContainer.setCurrentLimit(currentLimit);
+}
+
 void MainView::setPower(float power) {
 	inputReadoutContainer.setPower(power);
 }

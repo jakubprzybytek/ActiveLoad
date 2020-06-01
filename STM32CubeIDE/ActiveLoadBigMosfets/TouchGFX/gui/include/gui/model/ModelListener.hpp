@@ -21,6 +21,8 @@ public:
     virtual void currentChanged(float current) {}
     virtual void powerChanged(float power) {}
 
+    virtual void currentLimitChanged(float currentLimit) {}
+
     virtual void temperatureChanged(int8_t temperature) {}
     virtual void fanDutyCycleChanged(uint8_t fanDutyCycle) {}
     virtual void fanRPMChanged(uint16_t fanRPM) {}

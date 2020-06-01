@@ -19,6 +19,8 @@ public:
 	float voltage;
 	float current;
 
+	float currentLimit;
+
 	int8_t temperature;
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;

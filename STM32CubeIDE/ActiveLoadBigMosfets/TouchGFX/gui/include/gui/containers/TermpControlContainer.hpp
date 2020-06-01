@@ -17,6 +17,7 @@ public:
 	}
 
 	virtual void initialize();
+
 	void setRadiatorTemperature(int8_t radiatorTemperature);
 	void setFanDutyCycle(uint8_t fanDutyCycle);
 	void setFanRPM(uint16_t fanRPM);

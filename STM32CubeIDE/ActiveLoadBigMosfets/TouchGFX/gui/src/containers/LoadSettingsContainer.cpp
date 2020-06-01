@@ -10,6 +10,7 @@ LoadSettingsContainer::LoadSettingsContainer() :
 
 void LoadSettingsContainer::initialize() {
 	LoadSettingsContainerBase::initialize();
+	currentValueTextArea.setWildcard(currentLimitBuffer);
 }
 
 void LoadSettingsContainer::voltageValueBoxClickHandler(const BoxWithBorder &b, const ClickEvent &evt) {
@@ -28,4 +29,9 @@ void LoadSettingsContainer::currentValueBoxClickHandler(const BoxWithBorder &b, 
 		voltageValueBox.invalidate();
 		currentValueBox.invalidate();
 	}
+}
+
+void LoadSettingsContainer::setCurrentLimit(float currentLimit) {
+	Unicode::snprintfFloat(currentLimitBuffer, TEXTAREA_SIZE, "%.3f", currentLimit);
+	currentValueTextArea.invalidate();
 }

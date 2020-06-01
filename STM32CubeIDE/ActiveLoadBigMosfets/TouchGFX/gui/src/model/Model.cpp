@@ -27,6 +27,11 @@ void Model::tick() {
 		this->modelListener->powerChanged(this->voltage * this->current);
 	}
 
+	if (this->currentLimit != applicationState.currentLimit) {
+		this->currentLimit = applicationState.currentLimit;
+		this->modelListener->currentLimitChanged(this->currentLimit);
+	}
+
 	if (this->temperature != applicationState.temperature) {
 		this->temperature = applicationState.temperature;
 		this->modelListener->temperatureChanged(this->temperature);

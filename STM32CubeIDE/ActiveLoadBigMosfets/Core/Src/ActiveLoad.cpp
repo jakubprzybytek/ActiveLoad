@@ -5,6 +5,7 @@
 #include "ApplicationState.hpp"
 #include "FanController.hpp"
 #include "LoadController.hpp"
+#include "Encoder.hpp"
 
 #include "devices/INA233.hpp"
 #include "devices/TC74.hpp"
@@ -25,6 +26,8 @@ ApplicationState applicationState;
 FanController fanController(&htim2);
 LoadController loadController(&hdac);
 
+Encoder encoder;
+
 INA233 ina233(&hi2c2);
 TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
@@ -44,26 +47,28 @@ void ActiveLoad_init() {
 	touchPad.init();
 	HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_SET);
 
-	HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
-
 	ina233.init();
 
+	encoder.reset(0, 0, 8000, 100);
+
+	// encoder
+	htim3.Instance->CNT = 50;
+	HAL_TIM_Encoder_Start_IT(&htim3, TIM_CHANNEL_ALL);
+
 	// main ticks
-	HAL_NVIC_EnableIRQ(TIM5_IRQn);
 	HAL_TIM_Base_Start_IT(&htim5);
 
-	//HAL_TIM_Base_Start(&htim4);
-	//HAL_TIM_IC_Start(&htim4, TIM_CHANNEL_4);
+	// ticks for measuring fan RPM
+	HAL_TIM_Base_Start(&htim4);
+
+	// enable interrupts
+	HAL_NVIC_EnableIRQ(TIM5_IRQn);
 }
 
 void ActiveLoad_loop() {
 	MX_TouchGFX_Process();
 	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 }
-
-#define FAN_PULSES_COUNT 50
-uint16_t fanPulsesCount;
-uint16_t previousFanTick;
 
 // tick every 20ms
 void ActiveLoad_tick() {
@@ -72,7 +77,7 @@ void ActiveLoad_tick() {
 	applicationState.current = ina233.readCurrent();
 
 	applicationState.fanDutyCycle = TIM3->CNT;
-	fanController.setSpeed(applicationState.fanDutyCycle);
+	//fanController.setSpeed(applicationState.fanDutyCycle);
 	//fanController.setSpeed(TIM3->CNT);
 	//loadController.setLoad(applicationState.fanDutyCycle * 10);
 
@@ -94,19 +99,42 @@ void ActiveLoad_tick() {
 	}
 
 	touchgfx::OSWrappers::signalVSync();
+
+	// 50 x 20ms = 1s
 	tick = tick >= 49 ? 0 : tick + 1;
+}
+
+#define FAN_PULSES_COUNT 50
+uint16_t fanPulsesCount;
+uint16_t previousFanTick;
+
+// Ticks from htim4 = 100us
+void ActiveLoad_fanPulse() {
+	fanPulsesCount++;
+	if (fanPulsesCount == FAN_PULSES_COUNT) {
+		uint16_t currentFanTick = htim4.Instance->CNT;
+		uint16_t ticks = currentFanTick - previousFanTick;
+		applicationState.fanRPM = 600000 * (FAN_PULSES_COUNT / 2) / ticks;
+		previousFanTick = currentFanTick;
+		fanPulsesCount = 0;
+	}
+}
+
+
+
+void ActiveLoad_EncoderTick() {
+	if (htim3.Instance->CNT < 50) {
+		encoder.down();
+	} else if (htim3.Instance->CNT > 50) {
+		encoder.up();
+	}
+	applicationState.currentLimit = (float) encoder.getValue() * 0.001;
+	htim3.Instance->CNT = 50;
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == Fan_Sensor_Pin) {
-		fanPulsesCount++;
-		if (fanPulsesCount == FAN_PULSES_COUNT) {
-			uint16_t currentFanTick = HAL_GetTick();
-			uint16_t ticks = currentFanTick - previousFanTick;
-			applicationState.fanRPM = 60000 * (FAN_PULSES_COUNT / 2) / ticks;
-			previousFanTick = currentFanTick;
-			fanPulsesCount = 0;
-		}
+		ActiveLoad_fanPulse();
 	}
 }
 

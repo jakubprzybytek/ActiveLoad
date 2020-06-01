@@ -33,6 +33,8 @@ public:
     void currentChanged(float current);
     void powerChanged(float power);
 
+    void currentLimitChanged(float currentLimit);
+
     void temperatureChanged(int8_t temperature);
     void fanDutyCycleChanged(uint8_t fanDutyCycle);
     void fanRPMChanged(uint16_t fanRPM);

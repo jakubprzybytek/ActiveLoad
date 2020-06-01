@@ -18,6 +18,8 @@ public:
     void setCurrent(float current);
     void setPower(float power);
 
+    void setCurrentLimit(float currentLimit);
+
     void setTemperature(int8_t temperature);
     void setFanDutyCycle(uint8_t fanDutyCycle);
     void setFanRPM(uint16_t fanRPM);

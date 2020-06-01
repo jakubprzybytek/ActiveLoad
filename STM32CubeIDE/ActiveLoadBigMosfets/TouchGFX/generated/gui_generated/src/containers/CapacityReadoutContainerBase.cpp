@@ -52,7 +52,7 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     resetButton.setXY(27, 91);
     resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_60X36_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_PRESSED_60X36_ID));
     resetButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID49));
-    resetButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    resetButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(0, 35, 83));
     resetButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     resetButton.setAction(buttonCallback);
 

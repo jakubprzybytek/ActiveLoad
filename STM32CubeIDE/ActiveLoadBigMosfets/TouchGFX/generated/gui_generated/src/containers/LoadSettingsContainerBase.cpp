@@ -22,7 +22,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
 
     currentValueBox.setPosition(8, 62, 72, 27);
-    currentValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(80, 80, 80));
+    currentValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
     currentValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(141, 181, 255));
     currentValueBox.setBorderSize(2);
 
@@ -34,20 +34,20 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     startStopButton.setXY(166, 26);
     startStopButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     startStopButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID57));
-    startStopButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    startStopButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(0, 60, 131));
     startStopButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    voltageLimitEnabledButton.setXY(110, 33);
+    voltageLimitEnabledButton.setXY(123, 33);
     voltageLimitEnabledButton.setBitmaps(touchgfx::Bitmap(BITMAP_CHECKBOX_UNCHECKED_ID), touchgfx::Bitmap(BITMAP_CHECKBOX_CHECKED_ID));
     voltageLimitEnabledButton.setAction(buttonCallback);
 
-    voltageLimitEnableLabelTextArea.setPosition(99, 19, 44, 15);
+    voltageLimitEnableLabelTextArea.setXY(115, 19);
     voltageLimitEnableLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     voltageLimitEnableLabelTextArea.setLinespacing(0);
     voltageLimitEnableLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID67));
 
     voltageValueBox.setPosition(8, 32, 72, 27);
-    voltageValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(80, 80, 80));
+    voltageValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
     voltageValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
     voltageValueBox.setBorderSize(2);
 
