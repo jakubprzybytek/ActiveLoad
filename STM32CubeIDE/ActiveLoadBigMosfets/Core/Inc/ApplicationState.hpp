@@ -19,7 +19,8 @@ public:
 	float voltage;
 	float current;
 
-	float currentLimit;
+	float voltageLimit = 5.0;
+	float currentLimit = 0.1;
 
 	int8_t temperature;
 	uint8_t fanDutyCycle;
@@ -28,6 +29,9 @@ public:
 	bool touched;
 	int32_t touchX;
 	int32_t touchY;
+
+	bool currentLimitInEdit = true;
+	bool fieldToEditChanged = false;
 };
 
 #endif /* INC_APPLICATIONSTATE_HPP_ */

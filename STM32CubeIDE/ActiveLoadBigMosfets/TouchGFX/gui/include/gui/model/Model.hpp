@@ -15,11 +15,14 @@ private:
 	float voltage;
 	float current;
 
+	float voltageLimit;
 	float currentLimit;
 
 	int8_t temperature;
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;
+
+	bool currentLimitInEdit = true;
 
 public:
     Model();
@@ -50,6 +53,10 @@ public:
     	return this->current;
     }
 
+    float getVoltageLimit() {
+    	return this->voltageLimit;
+    }
+
     float getCurrentLimit() {
     	return this->currentLimit;
     }
@@ -64,6 +71,14 @@ public:
 
     uint16_t getFanRPM() {
     	return this->fanRPM;
+    }
+
+    void selectVoltageLimitForEdit() {
+    	this->currentLimitInEdit = false;
+    }
+
+    void selectCurrentLimitForEdit() {
+    	this->currentLimitInEdit = true;
     }
 
 protected:

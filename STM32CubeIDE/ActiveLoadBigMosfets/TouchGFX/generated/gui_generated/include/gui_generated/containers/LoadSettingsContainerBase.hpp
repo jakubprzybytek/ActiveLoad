@@ -20,9 +20,39 @@ public:
     virtual ~LoadSettingsContainerBase() {}
     virtual void initialize();
 
+    /*
+     * Custom Trigger Callback Setters
+     */
+    void setSelectCurrentLimitForEditCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->selectCurrentLimitForEditCallback = &callback;
+    }
+    void setSelectVoltageLimitForEditCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->selectVoltageLimitForEditCallback = &callback;
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
+    }
+
+    /*
+     * Custom Trigger Emitters
+     */
+    virtual void emitSelectCurrentLimitForEditCallback()
+    {
+        if (selectCurrentLimitForEditCallback && selectCurrentLimitForEditCallback->isValid())
+        {
+            this->selectCurrentLimitForEditCallback->execute();
+        }
+    }
+    virtual void emitSelectVoltageLimitForEditCallback()
+    {
+        if (selectVoltageLimitForEditCallback && selectVoltageLimitForEditCallback->isValid())
+        {
+            this->selectVoltageLimitForEditCallback->execute();
+        }
     }
 
     /*
@@ -37,9 +67,10 @@ protected:
     touchgfx::TextArea voltageLimitEnableLabelTextArea;
     touchgfx::ClickListener< touchgfx::BoxWithBorder > voltageValueBox;
     touchgfx::TextArea voltageUnitTextArea;
-    touchgfx::TextArea voltageValueTextArea;
+    touchgfx::TextAreaWithOneWildcard voltageValueTextArea;
     touchgfx::TextArea voltageLabelTextArea;
     touchgfx::TextArea labelTextArea;
+    touchgfx::TextAreaWithOneWildcard dacValueTextArea;
 
 private:
 
@@ -47,6 +78,12 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<LoadSettingsContainerBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Custom Trigger Callback Declarations
+     */
+    touchgfx::GenericCallback<>* selectCurrentLimitForEditCallback;
+    touchgfx::GenericCallback<>* selectVoltageLimitForEditCallback;
 
     /*
      * Callback Handler Declarations

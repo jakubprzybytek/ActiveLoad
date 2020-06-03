@@ -18,6 +18,7 @@ public:
     void setCurrent(float current);
     void setPower(float power);
 
+    void setVoltageLimit(float volteageLimit);
     void setCurrentLimit(float currentLimit);
 
     void setTemperature(int8_t temperature);

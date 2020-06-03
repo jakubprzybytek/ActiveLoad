@@ -37,7 +37,7 @@ int16_t tick = 0;
 
 void ActiveLoad_init() {
 	fanController.setSpeed(0);
-	loadController.setLoad(0);
+	loadController.setLoad(10);
 
 	MX_TouchGFX_Init();
 
@@ -49,7 +49,7 @@ void ActiveLoad_init() {
 
 	ina233.init();
 
-	encoder.reset(0, 0, 8000, 100);
+	encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
 
 	// encoder
 	htim3.Instance->CNT = 50;
@@ -76,11 +76,12 @@ void ActiveLoad_tick() {
 	applicationState.voltage = ina233.readVoltage();
 	applicationState.current = ina233.readCurrent();
 
-	applicationState.fanDutyCycle = TIM3->CNT;
+	//applicationState.fanDutyCycle = TIM3->CNT;
 	//fanController.setSpeed(applicationState.fanDutyCycle);
 	//fanController.setSpeed(TIM3->CNT);
 	//loadController.setLoad(applicationState.fanDutyCycle * 10);
 
+	// check touch panel
 	if (touchPad.checkIfTouched()) {
 		applicationState.touched = true;
 		touchPad.getTouch(applicationState.touchX, applicationState.touchY);
@@ -88,11 +89,28 @@ void ActiveLoad_tick() {
 		applicationState.touched = false;
 	}
 
+	// check if field to edit is changed
+	if (applicationState.fieldToEditChanged) {
+		if (applicationState.currentLimitInEdit) {
+			encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
+		} else {
+			encoder.reset(applicationState.voltageLimit * 1000, 5000, 30000, 100);
+		}
+
+		applicationState.fieldToEditChanged = false;
+	}
+
+	float currentError = applicationState.currentLimit - applicationState.current;
+	float variable = currentError * 50.0;
+	uint16_t newLoad = variable > 0 ? variable : 0;
+	loadController.setLoad(newLoad);
+
 	// once a second
 	if (tick == 0) {
+		// read temperature
 		applicationState.temperature = tc74.readTemperature();
 
-		// rtc
+		// read rtc
 		RTC_DateTypeDef date;
 		HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
 		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
@@ -120,15 +138,18 @@ void ActiveLoad_fanPulse() {
 	}
 }
 
-
-
 void ActiveLoad_EncoderTick() {
 	if (htim3.Instance->CNT < 50) {
 		encoder.down();
 	} else if (htim3.Instance->CNT > 50) {
 		encoder.up();
 	}
-	applicationState.currentLimit = (float) encoder.getValue() * 0.001;
+
+	if (applicationState.currentLimitInEdit) {
+		applicationState.currentLimit = (float) encoder.getValue() * 0.001;
+	} else {
+		applicationState.voltageLimit = (float) encoder.getValue() * 0.001;
+	}
 	htim3.Instance->CNT = 50;
 }
 

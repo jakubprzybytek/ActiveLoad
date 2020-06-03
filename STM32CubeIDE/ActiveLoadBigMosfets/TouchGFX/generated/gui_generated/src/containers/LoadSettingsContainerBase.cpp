@@ -7,26 +7,28 @@
 #include "BitmapDatabase.hpp"
 
 LoadSettingsContainerBase::LoadSettingsContainerBase() :
-    buttonCallback(this, &LoadSettingsContainerBase::buttonCallbackHandler)
+    buttonCallback(this, &LoadSettingsContainerBase::buttonCallbackHandler),
+    selectCurrentLimitForEditCallback(0),
+    selectVoltageLimitForEditCallback(0)
 {
     setWidth(232);
-    setHeight(92);
-    background.setPosition(0, 18, 232, 74);
+    setHeight(96);
+    background.setPosition(0, 18, 232, 78);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(45, 45, 45));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
-    currentUnitTextArea.setPosition(82, 69, 15, 20);
+    currentUnitTextArea.setPosition(82, 73, 15, 20);
     currentUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     currentUnitTextArea.setLinespacing(0);
     currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
 
-    currentValueBox.setPosition(8, 62, 72, 27);
+    currentValueBox.setPosition(8, 64, 72, 29);
     currentValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
     currentValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(141, 181, 255));
-    currentValueBox.setBorderSize(2);
+    currentValueBox.setBorderSize(3);
 
-    currentValueTextArea.setPosition(8, 59, 70, 30);
+    currentValueTextArea.setPosition(8, 62, 68, 30);
     currentValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     currentValueTextArea.setLinespacing(0);
     currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID52));
@@ -46,17 +48,17 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     voltageLimitEnableLabelTextArea.setLinespacing(0);
     voltageLimitEnableLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID67));
 
-    voltageValueBox.setPosition(8, 32, 72, 27);
+    voltageValueBox.setPosition(8, 33, 72, 29);
     voltageValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
     voltageValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
-    voltageValueBox.setBorderSize(2);
+    voltageValueBox.setBorderSize(3);
 
-    voltageUnitTextArea.setPosition(82, 41, 12, 20);
+    voltageUnitTextArea.setPosition(82, 43, 12, 20);
     voltageUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     voltageUnitTextArea.setLinespacing(0);
     voltageUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID54));
 
-    voltageValueTextArea.setPosition(8, 29, 70, 30);
+    voltageValueTextArea.setPosition(8, 31, 68, 30);
     voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     voltageValueTextArea.setLinespacing(0);
     voltageValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID68));
@@ -71,6 +73,11 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));
 
+    dacValueTextArea.setXY(119, 74);
+    dacValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
+    dacValueTextArea.setLinespacing(0);
+    dacValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID69));
+
     add(background);
     add(currentUnitTextArea);
     add(currentValueBox);
@@ -83,6 +90,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     add(voltageValueTextArea);
     add(voltageLabelTextArea);
     add(labelTextArea);
+    add(dacValueTextArea);
 }
 
 void LoadSettingsContainerBase::initialize()

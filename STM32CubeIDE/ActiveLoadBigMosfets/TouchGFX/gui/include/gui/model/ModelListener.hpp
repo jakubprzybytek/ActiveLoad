@@ -21,6 +21,7 @@ public:
     virtual void currentChanged(float current) {}
     virtual void powerChanged(float power) {}
 
+    virtual void voltageLimitChanged(float currentLimit) {}
     virtual void currentLimitChanged(float currentLimit) {}
 
     virtual void temperatureChanged(int8_t temperature) {}

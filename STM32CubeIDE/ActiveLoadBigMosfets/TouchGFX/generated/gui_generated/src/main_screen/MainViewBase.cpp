@@ -8,7 +8,9 @@
 
 MainViewBase::MainViewBase() :
     buttonCallback(this, &MainViewBase::buttonCallbackHandler),
-    capacityReadoutContainerRequestTimerResetCallback(this, &MainViewBase::capacityReadoutContainerRequestTimerResetCallbackHandler)
+    capacityReadoutContainerRequestTimerResetCallback(this, &MainViewBase::capacityReadoutContainerRequestTimerResetCallbackHandler),
+    loadSettingsContainerSelectVoltageLimitForEditCallback(this, &MainViewBase::loadSettingsContainerSelectVoltageLimitForEditCallbackHandler),
+    loadSettingsContainerSelectCurrentLimitForEditCallback(this, &MainViewBase::loadSettingsContainerSelectCurrentLimitForEditCallbackHandler)
 {
 
     background.setPosition(0, 0, 240, 320);
@@ -28,7 +30,9 @@ MainViewBase::MainViewBase() :
     titleTextArea.setLinespacing(0);
     titleTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID47));
 
-    loadSettingsContainer.setXY(4, 96);
+    loadSettingsContainer.setXY(4, 92);
+    loadSettingsContainer.setSelectVoltageLimitForEditCallback(loadSettingsContainerSelectVoltageLimitForEditCallback);
+    loadSettingsContainer.setSelectCurrentLimitForEditCallback(loadSettingsContainerSelectCurrentLimitForEditCallback);
 
     resetConfirmationModalWindow.setBackground(touchgfx::BitmapId(BITMAP_MY_MODAL_BACKGROUND_ID), 18, 88);
     resetConfirmationModalWindow.setShadeColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
@@ -84,6 +88,22 @@ void MainViewBase::capacityReadoutContainerRequestTimerResetCallbackHandler()
     //Show resetConfirmationModalWindow
     resetConfirmationModalWindow.setVisible(true);
     resetConfirmationModalWindow.invalidate();
+}
+
+void MainViewBase::loadSettingsContainerSelectVoltageLimitForEditCallbackHandler()
+{
+    //selectingVoltageLimitForEdit
+    //When loadSettingsContainer selectVoltageLimitForEdit execute C++ code
+    //Execute C++ code
+    this->presenter->selectVoltageLimitForEdit();
+}
+
+void MainViewBase::loadSettingsContainerSelectCurrentLimitForEditCallbackHandler()
+{
+    //selectingCurrentLimitForEdit
+    //When loadSettingsContainer selectCurrentLimitForEdit execute C++ code
+    //Execute C++ code
+    this->presenter->selectCurrentLimitForEdit();
 }
 
 void MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)

@@ -9,6 +9,7 @@ void MainPresenter::activate() {
 	this->view.setTime(this->model->getHour(), this->model->getMinute(), this->model->getSecond());
 	this->view.setVoltage(this->model->getVoltage());
 	this->view.setCurrent(this->model->getCurrent());
+	this->view.setVoltageLimit(this->model->getVoltageLimit());
 	this->view.setCurrentLimit(this->model->getCurrentLimit());
 	this->view.setTemperature(this->model->getTemperature());
 	this->view.setFanDutyCycle(this->model->getFanDutyCycle());
@@ -34,6 +35,10 @@ void MainPresenter::powerChanged(float power) {
 	this->view.setPower(power);
 }
 
+void MainPresenter::voltageLimitChanged(float voltageLimit) {
+	this->view.setVoltageLimit(voltageLimit);
+}
+
 void MainPresenter::currentLimitChanged(float currentLimit) {
 	this->view.setCurrentLimit(currentLimit);
 }
@@ -48,4 +53,12 @@ void MainPresenter::fanDutyCycleChanged(uint8_t fanDutyCycle) {
 
 void MainPresenter::fanRPMChanged(uint16_t fanRPM) {
 	this->view.setFanRPM(fanRPM);
+}
+
+void MainPresenter::selectVoltageLimitForEdit() {
+	this->model->selectVoltageLimitForEdit();
+}
+
+void MainPresenter::selectCurrentLimitForEdit() {
+	this->model->selectCurrentLimitForEdit();
 }

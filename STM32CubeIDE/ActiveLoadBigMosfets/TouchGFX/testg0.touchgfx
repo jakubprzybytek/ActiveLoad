@@ -48,7 +48,7 @@
             "X": 4,
             "Y": 4,
             "Width": 232,
-            "Height": 92,
+            "Height": 88,
             "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
@@ -97,9 +97,9 @@
             "CustomContainerDefinitionName": "LoadSettingsContainer",
             "Name": "loadSettingsContainer",
             "X": 4,
-            "Y": 96,
+            "Y": 92,
             "Width": 232,
-            "Height": 92,
+            "Height": 96,
             "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
@@ -257,6 +257,32 @@
               "ActionComponent": "resetConfirmationModalWindow",
               "Type": "ActionHide"
             }
+          },
+          {
+            "InteractionName": "selectingVoltageLimitForEdit",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerCustomTypeName": "LoadSettingsContainer selectVoltageLimitForEdit happens",
+              "TriggerComponent": "loadSettingsContainer",
+              "Type": "TriggerCustom"
+            },
+            "Action": {
+              "Code": "this->presenter->selectVoltageLimitForEdit();",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "selectingCurrentLimitForEdit",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerCustomTypeName": "LoadSettingsContainer selectCurrentLimitForEdit happens",
+              "TriggerComponent": "loadSettingsContainer",
+              "Type": "TriggerCustom"
+            },
+            "Action": {
+              "Code": "this->presenter->selectCurrentLimitForEdit();",
+              "Type": "ActionExecuteCode"
+            }
           }
         ],
         "Name": "Main",
@@ -282,9 +308,9 @@
             "Alpha": 255,
             "Name": "background",
             "X": 0,
-            "Y": 18,
+            "Y": 16,
             "Width": 232,
-            "Height": 74,
+            "Height": 72,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -328,7 +354,7 @@
             "LineSpacing": 0,
             "Name": "currentUnitTextArea",
             "X": 86,
-            "Y": 71,
+            "Y": 70,
             "Width": 15,
             "Height": 20,
             "Type": "TextArea",
@@ -355,7 +381,7 @@
             },
             "Name": "currentValueTextArea",
             "X": 4,
-            "Y": 60,
+            "Y": 58,
             "Width": 80,
             "Height": 30,
             "Type": "TextArea",
@@ -405,7 +431,7 @@
             },
             "Name": "voltageValueTextArea",
             "X": 4,
-            "Y": 32,
+            "Y": 30,
             "Width": 80,
             "Height": 30,
             "Type": "TextArea",
@@ -517,7 +543,7 @@
         "X": 0,
         "Y": 0,
         "Width": 232,
-        "Height": 92
+        "Height": 88
       },
       {
         "Components": [
@@ -538,7 +564,7 @@
             "X": 0,
             "Y": 18,
             "Width": 232,
-            "Height": 74,
+            "Height": 78,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -559,7 +585,7 @@
             "LineSpacing": 0,
             "Name": "currentUnitTextArea",
             "X": 82,
-            "Y": 69,
+            "Y": 73,
             "Width": 15,
             "Height": 20,
             "Type": "TextArea",
@@ -580,13 +606,13 @@
               "Green": 181,
               "Blue": 255
             },
-            "BorderSize": 2,
+            "BorderSize": 3,
             "Alpha": 255,
             "Name": "currentValueBox",
             "X": 8,
-            "Y": 62,
+            "Y": 64,
             "Width": 72,
-            "Height": 27,
+            "Height": 29,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -611,8 +637,8 @@
             },
             "Name": "currentValueTextArea",
             "X": 8,
-            "Y": 59,
-            "Width": 70,
+            "Y": 62,
+            "Width": 68,
             "Height": 30,
             "Type": "TextArea",
             "Visible": true,
@@ -701,13 +727,13 @@
               "Green": 97,
               "Blue": 97
             },
-            "BorderSize": 2,
+            "BorderSize": 3,
             "Alpha": 255,
             "Name": "voltageValueBox",
             "X": 8,
-            "Y": 32,
+            "Y": 33,
             "Width": 72,
-            "Height": 27,
+            "Height": 29,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -728,7 +754,7 @@
             "LineSpacing": 0,
             "Name": "voltageUnitTextArea",
             "X": 82,
-            "Y": 41,
+            "Y": 43,
             "Width": 12,
             "Height": 20,
             "Type": "TextArea",
@@ -749,10 +775,14 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "voltageValueTextArea",
             "X": 8,
-            "Y": 29,
-            "Width": 70,
+            "Y": 31,
+            "Width": 68,
             "Height": 30,
             "Type": "TextArea",
             "Visible": true,
@@ -806,6 +836,33 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId69",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "dacValueTextArea",
+            "X": 119,
+            "Y": 74,
+            "Width": 28,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -822,11 +879,23 @@
             }
           }
         ],
+        "CustomTriggers": [
+          {
+            "Name": "selectCurrentLimitForEdit",
+            "Description": "Selects Current Limit for edit",
+            "HasValue": false
+          },
+          {
+            "Name": "selectVoltageLimitForEdit",
+            "Description": "Selects Voltage Limit for edit",
+            "HasValue": false
+          }
+        ],
         "Name": "LoadSettingsContainer",
         "X": 0,
         "Y": 0,
         "Width": 232,
-        "Height": 92
+        "Height": 96
       },
       {
         "Components": [
@@ -1484,6 +1553,10 @@
       },
       {
         "TextEntryId": "SingleUseId68",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId69",
         "IsResource": false
       }
     ],

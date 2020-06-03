@@ -52,12 +52,16 @@ private:
      */
     touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<MainViewBase> capacityReadoutContainerRequestTimerResetCallback;
+    touchgfx::Callback<MainViewBase> loadSettingsContainerSelectVoltageLimitForEditCallback;
+    touchgfx::Callback<MainViewBase> loadSettingsContainerSelectCurrentLimitForEditCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void capacityReadoutContainerRequestTimerResetCallbackHandler();
+    void loadSettingsContainerSelectVoltageLimitForEditCallbackHandler();
+    void loadSettingsContainerSelectCurrentLimitForEditCallbackHandler();
 
 };
 

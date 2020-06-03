@@ -8,7 +8,6 @@ extern ApplicationState applicationState;
 Model::Model() : modelListener(0) { }
 
 void Model::tick() {
-
 	if (this->second != applicationState.time.Seconds) {
 		this->hour = applicationState.time.Hours;
 		this->minute = applicationState.time.Minutes;
@@ -27,6 +26,10 @@ void Model::tick() {
 		this->modelListener->powerChanged(this->voltage * this->current);
 	}
 
+	if (this->voltageLimit != applicationState.voltageLimit) {
+		this->voltageLimit = applicationState.voltageLimit;
+		this->modelListener->voltageLimitChanged(this->voltageLimit);
+	}
 	if (this->currentLimit != applicationState.currentLimit) {
 		this->currentLimit = applicationState.currentLimit;
 		this->modelListener->currentLimitChanged(this->currentLimit);
@@ -43,5 +46,10 @@ void Model::tick() {
 	if (this->fanRPM != applicationState.fanRPM) {
 		this->fanRPM = applicationState.fanRPM;
 		this->modelListener->fanRPMChanged(this->fanRPM);
+	}
+
+	if (applicationState.currentLimitInEdit != this->currentLimitInEdit) {
+		applicationState.currentLimitInEdit = this->currentLimitInEdit;
+		applicationState.fieldToEditChanged = true;
 	}
 }
