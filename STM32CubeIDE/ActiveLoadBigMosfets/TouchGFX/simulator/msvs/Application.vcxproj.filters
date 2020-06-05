@@ -712,6 +712,9 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\LoadSettingsContainerBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\ColourPalette.hpp">
+      <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc">

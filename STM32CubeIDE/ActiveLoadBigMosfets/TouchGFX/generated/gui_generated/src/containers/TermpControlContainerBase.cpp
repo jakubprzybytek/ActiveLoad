@@ -40,7 +40,7 @@ TermpControlContainerBase::TermpControlContainerBase()
     fanDutyCycleValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID22));
 
     fanDutyCycleLabelTextArea.setXY(4, 56);
-    fanDutyCycleLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    fanDutyCycleLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(236, 179, 37));
     fanDutyCycleLabelTextArea.setLinespacing(0);
     fanDutyCycleLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID23));
 
@@ -50,12 +50,12 @@ TermpControlContainerBase::TermpControlContainerBase()
     radiatorTemperatureUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
 
     radiatorTemperatureValueTextArea.setPosition(40, 32, 44, 22);
-    radiatorTemperatureValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
+    radiatorTemperatureValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 96, 96));
     radiatorTemperatureValueTextArea.setLinespacing(0);
     radiatorTemperatureValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID19));
 
     radiatorTemperatureLabelTextArea.setXY(4, 19);
-    radiatorTemperatureLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    radiatorTemperatureLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 96, 96));
     radiatorTemperatureLabelTextArea.setLinespacing(0);
     radiatorTemperatureLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID21));
 

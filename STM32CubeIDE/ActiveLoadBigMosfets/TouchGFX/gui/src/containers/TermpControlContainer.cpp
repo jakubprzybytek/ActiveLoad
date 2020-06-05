@@ -13,6 +13,10 @@ void TermpControlContainer::initialize() {
 
 void TermpControlContainer::setRadiatorTemperature(int8_t radiatorTemperature) {
 	Unicode::snprintf(radiatorTemperatureBuffer, TEXTAREA_SIZE, "%d", radiatorTemperature);
+
+	radiatorTemperatureValueTextArea.setColor(
+			radiatorTemperature < 40 ? NORMAL_READOUT_COLOR : (radiatorTemperature < 50 ? ATTENTION_READOUT_COLOR : WARNING_READOUT_COLOR));
+
 	radiatorTemperatureValueTextArea.invalidate();
 }
 

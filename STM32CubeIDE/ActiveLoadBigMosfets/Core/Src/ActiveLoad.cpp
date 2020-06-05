@@ -35,7 +35,8 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-PID loadControllerPID(400.0f, 1000.0f, 0.02f, 0.0f, 1000.0f);
+PID loadControllerPID(400.0f, 1000.0f, 0.02f, 0.0f, 3000.0f);
+PID fanControllerPID(10.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 
 int16_t tick = 0;
 
@@ -79,11 +80,6 @@ void ActiveLoad_tick() {
 	applicationState.voltage = ina233.readVoltage();
 	applicationState.current = ina233.readCurrent();
 
-	//applicationState.fanDutyCycle = TIM3->CNT;
-	//fanController.setSpeed(applicationState.fanDutyCycle);
-	//fanController.setSpeed(TIM3->CNT);
-	//loadController.setLoad(applicationState.fanDutyCycle * 10);
-
 	// check touch panel
 	if (touchPad.checkIfTouched()) {
 		applicationState.touched = true;
@@ -111,6 +107,10 @@ void ActiveLoad_tick() {
 	if (tick == 0) {
 		// read temperature
 		applicationState.temperature = tc74.readTemperature();
+
+		// PID for load controller
+		applicationState.fanDutyCycle = fanControllerPID.update(applicationState.temperature, 30.0f);
+		fanController.setSpeed(applicationState.fanDutyCycle);
 
 		// read rtc
 		RTC_DateTypeDef date;

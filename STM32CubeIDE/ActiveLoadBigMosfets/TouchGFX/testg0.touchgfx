@@ -1051,9 +1051,9 @@
             "TextId": "SingleUseId23",
             "TextRotation": "0",
             "Color": {
-              "Red": 180,
+              "Red": 236,
               "Green": 179,
-              "Blue": 179
+              "Blue": 37
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -1097,9 +1097,9 @@
             "TextId": "SingleUseId19",
             "TextRotation": "0",
             "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
+              "Red": 255,
+              "Green": 96,
+              "Blue": 96
             },
             "Alpha": 255,
             "AutoSize": false,
@@ -1124,9 +1124,9 @@
             "TextId": "SingleUseId21",
             "TextRotation": "0",
             "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
+              "Red": 255,
+              "Green": 96,
+              "Blue": 96
             },
             "Alpha": 255,
             "AutoSize": true,
