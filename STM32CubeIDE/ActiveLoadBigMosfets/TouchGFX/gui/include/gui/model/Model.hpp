@@ -18,6 +18,8 @@ private:
 	float voltageLimit;
 	float currentLimit;
 
+	uint16_t dacValue;
+
 	int8_t temperature;
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;
@@ -59,6 +61,10 @@ public:
 
     float getCurrentLimit() {
     	return this->currentLimit;
+    }
+
+    uint16_t getDacValue() {
+    	return this->dacValue;
     }
 
     int8_t getTemperature() {

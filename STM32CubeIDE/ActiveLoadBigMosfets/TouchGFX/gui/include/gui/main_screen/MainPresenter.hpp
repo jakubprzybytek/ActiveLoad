@@ -35,6 +35,7 @@ public:
 
     void voltageLimitChanged(float voltageLimit);
     void currentLimitChanged(float currentLimit);
+    void dacValueChanged(uint16_t dacValue);
 
     void temperatureChanged(int8_t temperature);
     void fanDutyCycleChanged(uint8_t fanDutyCycle);

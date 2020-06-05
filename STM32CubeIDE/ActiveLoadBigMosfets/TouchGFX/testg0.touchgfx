@@ -846,17 +846,17 @@
               "Blue": 218
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "UseBuffer": false,
               "BufferSize": 0
             },
             "Name": "dacValueTextArea",
-            "X": 119,
-            "Y": 74,
-            "Width": 28,
-            "Height": 14,
+            "X": 115,
+            "Y": 69,
+            "Width": 47,
+            "Height": 20,
             "Type": "TextArea",
             "Visible": true,
             "Draggable": false,

@@ -22,6 +22,8 @@ public:
 	float voltageLimit = 5.0;
 	float currentLimit = 0.1;
 
+	uint16_t loadLevel;
+
 	int8_t temperature;
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;

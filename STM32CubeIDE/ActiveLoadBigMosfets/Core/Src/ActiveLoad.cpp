@@ -12,6 +12,8 @@
 #include "devices/RVT28AETNWC00.hpp"
 #include "devices/FT6206.hpp"
 
+#include "PID.hpp"
+
 #include "ActiveLoad.h"
 
 extern DAC_HandleTypeDef hdac;
@@ -32,6 +34,8 @@ INA233 ina233(&hi2c2);
 TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
+
+PID loadControllerPID(400.0f, 1000.0f, 0.02f, 0.0f, 1000.0f);
 
 int16_t tick = 0;
 
@@ -72,7 +76,6 @@ void ActiveLoad_loop() {
 
 // tick every 20ms
 void ActiveLoad_tick() {
-
 	applicationState.voltage = ina233.readVoltage();
 	applicationState.current = ina233.readCurrent();
 
@@ -100,10 +103,9 @@ void ActiveLoad_tick() {
 		applicationState.fieldToEditChanged = false;
 	}
 
-	float currentError = applicationState.currentLimit - applicationState.current;
-	float variable = currentError * 50.0;
-	uint16_t newLoad = variable > 0 ? variable : 0;
-	loadController.setLoad(newLoad);
+	// PID for load controller
+	applicationState.loadLevel = loadControllerPID.update(applicationState.currentLimit, applicationState.current);
+	loadController.setLoad(applicationState.loadLevel);
 
 	// once a second
 	if (tick == 0) {

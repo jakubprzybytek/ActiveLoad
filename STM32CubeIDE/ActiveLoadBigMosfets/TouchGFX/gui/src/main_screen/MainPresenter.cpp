@@ -11,6 +11,7 @@ void MainPresenter::activate() {
 	this->view.setCurrent(this->model->getCurrent());
 	this->view.setVoltageLimit(this->model->getVoltageLimit());
 	this->view.setCurrentLimit(this->model->getCurrentLimit());
+	this->view.setDacValue(this->model->getDacValue());
 	this->view.setTemperature(this->model->getTemperature());
 	this->view.setFanDutyCycle(this->model->getFanDutyCycle());
 	this->view.setFanRPM(this->model->getFanRPM());
@@ -41,6 +42,10 @@ void MainPresenter::voltageLimitChanged(float voltageLimit) {
 
 void MainPresenter::currentLimitChanged(float currentLimit) {
 	this->view.setCurrentLimit(currentLimit);
+}
+
+void MainPresenter::dacValueChanged(uint16_t dacValue) {
+	this->view.setDacValue(dacValue);
 }
 
 void MainPresenter::temperatureChanged(int8_t temperature) {

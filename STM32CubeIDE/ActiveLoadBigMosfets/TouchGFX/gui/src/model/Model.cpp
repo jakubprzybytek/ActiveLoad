@@ -5,7 +5,9 @@
 
 extern ApplicationState applicationState;
 
-Model::Model() : modelListener(0) { }
+Model::Model() :
+		modelListener(0) {
+}
 
 void Model::tick() {
 	if (this->second != applicationState.time.Seconds) {
@@ -33,6 +35,10 @@ void Model::tick() {
 	if (this->currentLimit != applicationState.currentLimit) {
 		this->currentLimit = applicationState.currentLimit;
 		this->modelListener->currentLimitChanged(this->currentLimit);
+	}
+	if (this->dacValue != applicationState.loadLevel) {
+		this->dacValue = applicationState.loadLevel;
+		this->modelListener->dacValueChanged(this->dacValue);
 	}
 
 	if (this->temperature != applicationState.temperature) {

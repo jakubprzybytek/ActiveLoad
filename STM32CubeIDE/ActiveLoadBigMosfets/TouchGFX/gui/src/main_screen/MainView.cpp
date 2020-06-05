@@ -32,6 +32,10 @@ void MainView::setCurrentLimit(float currentLimit) {
 	loadSettingsContainer.setCurrentLimit(currentLimit);
 }
 
+void MainView::setDacValue(uint16_t dacValue) {
+	loadSettingsContainer.setDacValue(dacValue);
+}
+
 void MainView::setPower(float power) {
 	inputReadoutContainer.setPower(power);
 }

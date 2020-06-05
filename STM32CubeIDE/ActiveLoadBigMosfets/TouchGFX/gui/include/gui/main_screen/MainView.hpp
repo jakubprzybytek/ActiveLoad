@@ -20,6 +20,7 @@ public:
 
     void setVoltageLimit(float volteageLimit);
     void setCurrentLimit(float currentLimit);
+    void setDacValue(uint16_t dacValue);
 
     void setTemperature(int8_t temperature);
     void setFanDutyCycle(uint8_t fanDutyCycle);

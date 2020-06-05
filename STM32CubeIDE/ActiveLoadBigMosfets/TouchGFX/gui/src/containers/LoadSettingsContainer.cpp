@@ -11,6 +11,7 @@ void LoadSettingsContainer::initialize() {
 	LoadSettingsContainerBase::initialize();
 	voltageValueTextArea.setWildcard(voltageLimitBuffer);
 	currentValueTextArea.setWildcard(currentLimitBuffer);
+	dacValueTextArea.setWildcard(dacValueBuffer);
 }
 
 void LoadSettingsContainer::voltageValueBoxClickHandler(const BoxWithBorder &b, const ClickEvent &evt) {
@@ -43,4 +44,9 @@ void LoadSettingsContainer::setVoltageLimit(float voltageLimit) {
 void LoadSettingsContainer::setCurrentLimit(float currentLimit) {
 	Unicode::snprintfFloat(currentLimitBuffer, TEXTAREA_SIZE, "%.3f", currentLimit);
 	currentValueTextArea.invalidate();
+}
+
+void LoadSettingsContainer::setDacValue(uint16_t dacValue) {
+	Unicode::snprintf(dacValueBuffer, TEXTAREA_SIZE, "%u", dacValue);
+	dacValueTextArea.invalidate();
 }

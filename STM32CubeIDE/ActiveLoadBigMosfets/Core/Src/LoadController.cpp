@@ -19,8 +19,8 @@ void LoadController::setLoad(uint16_t loadLevel) {
 		disable();
 	}
 
-	if (loadLevel > 50) {
-		loadLevel = 50;
+	if (loadLevel > 1000) {
+		loadLevel = 1000;
 	}
 
 	HAL_DAC_SetValue(this->hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, loadLevel);

@@ -73,7 +73,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));
 
-    dacValueTextArea.setXY(119, 74);
+    dacValueTextArea.setPosition(115, 69, 47, 20);
     dacValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     dacValueTextArea.setLinespacing(0);
     dacValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID69));

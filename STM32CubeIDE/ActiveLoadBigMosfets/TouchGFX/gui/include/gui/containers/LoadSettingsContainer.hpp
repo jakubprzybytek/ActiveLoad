@@ -13,6 +13,7 @@ private:
 	static const uint16_t TEXTAREA_SIZE = 10;
 	touchgfx::Unicode::UnicodeChar voltageLimitBuffer[TEXTAREA_SIZE];
 	touchgfx::Unicode::UnicodeChar currentLimitBuffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar dacValueBuffer[TEXTAREA_SIZE];
 
 public:
 	LoadSettingsContainer();
@@ -26,6 +27,7 @@ public:
 
 	void setVoltageLimit(float voltageLimit);
 	void setCurrentLimit(float currentLimit);
+	void setDacValue(uint16_t dacValue);
 
 protected:
 	Callback<LoadSettingsContainer, const BoxWithBorder&, const ClickEvent&> voltageValueBoxClickedCallback;
