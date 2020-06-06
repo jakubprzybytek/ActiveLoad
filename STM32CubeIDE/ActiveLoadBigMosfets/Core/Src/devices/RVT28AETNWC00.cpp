@@ -128,6 +128,7 @@ void RVT28AETNWC00::init() {
 	HAL_Delay(100);
 	writeCommand(0x29); // Display on
 	HAL_Delay(50);
+/*
 
 	writeCommand(0x2a); // Column set
 	writeData(0x00);
@@ -179,6 +180,7 @@ void RVT28AETNWC00::init() {
 	for (uint16_t i = 0; i < 256; i++) {
 		writeData(0b0000000000011111);
 	}
+*/
 
 }
 

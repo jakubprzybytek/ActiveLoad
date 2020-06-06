@@ -8,17 +8,21 @@ class ModelListener;
 class Model
 {
 private:
-	uint8_t hour;
-	uint8_t minute;
-	uint8_t second;
-
 	float voltage;
 	float current;
+	float power;
 
 	float voltageLimit;
 	float currentLimit;
 
 	uint16_t dacValue;
+
+	uint8_t hour;
+	uint8_t minute;
+	uint8_t second;
+
+	float capacityAmpHours;
+	float capacityWattHours;
 
 	int8_t temperature;
 	uint8_t fanDutyCycle;
@@ -35,24 +39,16 @@ public:
 
     void tick();
 
-    uint8_t getHour() {
-    	return this->hour;
-    }
-
-    uint8_t getMinute() {
-    	return this->minute;
-    }
-
-    uint8_t getSecond() {
-    	return this->second;
-    }
-
     float getVoltage() {
     	return this->voltage;
     }
 
     float getCurrent() {
     	return this->current;
+    }
+
+    float getPower() {
+    	return this->power;
     }
 
     float getVoltageLimit() {
@@ -65,6 +61,26 @@ public:
 
     uint16_t getDacValue() {
     	return this->dacValue;
+    }
+
+    uint8_t getHour() {
+    	return this->hour;
+    }
+
+    uint8_t getMinute() {
+    	return this->minute;
+    }
+
+    uint8_t getSecond() {
+    	return this->second;
+    }
+
+    float getCapacityAmpHours() {
+    	return this->capacityAmpHours;
+    }
+
+    float getCapacityWattHours() {
+    	return this->capacityWattHours;
     }
 
     int8_t getTemperature() {

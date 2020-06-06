@@ -6,22 +6,21 @@ MainPresenter::MainPresenter(MainView &v) :
 }
 
 void MainPresenter::activate() {
-	this->view.setTime(this->model->getHour(), this->model->getMinute(), this->model->getSecond());
 	this->view.setVoltage(this->model->getVoltage());
 	this->view.setCurrent(this->model->getCurrent());
+	this->view.setPower(this->model->getPower());
 	this->view.setVoltageLimit(this->model->getVoltageLimit());
 	this->view.setCurrentLimit(this->model->getCurrentLimit());
 	this->view.setDacValue(this->model->getDacValue());
+	this->view.setTime(this->model->getHour(), this->model->getMinute(), this->model->getSecond());
+	this->view.setCapacityAmpHours(this->model->getCapacityAmpHours());
+	this->view.setCapacityWattHours(this->model->getCapacityWattHours());
 	this->view.setTemperature(this->model->getTemperature());
 	this->view.setFanDutyCycle(this->model->getFanDutyCycle());
 	this->view.setFanRPM(this->model->getFanRPM());
 }
 
 void MainPresenter::deactivate() {
-}
-
-void MainPresenter::timeChanged(uint8_t hour, uint8_t minute, uint8_t second) {
-	this->view.setTime(hour, minute, second);
 }
 
 void MainPresenter::voltageChanged(float voltage) {
@@ -46,6 +45,18 @@ void MainPresenter::currentLimitChanged(float currentLimit) {
 
 void MainPresenter::dacValueChanged(uint16_t dacValue) {
 	this->view.setDacValue(dacValue);
+}
+
+void MainPresenter::timeChanged(uint8_t hour, uint8_t minute, uint8_t second) {
+	this->view.setTime(hour, minute, second);
+}
+
+void MainPresenter::capacityAmpHoursChanged(float capacityAmpHours) {
+	this->view.setCapacityAmpHours(capacityAmpHours);
+}
+
+void MainPresenter::capacityWattHoursChanged(float capacityWattHours) {
+	this->view.setCapacityWattHours(capacityWattHours);
 }
 
 void MainPresenter::temperatureChanged(int8_t temperature) {

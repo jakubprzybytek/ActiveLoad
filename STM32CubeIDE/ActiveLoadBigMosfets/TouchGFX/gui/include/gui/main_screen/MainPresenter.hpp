@@ -27,8 +27,6 @@ public:
 
     virtual ~MainPresenter() {};
 
-    void timeChanged(uint8_t hour, uint8_t minute, uint8_t second);
-
     void voltageChanged(float voltage);
     void currentChanged(float current);
     void powerChanged(float power);
@@ -36,6 +34,10 @@ public:
     void voltageLimitChanged(float voltageLimit);
     void currentLimitChanged(float currentLimit);
     void dacValueChanged(uint16_t dacValue);
+
+    void timeChanged(uint8_t hour, uint8_t minute, uint8_t second);
+    void capacityAmpHoursChanged(float capacityAmpHours);
+    void capacityWattHoursChanged(float capacityWattHours);
 
     void temperatureChanged(int8_t temperature);
     void fanDutyCycleChanged(uint8_t fanDutyCycle);

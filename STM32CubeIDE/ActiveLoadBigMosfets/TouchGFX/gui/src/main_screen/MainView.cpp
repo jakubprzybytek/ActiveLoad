@@ -12,10 +12,6 @@ void MainView::tearDownScreen() {
 	MainViewBase::tearDownScreen();
 }
 
-void MainView::setTime(uint8_t hour, uint8_t minute, uint8_t second) {
-	capacityReadoutContainer.setTime(hour, minute, second);
-}
-
 void MainView::setVoltage(float voltage) {
 	inputReadoutContainer.setVoltage(voltage);
 }
@@ -38,6 +34,18 @@ void MainView::setDacValue(uint16_t dacValue) {
 
 void MainView::setPower(float power) {
 	inputReadoutContainer.setPower(power);
+}
+
+void MainView::setTime(uint8_t hour, uint8_t minute, uint8_t second) {
+	capacityReadoutContainer.setTime(hour, minute, second);
+}
+
+void MainView::setCapacityAmpHours(float capacityAmpHours) {
+	capacityReadoutContainer.setCapacityAmpHours(capacityAmpHours);
+}
+
+void MainView::setCapacityWattHours(float capacityWattHours) {
+	capacityReadoutContainer.setCapacityWattHours(capacityWattHours);
 }
 
 void MainView::setTemperature(int8_t temperature) {

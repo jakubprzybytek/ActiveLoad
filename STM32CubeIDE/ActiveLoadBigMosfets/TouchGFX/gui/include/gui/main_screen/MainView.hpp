@@ -12,8 +12,6 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
-    void setTime(uint8_t hour, uint8_t minute, uint8_t second);
-
     void setVoltage(float voltage);
     void setCurrent(float current);
     void setPower(float power);
@@ -21,6 +19,10 @@ public:
     void setVoltageLimit(float volteageLimit);
     void setCurrentLimit(float currentLimit);
     void setDacValue(uint16_t dacValue);
+
+    void setTime(uint8_t hour, uint8_t minute, uint8_t second);
+    void setCapacityAmpHours(float capacityAmpHours);
+    void setCapacityWattHours(float capacityWattHours);
 
     void setTemperature(int8_t temperature);
     void setFanDutyCycle(uint8_t fanDutyCycle);

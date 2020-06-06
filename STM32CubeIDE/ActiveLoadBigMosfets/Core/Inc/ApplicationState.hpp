@@ -18,9 +18,15 @@ public:
 
 	float voltage;
 	float current;
+	float power;
 
 	float voltageLimit = 5.0;
 	float currentLimit = 0.1;
+
+	uint64_t chargeMiliAmpSeconds;
+	float chargeAmpHours;
+	uint64_t chargeMiliWattSeconds;
+	float chargeWattHours;
 
 	uint16_t loadLevel;
 

@@ -10,9 +10,9 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     buttonCallback(this, &CapacityReadoutContainerBase::buttonCallbackHandler),
     requestTimerResetCallback(0)
 {
-    setWidth(114);
+    setWidth(152);
     setHeight(128);
-    background.setPosition(0, 18, 114, 110);
+    background.setPosition(0, 18, 152, 110);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(45, 45, 45));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
@@ -22,17 +22,17 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
-    currentUnitTextArea.setXY(88, 73);
-    currentUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
-    currentUnitTextArea.setLinespacing(0);
-    currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID40));
+    capacityAmpHoursUnitTextArea.setXY(88, 84);
+    capacityAmpHoursUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
+    capacityAmpHoursUnitTextArea.setLinespacing(0);
+    capacityAmpHoursUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID40));
 
-    currentValueTextArea.setPosition(7, 68, 78, 23);
-    currentValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
-    currentValueTextArea.setLinespacing(0);
-    currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID41));
+    capacityAmpHoursValueTextArea.setPosition(7, 79, 78, 23);
+    capacityAmpHoursValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
+    capacityAmpHoursValueTextArea.setLinespacing(0);
+    capacityAmpHoursValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID41));
 
-    capacityLabelTextArea.setXY(4, 56);
+    capacityLabelTextArea.setXY(4, 63);
     capacityLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     capacityLabelTextArea.setLinespacing(0);
     capacityLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID42));
@@ -42,28 +42,40 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     elapsedTimeLabelTextArea.setLinespacing(0);
     elapsedTimeLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID45));
 
-    digitalClock.setPosition(4, 33, 81, 21);
+    digitalClock.setPosition(4, 33, 77, 21);
     digitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     digitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID46));
     digitalClock.displayLeadingZeroForHourIndicator(true);
     digitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
     digitalClock.setTime24Hour(0, 0, 0);
 
-    resetButton.setXY(27, 91);
-    resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_60X36_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_ICON_BUTTON_PRESSED_60X36_ID));
+    resetButton.setXY(88, 25);
+    resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     resetButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID49));
     resetButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(0, 35, 83));
     resetButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     resetButton.setAction(buttonCallback);
 
+    capacityWattHoursUnitTextArea.setXY(88, 107);
+    capacityWattHoursUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
+    capacityWattHoursUnitTextArea.setLinespacing(0);
+    capacityWattHoursUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID70));
+
+    capacityWattHoursValueTextArea.setPosition(7, 102, 78, 23);
+    capacityWattHoursValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
+    capacityWattHoursValueTextArea.setLinespacing(0);
+    capacityWattHoursValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID71));
+
     add(background);
     add(labelTextArea);
-    add(currentUnitTextArea);
-    add(currentValueTextArea);
+    add(capacityAmpHoursUnitTextArea);
+    add(capacityAmpHoursValueTextArea);
     add(capacityLabelTextArea);
     add(elapsedTimeLabelTextArea);
     add(digitalClock);
     add(resetButton);
+    add(capacityWattHoursUnitTextArea);
+    add(capacityWattHoursValueTextArea);
 }
 
 void CapacityReadoutContainerBase::initialize()

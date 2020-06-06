@@ -18,7 +18,7 @@ MainViewBase::MainViewBase() :
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(2);
 
-    termpControlContainer.setXY(122, 188);
+    termpControlContainer.setXY(160, 188);
 
     inputReadoutContainer.setXY(4, 4);
 

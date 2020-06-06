@@ -31,9 +31,9 @@
           {
             "CustomContainerDefinitionName": "TermpControlContainer",
             "Name": "termpControlContainer",
-            "X": 122,
+            "X": 160,
             "Y": 188,
-            "Width": 114,
+            "Width": 76,
             "Height": 128,
             "Type": "CustomContainerInstance",
             "Visible": true,
@@ -61,7 +61,7 @@
             "Name": "capacityReadoutContainer",
             "X": 4,
             "Y": 188,
-            "Width": 114,
+            "Width": 152,
             "Height": 128,
             "Type": "CustomContainerInstance",
             "Visible": true,
@@ -915,7 +915,7 @@
             "Name": "background",
             "X": 0,
             "Y": 18,
-            "Width": 114,
+            "Width": 76,
             "Height": 110,
             "Type": "BoxWithBorder",
             "Visible": true,
@@ -938,7 +938,7 @@
             "Name": "labelTextArea",
             "X": 2,
             "Y": 0,
-            "Width": 89,
+            "Width": 43,
             "Height": 18,
             "Type": "TextArea",
             "Visible": true,
@@ -963,7 +963,7 @@
               "BufferSize": 0
             },
             "Name": "fanRpmValueTextArea",
-            "X": 40,
+            "X": 2,
             "Y": 104,
             "Width": 44,
             "Height": 22,
@@ -1009,7 +1009,7 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "fanRPMUnitTextArea",
-            "X": 85,
+            "X": 47,
             "Y": 109,
             "Width": 29,
             "Height": 18,
@@ -1036,7 +1036,7 @@
               "BufferSize": 0
             },
             "Name": "fanDutyCycleValueTextArea",
-            "X": 40,
+            "X": 2,
             "Y": 68,
             "Width": 44,
             "Height": 22,
@@ -1082,7 +1082,7 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "radiatorTemperatureUnitTextArea",
-            "X": 88,
+            "X": 50,
             "Y": 37,
             "Width": 15,
             "Height": 20,
@@ -1109,7 +1109,7 @@
               "BufferSize": 0
             },
             "Name": "radiatorTemperatureValueTextArea",
-            "X": 40,
+            "X": 2,
             "Y": 32,
             "Width": 44,
             "Height": 22,
@@ -1125,8 +1125,8 @@
             "TextRotation": "0",
             "Color": {
               "Red": 255,
-              "Green": 96,
-              "Blue": 96
+              "Green": 85,
+              "Blue": 85
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -1155,7 +1155,7 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "fanDutyCycleUnitTextArea",
-            "X": 88,
+            "X": 50,
             "Y": 73,
             "Width": 15,
             "Height": 18,
@@ -1171,7 +1171,7 @@
         "Name": "TermpControlContainer",
         "X": 0,
         "Y": 0,
-        "Width": 114,
+        "Width": 76,
         "Height": 128
       },
       {
@@ -1192,7 +1192,7 @@
             "Name": "background",
             "X": 0,
             "Y": 18,
-            "Width": 114,
+            "Width": 152,
             "Height": 110,
             "Type": "BoxWithBorder",
             "Visible": true,
@@ -1235,9 +1235,9 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
-            "Name": "currentUnitTextArea",
+            "Name": "capacityAmpHoursUnitTextArea",
             "X": 88,
-            "Y": 73,
+            "Y": 84,
             "Width": 19,
             "Height": 18,
             "Type": "TextArea",
@@ -1262,9 +1262,9 @@
               "UseBuffer": false,
               "BufferSize": 0
             },
-            "Name": "currentValueTextArea",
+            "Name": "capacityAmpHoursValueTextArea",
             "X": 7,
-            "Y": 68,
+            "Y": 79,
             "Width": 78,
             "Height": 23,
             "Type": "TextArea",
@@ -1287,7 +1287,7 @@
             "LineSpacing": 0,
             "Name": "capacityLabelTextArea",
             "X": 4,
-            "Y": 56,
+            "Y": 63,
             "Width": 47,
             "Height": 14,
             "Type": "TextArea",
@@ -1337,7 +1337,7 @@
             "Name": "digitalClock",
             "X": 4,
             "Y": 33,
-            "Width": 81,
+            "Width": 77,
             "Height": 21,
             "Type": "DigitalClock",
             "Visible": true,
@@ -1347,8 +1347,8 @@
             "Moveable": false
           },
           {
-            "Pressed": "Round_Edge_icon_button_pressed_60x36.png",
-            "Released": "Round_Edge_icon_button_60x36.png",
+            "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
             "Alpha": 255,
             "TextId": "SingleUseId49",
             "ReleasedColor": {
@@ -1362,12 +1362,63 @@
               "Blue": 255
             },
             "TextRotation": "0",
+            "Style": "Style1",
             "Name": "resetButton",
-            "X": 27,
-            "Y": 91,
+            "X": 88,
+            "Y": 25,
             "Width": 60,
-            "Height": 36,
+            "Height": 60,
             "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId70",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "capacityWattHoursUnitTextArea",
+            "X": 88,
+            "Y": 107,
+            "Width": 23,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId71",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "capacityWattHoursValueTextArea",
+            "X": 7,
+            "Y": 102,
+            "Width": 78,
+            "Height": 23,
+            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -1398,7 +1449,7 @@
         "Name": "CapacityReadoutContainer",
         "X": 0,
         "Y": 0,
-        "Width": 114,
+        "Width": 152,
         "Height": 128
       }
     ],
@@ -1557,6 +1608,14 @@
       },
       {
         "TextEntryId": "SingleUseId69",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId70",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId71",
         "IsResource": false
       }
     ],

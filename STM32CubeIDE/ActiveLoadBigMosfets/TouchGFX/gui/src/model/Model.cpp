@@ -10,22 +10,17 @@ Model::Model() :
 }
 
 void Model::tick() {
-	if (this->second != applicationState.time.Seconds) {
-		this->hour = applicationState.time.Hours;
-		this->minute = applicationState.time.Minutes;
-		this->second = applicationState.time.Seconds;
-		this->modelListener->timeChanged(this->hour, this->minute, this->second);
-	}
-
 	if (this->voltage != applicationState.voltage) {
 		this->voltage = applicationState.voltage;
 		this->modelListener->voltageChanged(this->voltage);
-		this->modelListener->powerChanged(this->voltage * this->current);
 	}
 	if (this->current != applicationState.current) {
 		this->current = applicationState.current;
 		this->modelListener->currentChanged(this->current);
-		this->modelListener->powerChanged(this->voltage * this->current);
+	}
+	if (this->power != applicationState.power) {
+		this->power = applicationState.power;
+		this->modelListener->powerChanged(this->power);
 	}
 
 	if (this->voltageLimit != applicationState.voltageLimit) {
@@ -39,6 +34,21 @@ void Model::tick() {
 	if (this->dacValue != applicationState.loadLevel) {
 		this->dacValue = applicationState.loadLevel;
 		this->modelListener->dacValueChanged(this->dacValue);
+	}
+
+	if (this->second != applicationState.time.Seconds) {
+		this->hour = applicationState.time.Hours;
+		this->minute = applicationState.time.Minutes;
+		this->second = applicationState.time.Seconds;
+		this->modelListener->timeChanged(this->hour, this->minute, this->second);
+	}
+	if (this->capacityAmpHours != applicationState.chargeAmpHours) {
+		this->capacityAmpHours = applicationState.chargeAmpHours;
+		this->modelListener->capacityAmpHoursChanged(this->capacityAmpHours);
+	}
+	if (this->capacityWattHours != applicationState.chargeWattHours) {
+		this->capacityWattHours = applicationState.chargeWattHours;
+		this->modelListener->capacityWattHoursChanged(this->capacityWattHours);
 	}
 
 	if (this->temperature != applicationState.temperature) {

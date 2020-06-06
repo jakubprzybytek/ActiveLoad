@@ -35,8 +35,10 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-PID loadControllerPID(400.0f, 1000.0f, 0.02f, 0.0f, 3000.0f);
-PID fanControllerPID(10.0f, 0.0f, 1.0f, 0.0f, 100.0f);
+#define TICK_TIME 0.02f // 20ms
+
+PID loadControllerPID(400.0f, 1000.0f, TICK_TIME, 0.0f, 3000.0f);
+PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 
 int16_t tick = 0;
 
@@ -77,8 +79,16 @@ void ActiveLoad_loop() {
 
 // tick every 20ms
 void ActiveLoad_tick() {
+
 	applicationState.voltage = ina233.readVoltage();
 	applicationState.current = ina233.readCurrent();
+	applicationState.power = ina233.readPower();
+
+	applicationState.chargeMiliAmpSeconds += applicationState.current * 1000.0f * TICK_TIME;
+	applicationState.chargeAmpHours = applicationState.chargeMiliAmpSeconds / 1000.0f / 3600.0f;
+
+	applicationState.chargeMiliWattSeconds += applicationState.power * 1000.0f * TICK_TIME;
+	applicationState.chargeWattHours = applicationState.chargeMiliWattSeconds / 1000.0f / 3600.0f;
 
 	// check touch panel
 	if (touchPad.checkIfTouched()) {

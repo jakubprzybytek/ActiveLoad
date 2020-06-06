@@ -48,12 +48,14 @@ protected:
      */
     touchgfx::BoxWithBorder background;
     touchgfx::TextArea labelTextArea;
-    touchgfx::TextArea currentUnitTextArea;
-    touchgfx::TextAreaWithOneWildcard currentValueTextArea;
+    touchgfx::TextArea capacityAmpHoursUnitTextArea;
+    touchgfx::TextAreaWithOneWildcard capacityAmpHoursValueTextArea;
     touchgfx::TextArea capacityLabelTextArea;
     touchgfx::TextArea elapsedTimeLabelTextArea;
     touchgfx::DigitalClock digitalClock;
     touchgfx::ButtonWithLabel resetButton;
+    touchgfx::TextArea capacityWattHoursUnitTextArea;
+    touchgfx::TextAreaWithOneWildcard capacityWattHoursValueTextArea;
 
 private:
 
