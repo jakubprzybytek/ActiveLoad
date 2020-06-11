@@ -1,6 +1,8 @@
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 
+#include "MessageQueue.hpp"
+
 MainPresenter::MainPresenter(MainView &v) :
 		view(v) {
 }
@@ -71,10 +73,22 @@ void MainPresenter::fanRPMChanged(uint16_t fanRPM) {
 	this->view.setFanRPM(fanRPM);
 }
 
+void MainPresenter::startLoadSink() {
+	MessageQueue::getInstance().submit(START_LOAD_SINK);
+}
+
+void MainPresenter::stopLoadSink() {
+	MessageQueue::getInstance().submit(STOP_LOAD_SINK);
+}
+
+void MainPresenter::resetCounters() {
+	MessageQueue::getInstance().submit(RESET_COUNTERS);
+}
+
 void MainPresenter::selectVoltageLimitForEdit() {
-	this->model->selectVoltageLimitForEdit();
+	MessageQueue::getInstance().submit(SELECT_VOLTAGE_LIMIT_FOR_EDIT);
 }
 
 void MainPresenter::selectCurrentLimitForEdit() {
-	this->model->selectCurrentLimitForEdit();
+	MessageQueue::getInstance().submit(SELECT_CURRENT_LIMIT_FOR_EDIT);
 }

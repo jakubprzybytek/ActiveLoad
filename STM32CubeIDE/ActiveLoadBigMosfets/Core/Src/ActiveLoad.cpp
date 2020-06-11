@@ -3,6 +3,7 @@
 
 #include "stdio.h"
 #include "ApplicationState.hpp"
+#include "MessageQueue.hpp"
 #include "FanController.hpp"
 #include "LoadController.hpp"
 #include "Encoder.hpp"
@@ -45,7 +46,7 @@ int16_t tick = 0;
 
 void ActiveLoad_init() {
 	fanController.setSpeed(0);
-	loadController.setLoad(10);
+	loadController.setLoad(0);
 
 	MX_TouchGFX_Init();
 
@@ -99,20 +100,13 @@ void ActiveLoad_tick() {
 		applicationState.touched = false;
 	}
 
-	// check if field to edit is changed
-	if (applicationState.fieldToEditChanged) {
-		if (applicationState.currentLimitInEdit) {
-			encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
-		} else {
-			encoder.reset(applicationState.voltageLimit * 1000, 5000, 30000, 100);
-		}
+	ActiveLoad_processMessages();
 
-		applicationState.fieldToEditChanged = false;
+	if (applicationState.loadSinkEnabled) {
+		// PID for load controller
+		applicationState.loadLevel = loadControllerPID.update(applicationState.currentLimit, applicationState.current);
+		loadController.setLoad(applicationState.loadLevel);
 	}
-
-	// PID for load controller
-	applicationState.loadLevel = loadControllerPID.update(applicationState.currentLimit, applicationState.current);
-	loadController.setLoad(applicationState.loadLevel);
 
 	// once a second
 	if (tick == 0) {
@@ -133,6 +127,37 @@ void ActiveLoad_tick() {
 
 	// 50 x 20ms = 1s
 	tick = tick >= 49 ? 0 : tick + 1;
+}
+
+void ActiveLoad_processMessages() {
+	while (MessageQueue::getInstance().messageWaiting()) {
+		switch (MessageQueue::getInstance().getMessage()) {
+		case SELECT_VOLTAGE_LIMIT_FOR_EDIT:
+			encoder.reset(applicationState.voltageLimit * 1000, 5000, 30000, 100);
+			applicationState.currentLimitInEdit = false;
+			break;
+		case SELECT_CURRENT_LIMIT_FOR_EDIT:
+			encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
+			applicationState.currentLimitInEdit = true;
+			break;
+		case RESET_COUNTERS:
+			applicationState.chargeMiliAmpSeconds = 0;
+			applicationState.chargeMiliWattSeconds = 0;
+			applicationState.time.Hours = 0;
+			applicationState.time.Minutes = 0;
+			applicationState.time.Seconds = 0;
+			HAL_RTC_SetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
+			break;
+		case START_LOAD_SINK:
+			applicationState.loadSinkEnabled = true;
+			break;
+		case STOP_LOAD_SINK:
+			applicationState.loadSinkEnabled = false;
+			applicationState.loadLevel = 0;
+			loadController.setLoad(applicationState.loadLevel);
+			break;
+		}
+	}
 }
 
 #define FAN_PULSES_COUNT 50

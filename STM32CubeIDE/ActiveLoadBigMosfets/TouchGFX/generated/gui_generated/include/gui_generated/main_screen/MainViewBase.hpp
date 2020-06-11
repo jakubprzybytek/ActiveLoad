@@ -15,8 +15,8 @@
 #include <gui/containers/LoadSettingsContainer.hpp>
 #include <touchgfx/containers/ModalWindow.hpp>
 #include <touchgfx/Color.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -40,28 +40,32 @@ protected:
     touchgfx::TextArea titleTextArea;
     LoadSettingsContainer loadSettingsContainer;
     touchgfx::ModalWindow resetConfirmationModalWindow;
-    touchgfx::ButtonWithLabel resetButton;
     touchgfx::Image warningImage;
-    touchgfx::ButtonWithLabel cancelButton;
     touchgfx::TextArea resetTextArea;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > cancelButton1;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > resetButton1;
 
 private:
 
     /*
      * Callback Declarations
      */
-    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
     touchgfx::Callback<MainViewBase> capacityReadoutContainerRequestTimerResetCallback;
     touchgfx::Callback<MainViewBase> loadSettingsContainerSelectVoltageLimitForEditCallback;
     touchgfx::Callback<MainViewBase> loadSettingsContainerSelectCurrentLimitForEditCallback;
+    touchgfx::Callback<MainViewBase> loadSettingsContainerStartLoadSinkCallback;
+    touchgfx::Callback<MainViewBase> loadSettingsContainerStopLoadSinkCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
     void capacityReadoutContainerRequestTimerResetCallbackHandler();
     void loadSettingsContainerSelectVoltageLimitForEditCallbackHandler();
     void loadSettingsContainerSelectCurrentLimitForEditCallbackHandler();
+    void loadSettingsContainerStartLoadSinkCallbackHandler();
+    void loadSettingsContainerStopLoadSinkCallbackHandler();
 
 };
 

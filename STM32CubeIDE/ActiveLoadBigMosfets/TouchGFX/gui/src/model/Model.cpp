@@ -63,9 +63,4 @@ void Model::tick() {
 		this->fanRPM = applicationState.fanRPM;
 		this->modelListener->fanRPMChanged(this->fanRPM);
 	}
-
-	if (applicationState.currentLimitInEdit != this->currentLimitInEdit) {
-		applicationState.currentLimitInEdit = this->currentLimitInEdit;
-		applicationState.fieldToEditChanged = true;
-	}
 }

@@ -28,8 +28,6 @@ private:
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;
 
-	bool currentLimitInEdit = true;
-
 public:
     Model();
 
@@ -93,14 +91,6 @@ public:
 
     uint16_t getFanRPM() {
     	return this->fanRPM;
-    }
-
-    void selectVoltageLimitForEdit() {
-    	this->currentLimitInEdit = false;
-    }
-
-    void selectCurrentLimitForEdit() {
-    	this->currentLimitInEdit = true;
     }
 
 protected:

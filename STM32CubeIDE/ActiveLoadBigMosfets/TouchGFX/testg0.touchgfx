@@ -110,35 +110,6 @@
           {
             "Components": [
               {
-                "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
-                "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
-                "Alpha": 255,
-                "TextId": "SingleUseId64",
-                "ReleasedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "PressedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "TextRotation": "0",
-                "Style": "Style1",
-                "Name": "resetButton",
-                "X": 113,
-                "Y": 70,
-                "Width": 60,
-                "Height": 60,
-                "Type": "ButtonWithLabel",
-                "Visible": true,
-                "Draggable": false,
-                "Clickable": false,
-                "Fadeable": false,
-                "Moveable": false
-              },
-              {
                 "RelativeFilename": "__designer\\Dark_Icons_Alert_32.png",
                 "Alpha": 255,
                 "Name": "warningImage",
@@ -154,41 +125,12 @@
                 "Moveable": false
               },
               {
-                "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
-                "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
-                "Alpha": 255,
-                "TextId": "SingleUseId65",
-                "ReleasedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "PressedColor": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "TextRotation": "0",
-                "Style": "Style1",
-                "Name": "cancelButton",
-                "X": 28,
-                "Y": 70,
-                "Width": 60,
-                "Height": 60,
-                "Type": "ButtonWithLabel",
-                "Visible": true,
-                "Draggable": false,
-                "Clickable": false,
-                "Fadeable": false,
-                "Moveable": false
-              },
-              {
                 "TextId": "SingleUseId66",
                 "TextRotation": "0",
                 "Color": {
-                  "Red": 83,
-                  "Green": 83,
-                  "Blue": 83
+                  "Red": 61,
+                  "Green": 58,
+                  "Blue": 58
                 },
                 "Alpha": 255,
                 "AutoSize": true,
@@ -204,9 +146,139 @@
                 "Clickable": false,
                 "Fadeable": false,
                 "Moveable": false
+              },
+              {
+                "Alpha": 255,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "X": 0,
+                    "Y": 16,
+                    "TextId": "SingleUseId73",
+                    "TextRotation": "0",
+                    "ColorReleased": {
+                      "Red": 158,
+                      "Green": 213,
+                      "Blue": 250
+                    },
+                    "ColorPressed": {
+                      "Red": 73,
+                      "Green": 107,
+                      "Blue": 163
+                    }
+                  },
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "X": 0,
+                    "Y": 0,
+                    "Width": 66,
+                    "Height": 50,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 3,
+                    "ColorReleased": {
+                      "Red": 2,
+                      "Green": 73,
+                      "Blue": 109
+                    },
+                    "ColorPressed": {
+                      "Red": 5,
+                      "Green": 133,
+                      "Blue": 175
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 24,
+                      "Green": 112,
+                      "Blue": 201
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 81,
+                      "Green": 143,
+                      "Blue": 204
+                    }
+                  }
+                ],
+                "Name": "cancelButton1",
+                "X": 28,
+                "Y": 75,
+                "Width": 66,
+                "Height": 50,
+                "Type": "FlexButton",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Alpha": 255,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "X": 0,
+                    "Y": 16,
+                    "TextId": "SingleUseId74",
+                    "TextRotation": "0",
+                    "ColorReleased": {
+                      "Red": 252,
+                      "Green": 219,
+                      "Blue": 219
+                    },
+                    "ColorPressed": {
+                      "Red": 252,
+                      "Green": 219,
+                      "Blue": 219
+                    }
+                  },
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "X": 0,
+                    "Y": 0,
+                    "Width": 66,
+                    "Height": 50,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 3,
+                    "ColorReleased": {
+                      "Red": 112,
+                      "Green": 23,
+                      "Blue": 23
+                    },
+                    "ColorPressed": {
+                      "Red": 112,
+                      "Green": 23,
+                      "Blue": 23
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 255,
+                      "Green": 0,
+                      "Blue": 0
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 255,
+                      "Green": 0,
+                      "Blue": 0
+                    }
+                  }
+                ],
+                "Name": "resetButton1",
+                "X": 114,
+                "Y": 75,
+                "Width": 66,
+                "Height": 50,
+                "Type": "FlexButton",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
               }
             ],
-            "FileName": "my_modal_background.png",
+            "FileName": "modalBackground.png",
             "Color": {
               "Red": 97,
               "Green": 97,
@@ -250,7 +322,7 @@
             "InteractionName": "HideResetConfirmationModelWindowInteraction",
             "HasCompletedTrigger": false,
             "Trigger": {
-              "TriggerComponent": "cancelButton",
+              "TriggerComponent": "cancelButton1",
               "Type": "TriggerClicked"
             },
             "Action": {
@@ -281,6 +353,56 @@
             },
             "Action": {
               "Code": "this->presenter->selectCurrentLimitForEdit();",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "ConfirmResetCounters",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "TriggerComponent": "resetButton1",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ActionComponent": "resetConfirmationModalWindow",
+              "Type": "ActionHide"
+            }
+          },
+          {
+            "InteractionName": "PerformResetCounters",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "InteractionToTriggerOn": "ConfirmResetCounters",
+              "Type": "TriggerInteractionCompleted"
+            },
+            "Action": {
+              "Code": "this->presenter->resetCounters();",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "StartLoadSink",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerCustomTypeName": "LoadSettingsContainer startLoadSink happens",
+              "TriggerComponent": "loadSettingsContainer",
+              "Type": "TriggerCustom"
+            },
+            "Action": {
+              "Code": "this->presenter->startLoadSink();",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "StopLoadSink",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerCustomTypeName": "LoadSettingsContainer stopLoadSink happens",
+              "TriggerComponent": "loadSettingsContainer",
+              "Type": "TriggerCustom"
+            },
+            "Action": {
+              "Code": "this->presenter->stopLoadSink();",
               "Type": "ActionExecuteCode"
             }
           }
@@ -584,7 +706,7 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "currentUnitTextArea",
-            "X": 82,
+            "X": 78,
             "Y": 73,
             "Width": 15,
             "Height": 20,
@@ -609,7 +731,7 @@
             "BorderSize": 3,
             "Alpha": 255,
             "Name": "currentValueBox",
-            "X": 8,
+            "X": 4,
             "Y": 64,
             "Width": 72,
             "Height": 29,
@@ -636,40 +758,11 @@
               "BufferSize": 0
             },
             "Name": "currentValueTextArea",
-            "X": 8,
+            "X": 4,
             "Y": 62,
             "Width": 68,
             "Height": 30,
             "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
-            "Alpha": 255,
-            "TextId": "SingleUseId57",
-            "ReleasedColor": {
-              "Red": 0,
-              "Green": 60,
-              "Blue": 131
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Style": "Style1",
-            "Name": "startStopButton",
-            "X": 166,
-            "Y": 26,
-            "Width": 60,
-            "Height": 60,
-            "Type": "ButtonWithLabel",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -682,8 +775,8 @@
             "Released": "checkbox-unchecked.png",
             "Alpha": 255,
             "Name": "voltageLimitEnabledButton",
-            "X": 123,
-            "Y": 33,
+            "X": 91,
+            "Y": 37,
             "Width": 20,
             "Height": 20,
             "Type": "ToggleButton",
@@ -705,8 +798,8 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "voltageLimitEnableLabelTextArea",
-            "X": 115,
-            "Y": 19,
+            "X": 113,
+            "Y": 40,
             "Width": 37,
             "Height": 14,
             "Type": "TextArea",
@@ -730,7 +823,7 @@
             "BorderSize": 3,
             "Alpha": 255,
             "Name": "voltageValueBox",
-            "X": 8,
+            "X": 4,
             "Y": 33,
             "Width": 72,
             "Height": 29,
@@ -753,7 +846,7 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "voltageUnitTextArea",
-            "X": 82,
+            "X": 78,
             "Y": 43,
             "Width": 12,
             "Height": 20,
@@ -780,7 +873,7 @@
               "BufferSize": 0
             },
             "Name": "voltageValueTextArea",
-            "X": 8,
+            "X": 4,
             "Y": 31,
             "Width": 68,
             "Height": 30,
@@ -853,11 +946,77 @@
               "BufferSize": 0
             },
             "Name": "dacValueTextArea",
-            "X": 115,
-            "Y": 69,
+            "X": 105,
+            "Y": 68,
             "Width": 47,
             "Height": 20,
             "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "ButtonTrigger": {
+              "Type": "ToggleButtonTrigger",
+              "InitalStatePressed": false
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "X": 0,
+                "Y": 12,
+                "TextId": "start",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 210,
+                  "Green": 246,
+                  "Blue": 212
+                },
+                "ColorPressed": {
+                  "Red": 252,
+                  "Green": 219,
+                  "Blue": 219
+                }
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 68,
+                "Height": 50,
+                "LockToFlexButtonSize": false,
+                "BorderSize": 3,
+                "ColorReleased": {
+                  "Red": 24,
+                  "Green": 99,
+                  "Blue": 18
+                },
+                "ColorPressed": {
+                  "Red": 112,
+                  "Green": 23,
+                  "Blue": 23
+                },
+                "ColorBorderReleased": {
+                  "Red": 79,
+                  "Green": 168,
+                  "Blue": 73
+                },
+                "ColorBorderPressed": {
+                  "Red": 255,
+                  "Green": 0,
+                  "Blue": 0
+                }
+              }
+            ],
+            "Name": "startStopButton",
+            "X": 156,
+            "Y": 33,
+            "Width": 68,
+            "Height": 50,
+            "Type": "FlexButton",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -877,6 +1036,18 @@
               "Code": "voltageValueBox.setVisible(voltageLimitEnabledButton.getState());\r\nvoltageValueBox.invalidate();",
               "Type": "ActionExecuteCode"
             }
+          },
+          {
+            "InteractionName": "toggleLoadSinkInteraction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "startStopButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "if (startStopButton.getPressed()) {\r\n\temitStartLoadSinkCallback();\r\n\tstartStopButton.setText(TypedText(T_STOP));\r\n} else {\r\n\temitStopLoadSinkCallback();\r\n\tstartStopButton.setText(TypedText(T_START));\r\n}\r\nstartStopButton.invalidate();",
+              "Type": "ActionExecuteCode"
+            }
           }
         ],
         "CustomTriggers": [
@@ -888,6 +1059,16 @@
           {
             "Name": "selectVoltageLimitForEdit",
             "Description": "Selects Voltage Limit for edit",
+            "HasValue": false
+          },
+          {
+            "Name": "startLoadSink",
+            "Description": "Starts the load sink",
+            "HasValue": false
+          },
+          {
+            "Name": "stopLoadSink",
+            "Description": "Stops the load sink",
             "HasValue": false
           }
         ],
@@ -1051,9 +1232,9 @@
             "TextId": "SingleUseId23",
             "TextRotation": "0",
             "Color": {
-              "Red": 236,
+              "Red": 180,
               "Green": 179,
-              "Blue": 37
+              "Blue": 179
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -1124,9 +1305,9 @@
             "TextId": "SingleUseId21",
             "TextRotation": "0",
             "Color": {
-              "Red": 255,
-              "Green": 85,
-              "Blue": 85
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -1335,40 +1516,11 @@
             "InitialMinute": 0,
             "InitialSecond": 0,
             "Name": "digitalClock",
-            "X": 4,
+            "X": 3,
             "Y": 33,
             "Width": 77,
             "Height": 21,
             "Type": "DigitalClock",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
-            "Alpha": 255,
-            "TextId": "SingleUseId49",
-            "ReleasedColor": {
-              "Red": 0,
-              "Green": 35,
-              "Blue": 83
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Style": "Style1",
-            "Name": "resetButton",
-            "X": 88,
-            "Y": 25,
-            "Width": 60,
-            "Height": 60,
-            "Type": "ButtonWithLabel",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -1419,6 +1571,71 @@
             "Width": 90,
             "Height": 23,
             "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "X": 0,
+                "Y": 12,
+                "TextId": "SingleUseId72",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 158,
+                  "Green": 213,
+                  "Blue": 250
+                },
+                "ColorPressed": {
+                  "Red": 77,
+                  "Green": 107,
+                  "Blue": 163
+                }
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 65,
+                "Height": 49,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 3,
+                "ColorReleased": {
+                  "Red": 2,
+                  "Green": 73,
+                  "Blue": 109
+                },
+                "ColorPressed": {
+                  "Red": 5,
+                  "Green": 133,
+                  "Blue": 175
+                },
+                "ColorBorderReleased": {
+                  "Red": 24,
+                  "Green": 112,
+                  "Blue": 201
+                },
+                "ColorBorderPressed": {
+                  "Red": 81,
+                  "Green": 143,
+                  "Blue": 204
+                }
+              }
+            ],
+            "Name": "resetButton",
+            "X": 84,
+            "Y": 24,
+            "Width": 65,
+            "Height": 49,
+            "Type": "FlexButton",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -1559,10 +1776,6 @@
         "IsResource": true
       },
       {
-        "TextEntryId": "SingleUseId49",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId50",
         "IsResource": false
       },
@@ -1576,18 +1789,6 @@
       },
       {
         "TextEntryId": "SingleUseId54",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId57",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId64",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId65",
         "IsResource": false
       },
       {
@@ -1616,6 +1817,26 @@
       },
       {
         "TextEntryId": "SingleUseId71",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "start",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "stop",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId72",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId73",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId74",
         "IsResource": false
       }
     ],

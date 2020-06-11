@@ -9,8 +9,8 @@
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 
 class LoadSettingsContainerBase : public touchgfx::Container
@@ -30,6 +30,14 @@ public:
     void setSelectVoltageLimitForEditCallback(touchgfx::GenericCallback<>& callback)
     {
         this->selectVoltageLimitForEditCallback = &callback;
+    }
+    void setStartLoadSinkCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->startLoadSinkCallback = &callback;
+    }
+    void setStopLoadSinkCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->stopLoadSinkCallback = &callback;
     }
 
 protected:
@@ -54,6 +62,20 @@ protected:
             this->selectVoltageLimitForEditCallback->execute();
         }
     }
+    virtual void emitStartLoadSinkCallback()
+    {
+        if (startLoadSinkCallback && startLoadSinkCallback->isValid())
+        {
+            this->startLoadSinkCallback->execute();
+        }
+    }
+    virtual void emitStopLoadSinkCallback()
+    {
+        if (stopLoadSinkCallback && stopLoadSinkCallback->isValid())
+        {
+            this->stopLoadSinkCallback->execute();
+        }
+    }
 
     /*
      * Member Declarations
@@ -62,7 +84,6 @@ protected:
     touchgfx::TextArea currentUnitTextArea;
     touchgfx::ClickListener< touchgfx::BoxWithBorder > currentValueBox;
     touchgfx::TextAreaWithOneWildcard currentValueTextArea;
-    touchgfx::ButtonWithLabel startStopButton;
     touchgfx::ToggleButton voltageLimitEnabledButton;
     touchgfx::TextArea voltageLimitEnableLabelTextArea;
     touchgfx::ClickListener< touchgfx::BoxWithBorder > voltageValueBox;
@@ -71,6 +92,7 @@ protected:
     touchgfx::TextArea voltageLabelTextArea;
     touchgfx::TextArea labelTextArea;
     touchgfx::TextAreaWithOneWildcard dacValueTextArea;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ToggleButtonTrigger > > startStopButton;
 
 private:
 
@@ -78,17 +100,21 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<LoadSettingsContainerBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<LoadSettingsContainerBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Custom Trigger Callback Declarations
      */
     touchgfx::GenericCallback<>* selectCurrentLimitForEditCallback;
     touchgfx::GenericCallback<>* selectVoltageLimitForEditCallback;
+    touchgfx::GenericCallback<>* startLoadSinkCallback;
+    touchgfx::GenericCallback<>* stopLoadSinkCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

@@ -20,6 +20,7 @@ public:
 	float current;
 	float power;
 
+	bool loadSinkEnabled = false;
 	float voltageLimit = 5.0;
 	float currentLimit = 0.1;
 

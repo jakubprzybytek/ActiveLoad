@@ -43,6 +43,9 @@ public:
     void fanDutyCycleChanged(uint8_t fanDutyCycle);
     void fanRPMChanged(uint16_t fanRPM);
 
+    void startLoadSink();
+    void stopLoadSink();
+    void resetCounters();
     void selectVoltageLimitForEdit();
     void selectCurrentLimitForEdit();
 

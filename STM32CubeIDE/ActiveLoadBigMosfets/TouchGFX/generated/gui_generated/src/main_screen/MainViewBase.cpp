@@ -7,10 +7,12 @@
 #include "BitmapDatabase.hpp"
 
 MainViewBase::MainViewBase() :
-    buttonCallback(this, &MainViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &MainViewBase::flexButtonCallbackHandler),
     capacityReadoutContainerRequestTimerResetCallback(this, &MainViewBase::capacityReadoutContainerRequestTimerResetCallbackHandler),
     loadSettingsContainerSelectVoltageLimitForEditCallback(this, &MainViewBase::loadSettingsContainerSelectVoltageLimitForEditCallbackHandler),
-    loadSettingsContainerSelectCurrentLimitForEditCallback(this, &MainViewBase::loadSettingsContainerSelectCurrentLimitForEditCallbackHandler)
+    loadSettingsContainerSelectCurrentLimitForEditCallback(this, &MainViewBase::loadSettingsContainerSelectCurrentLimitForEditCallbackHandler),
+    loadSettingsContainerStartLoadSinkCallback(this, &MainViewBase::loadSettingsContainerStartLoadSinkCallbackHandler),
+    loadSettingsContainerStopLoadSinkCallback(this, &MainViewBase::loadSettingsContainerStopLoadSinkCallbackHandler)
 {
 
     background.setPosition(0, 0, 240, 320);
@@ -33,36 +35,43 @@ MainViewBase::MainViewBase() :
     loadSettingsContainer.setXY(4, 92);
     loadSettingsContainer.setSelectVoltageLimitForEditCallback(loadSettingsContainerSelectVoltageLimitForEditCallback);
     loadSettingsContainer.setSelectCurrentLimitForEditCallback(loadSettingsContainerSelectCurrentLimitForEditCallback);
+    loadSettingsContainer.setStartLoadSinkCallback(loadSettingsContainerStartLoadSinkCallback);
+    loadSettingsContainer.setStopLoadSinkCallback(loadSettingsContainerStopLoadSinkCallback);
 
-    resetConfirmationModalWindow.setBackground(touchgfx::BitmapId(BITMAP_MY_MODAL_BACKGROUND_ID), 18, 88);
+    resetConfirmationModalWindow.setBackground(touchgfx::BitmapId(BITMAP_MODALBACKGROUND_ID), 18, 88);
     resetConfirmationModalWindow.setShadeColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
     resetConfirmationModalWindow.setShadeAlpha(0);
     resetConfirmationModalWindow.hide();
-
-    resetButton.setXY(113, 70);
-    resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
-    resetButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID64));
-    resetButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    resetButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    resetConfirmationModalWindow.add(resetButton);
 
     warningImage.setXY(10, 15);
     warningImage.setBitmap(touchgfx::Bitmap(BITMAP_DARK_ICONS_ALERT_32_ID));
     resetConfirmationModalWindow.add(warningImage);
 
-    cancelButton.setXY(28, 70);
-    cancelButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
-    cancelButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID65));
-    cancelButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    cancelButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    cancelButton.setAction(buttonCallback);
-    resetConfirmationModalWindow.add(cancelButton);
-
     resetTextArea.setXY(64, 23);
-    resetTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(83, 83, 83));
+    resetTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(61, 58, 58));
     resetTextArea.setLinespacing(0);
     resetTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID66));
     resetConfirmationModalWindow.add(resetTextArea);
+
+    cancelButton1.setBoxWithBorderPosition(0, 0, 66, 50);
+    cancelButton1.setBorderSize(3);
+    cancelButton1.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(2, 73, 109), touchgfx::Color::getColorFrom24BitRGB(5, 133, 175), touchgfx::Color::getColorFrom24BitRGB(24, 112, 201), touchgfx::Color::getColorFrom24BitRGB(81, 143, 204));
+    cancelButton1.setText(TypedText(T_SINGLEUSEID73));
+    cancelButton1.setTextPosition(0, 16, 66, 50);
+    cancelButton1.setTextColors(touchgfx::Color::getColorFrom24BitRGB(158, 213, 250), touchgfx::Color::getColorFrom24BitRGB(73, 107, 163));
+    cancelButton1.setPosition(28, 75, 66, 50);
+    cancelButton1.setAction(flexButtonCallback);
+    resetConfirmationModalWindow.add(cancelButton1);
+
+    resetButton1.setBoxWithBorderPosition(0, 0, 66, 50);
+    resetButton1.setBorderSize(3);
+    resetButton1.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(112, 23, 23), touchgfx::Color::getColorFrom24BitRGB(112, 23, 23), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
+    resetButton1.setText(TypedText(T_SINGLEUSEID74));
+    resetButton1.setTextPosition(0, 16, 66, 50);
+    resetButton1.setTextColors(touchgfx::Color::getColorFrom24BitRGB(252, 219, 219), touchgfx::Color::getColorFrom24BitRGB(252, 219, 219));
+    resetButton1.setPosition(114, 75, 66, 50);
+    resetButton1.setAction(flexButtonCallback);
+    resetConfirmationModalWindow.add(resetButton1);
 
     add(background);
     add(termpControlContainer);
@@ -106,14 +115,43 @@ void MainViewBase::loadSettingsContainerSelectCurrentLimitForEditCallbackHandler
     this->presenter->selectCurrentLimitForEdit();
 }
 
-void MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+void MainViewBase::loadSettingsContainerStartLoadSinkCallbackHandler()
 {
-    if (&src == &cancelButton)
+    //StartLoadSink
+    //When loadSettingsContainer startLoadSink execute C++ code
+    //Execute C++ code
+    this->presenter->startLoadSink();
+}
+
+void MainViewBase::loadSettingsContainerStopLoadSinkCallbackHandler()
+{
+    //StopLoadSink
+    //When loadSettingsContainer stopLoadSink execute C++ code
+    //Execute C++ code
+    this->presenter->stopLoadSink();
+}
+
+void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &cancelButton1)
     {
         //HideResetConfirmationModelWindowInteraction
-        //When cancelButton clicked hide resetConfirmationModalWindow
+        //When cancelButton1 clicked hide resetConfirmationModalWindow
         //Hide resetConfirmationModalWindow
         resetConfirmationModalWindow.setVisible(false);
         resetConfirmationModalWindow.invalidate();
+    }
+    else if (&src == &resetButton1)
+    {
+        //ConfirmResetCounters
+        //When resetButton1 clicked hide resetConfirmationModalWindow
+        //Hide resetConfirmationModalWindow
+        resetConfirmationModalWindow.setVisible(false);
+        resetConfirmationModalWindow.invalidate();
+
+        //PerformResetCounters
+        //When ConfirmResetCounters completed execute C++ code
+        //Execute C++ code
+        this->presenter->resetCounters();
     }
 }

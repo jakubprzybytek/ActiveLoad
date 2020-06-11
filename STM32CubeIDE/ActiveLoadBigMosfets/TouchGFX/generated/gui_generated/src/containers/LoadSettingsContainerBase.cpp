@@ -8,8 +8,11 @@
 
 LoadSettingsContainerBase::LoadSettingsContainerBase() :
     buttonCallback(this, &LoadSettingsContainerBase::buttonCallbackHandler),
+    flexButtonCallback(this, &LoadSettingsContainerBase::flexButtonCallbackHandler),
     selectCurrentLimitForEditCallback(0),
-    selectVoltageLimitForEditCallback(0)
+    selectVoltageLimitForEditCallback(0),
+    startLoadSinkCallback(0),
+    stopLoadSinkCallback(0)
 {
     setWidth(232);
     setHeight(96);
@@ -18,47 +21,41 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
-    currentUnitTextArea.setPosition(82, 73, 15, 20);
+    currentUnitTextArea.setPosition(78, 73, 15, 20);
     currentUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     currentUnitTextArea.setLinespacing(0);
     currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
 
-    currentValueBox.setPosition(8, 64, 72, 29);
+    currentValueBox.setPosition(4, 64, 72, 29);
     currentValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
     currentValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(141, 181, 255));
     currentValueBox.setBorderSize(3);
 
-    currentValueTextArea.setPosition(8, 62, 68, 30);
+    currentValueTextArea.setPosition(4, 62, 68, 30);
     currentValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     currentValueTextArea.setLinespacing(0);
     currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID52));
 
-    startStopButton.setXY(166, 26);
-    startStopButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
-    startStopButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID57));
-    startStopButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(0, 60, 131));
-    startStopButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-
-    voltageLimitEnabledButton.setXY(123, 33);
+    voltageLimitEnabledButton.setXY(91, 37);
     voltageLimitEnabledButton.setBitmaps(touchgfx::Bitmap(BITMAP_CHECKBOX_UNCHECKED_ID), touchgfx::Bitmap(BITMAP_CHECKBOX_CHECKED_ID));
     voltageLimitEnabledButton.setAction(buttonCallback);
 
-    voltageLimitEnableLabelTextArea.setXY(115, 19);
+    voltageLimitEnableLabelTextArea.setXY(113, 40);
     voltageLimitEnableLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
     voltageLimitEnableLabelTextArea.setLinespacing(0);
     voltageLimitEnableLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID67));
 
-    voltageValueBox.setPosition(8, 33, 72, 29);
+    voltageValueBox.setPosition(4, 33, 72, 29);
     voltageValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
     voltageValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
     voltageValueBox.setBorderSize(3);
 
-    voltageUnitTextArea.setPosition(82, 43, 12, 20);
+    voltageUnitTextArea.setPosition(78, 43, 12, 20);
     voltageUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     voltageUnitTextArea.setLinespacing(0);
     voltageUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID54));
 
-    voltageValueTextArea.setPosition(8, 31, 68, 30);
+    voltageValueTextArea.setPosition(4, 31, 68, 30);
     voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     voltageValueTextArea.setLinespacing(0);
     voltageValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID68));
@@ -73,16 +70,24 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));
 
-    dacValueTextArea.setPosition(115, 69, 47, 20);
+    dacValueTextArea.setPosition(105, 68, 47, 20);
     dacValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     dacValueTextArea.setLinespacing(0);
     dacValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID69));
+
+    startStopButton.setBoxWithBorderPosition(0, 0, 68, 50);
+    startStopButton.setBorderSize(3);
+    startStopButton.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(24, 99, 18), touchgfx::Color::getColorFrom24BitRGB(112, 23, 23), touchgfx::Color::getColorFrom24BitRGB(79, 168, 73), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
+    startStopButton.setText(TypedText(T_START));
+    startStopButton.setTextPosition(0, 12, 68, 50);
+    startStopButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(210, 246, 212), touchgfx::Color::getColorFrom24BitRGB(252, 219, 219));
+    startStopButton.setPosition(156, 33, 68, 50);
+    startStopButton.setAction(flexButtonCallback);
 
     add(background);
     add(currentUnitTextArea);
     add(currentValueBox);
     add(currentValueTextArea);
-    add(startStopButton);
     add(voltageLimitEnabledButton);
     add(voltageLimitEnableLabelTextArea);
     add(voltageValueBox);
@@ -91,6 +96,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     add(voltageLabelTextArea);
     add(labelTextArea);
     add(dacValueTextArea);
+    add(startStopButton);
 }
 
 void LoadSettingsContainerBase::initialize()
@@ -107,5 +113,23 @@ void LoadSettingsContainerBase::buttonCallbackHandler(const touchgfx::AbstractBu
         //Execute C++ code
         voltageValueBox.setVisible(voltageLimitEnabledButton.getState());
         voltageValueBox.invalidate();
+    }
+}
+
+void LoadSettingsContainerBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &startStopButton)
+    {
+        //toggleLoadSinkInteraction
+        //When startStopButton clicked execute C++ code
+        //Execute C++ code
+        if (startStopButton.getPressed()) {
+        	emitStartLoadSinkCallback();
+        	startStopButton.setText(TypedText(T_STOP));
+        } else {
+        	emitStopLoadSinkCallback();
+        	startStopButton.setText(TypedText(T_START));
+        }
+        startStopButton.invalidate();
     }
 }

@@ -4,10 +4,9 @@
 #include <gui_generated/containers/CapacityReadoutContainerBase.hpp>
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
-#include "BitmapDatabase.hpp"
 
 CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
-    buttonCallback(this, &CapacityReadoutContainerBase::buttonCallbackHandler),
+    flexButtonCallback(this, &CapacityReadoutContainerBase::flexButtonCallbackHandler),
     requestTimerResetCallback(0)
 {
     setWidth(152);
@@ -42,19 +41,12 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     elapsedTimeLabelTextArea.setLinespacing(0);
     elapsedTimeLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID45));
 
-    digitalClock.setPosition(4, 33, 77, 21);
+    digitalClock.setPosition(3, 33, 77, 21);
     digitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     digitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID46));
     digitalClock.displayLeadingZeroForHourIndicator(true);
     digitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
     digitalClock.setTime24Hour(0, 0, 0);
-
-    resetButton.setXY(88, 25);
-    resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
-    resetButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID49));
-    resetButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(0, 35, 83));
-    resetButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    resetButton.setAction(buttonCallback);
 
     capacityWattHoursUnitTextArea.setXY(100, 107);
     capacityWattHoursUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
@@ -66,6 +58,15 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     capacityWattHoursValueTextArea.setLinespacing(0);
     capacityWattHoursValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID71));
 
+    resetButton.setBoxWithBorderPosition(0, 0, 65, 49);
+    resetButton.setBorderSize(3);
+    resetButton.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(2, 73, 109), touchgfx::Color::getColorFrom24BitRGB(5, 133, 175), touchgfx::Color::getColorFrom24BitRGB(24, 112, 201), touchgfx::Color::getColorFrom24BitRGB(81, 143, 204));
+    resetButton.setText(TypedText(T_SINGLEUSEID72));
+    resetButton.setTextPosition(0, 12, 65, 49);
+    resetButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(158, 213, 250), touchgfx::Color::getColorFrom24BitRGB(77, 107, 163));
+    resetButton.setPosition(84, 24, 65, 49);
+    resetButton.setAction(flexButtonCallback);
+
     add(background);
     add(labelTextArea);
     add(capacityAmpHoursUnitTextArea);
@@ -73,9 +74,9 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     add(capacityLabelTextArea);
     add(elapsedTimeLabelTextArea);
     add(digitalClock);
-    add(resetButton);
     add(capacityWattHoursUnitTextArea);
     add(capacityWattHoursValueTextArea);
+    add(resetButton);
 }
 
 void CapacityReadoutContainerBase::initialize()
@@ -83,7 +84,7 @@ void CapacityReadoutContainerBase::initialize()
 
 }
 
-void CapacityReadoutContainerBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+void CapacityReadoutContainerBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
     if (&src == &resetButton)
     {

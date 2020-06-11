@@ -18,6 +18,8 @@ extern void ActiveLoad_loop();
 
 extern void ActiveLoad_EncoderTick();
 
+void ActiveLoad_processMessages();
+
 #ifdef __cplusplus
 }
 #endif

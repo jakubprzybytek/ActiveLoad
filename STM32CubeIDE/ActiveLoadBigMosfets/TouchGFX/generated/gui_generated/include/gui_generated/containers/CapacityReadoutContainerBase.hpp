@@ -10,7 +10,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 
 class CapacityReadoutContainerBase : public touchgfx::Container
 {
@@ -53,16 +53,16 @@ protected:
     touchgfx::TextArea capacityLabelTextArea;
     touchgfx::TextArea elapsedTimeLabelTextArea;
     touchgfx::DigitalClock digitalClock;
-    touchgfx::ButtonWithLabel resetButton;
     touchgfx::TextArea capacityWattHoursUnitTextArea;
     touchgfx::TextAreaWithOneWildcard capacityWattHoursValueTextArea;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > resetButton;
 
 private:
 
     /*
      * Callback Declarations
      */
-    touchgfx::Callback<CapacityReadoutContainerBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<CapacityReadoutContainerBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Custom Trigger Callback Declarations
@@ -72,7 +72,7 @@ private:
     /*
      * Callback Handler Declarations
      */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 
