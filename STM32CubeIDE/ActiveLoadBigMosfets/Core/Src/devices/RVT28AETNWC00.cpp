@@ -19,7 +19,7 @@ void RVT28AETNWC00::init() {
 
 	writeCommand(0x01); // Software reset
 	HAL_Delay(5);
-	writeCommand(0x28); //Display off
+	writeCommand(RVT28AETNWC00_COMMAND_DISPLAY_OFF); //Display off
 
 	//---------------------------------------------------------
 	writeCommand(0xcf); //Power control B
@@ -126,62 +126,12 @@ void RVT28AETNWC00::init() {
 
 	writeCommand(0x11); // Sleep out
 	HAL_Delay(100);
-	writeCommand(0x29); // Display on
+	writeCommand(RVT28AETNWC00_COMMAND_DISPLAY_ON); // Display on
 	HAL_Delay(50);
-/*
+}
 
-	writeCommand(0x2a); // Column set
-	writeData(0x00);
-	writeData(0x10);
-	writeData(0x00);
-	writeData(0x20);
-	writeCommand(0x2b); // Page address set
-	writeData(0x00);
-	writeData(0x10);
-	writeData(0x00);
-	writeData(0x20);
-
-	writeCommand(0x2c);
-
-	for (uint16_t i = 0; i < 256; i++) {
-		writeData(0b1111100000000000);
-	}
-
-	writeCommand(0x2a); // Column set
-	writeData(0x00);
-	writeData(0x40);
-	writeData(0x00);
-	writeData(0x50);
-	writeCommand(0x2b); // Page address set
-	writeData(0x00);
-	writeData(0x30);
-	writeData(0x00);
-	writeData(0x40);
-
-	writeCommand(0x2c);
-
-	for (uint16_t i = 0; i < 256; i++) {
-		writeData(0b0000011111100000);
-	}
-
-	writeCommand(0x2a); // Column set
-	writeData(0x00);
-	writeData(0x70);
-	writeData(0x00);
-	writeData(0x80);
-	writeCommand(0x2b); // Page address set
-	writeData(0x00);
-	writeData(0x50);
-	writeData(0x00);
-	writeData(0x60);
-
-	writeCommand(0x2c);
-
-	for (uint16_t i = 0; i < 256; i++) {
-		writeData(0b0000000000011111);
-	}
-*/
-
+void RVT28AETNWC00::deinit() {
+	writeCommand(RVT28AETNWC00_COMMAND_SLEEP_IN); //Display off
 }
 
 void RVT28AETNWC00::writeCommand(uint8_t command) {

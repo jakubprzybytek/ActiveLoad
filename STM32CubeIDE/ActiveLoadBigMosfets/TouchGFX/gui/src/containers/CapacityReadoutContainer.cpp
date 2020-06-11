@@ -19,6 +19,6 @@ void CapacityReadoutContainer::setCapacityAmpHours(float capacityAmpHours) {
 }
 
 void CapacityReadoutContainer::setCapacityWattHours(float capacityWattHours) {
-	Unicode::snprintfFloat(capacityWattHoursBuffer, TEXTAREA_SIZE, "%f", capacityWattHours);
+	Unicode::snprintfFloat(capacityWattHoursBuffer, TEXTAREA_SIZE, "%.2f", capacityWattHours);
 	capacityWattHoursValueTextArea.invalidate();
 }

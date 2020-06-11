@@ -22,12 +22,12 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
-    capacityAmpHoursUnitTextArea.setXY(88, 84);
+    capacityAmpHoursUnitTextArea.setXY(100, 84);
     capacityAmpHoursUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     capacityAmpHoursUnitTextArea.setLinespacing(0);
     capacityAmpHoursUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID40));
 
-    capacityAmpHoursValueTextArea.setPosition(7, 79, 78, 23);
+    capacityAmpHoursValueTextArea.setPosition(7, 79, 90, 23);
     capacityAmpHoursValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     capacityAmpHoursValueTextArea.setLinespacing(0);
     capacityAmpHoursValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID41));
@@ -56,12 +56,12 @@ CapacityReadoutContainerBase::CapacityReadoutContainerBase() :
     resetButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     resetButton.setAction(buttonCallback);
 
-    capacityWattHoursUnitTextArea.setXY(88, 107);
+    capacityWattHoursUnitTextArea.setXY(100, 107);
     capacityWattHoursUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     capacityWattHoursUnitTextArea.setLinespacing(0);
     capacityWattHoursUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID70));
 
-    capacityWattHoursValueTextArea.setPosition(7, 102, 78, 23);
+    capacityWattHoursValueTextArea.setPosition(7, 102, 90, 23);
     capacityWattHoursValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     capacityWattHoursValueTextArea.setLinespacing(0);
     capacityWattHoursValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID71));

@@ -25,6 +25,7 @@ public:
 	INA233(I2C_HandleTypeDef* hi2c) : hi2c(hi2c) {}
 
 	void init();
+	void deinit();
 
 	float readVoltage();
 	float readCurrent();

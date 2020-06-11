@@ -11,14 +11,20 @@
 
 void INA233::init() {
 	// set up averaging
-	uint16_t mfrAdcCondigValue = 0b0100000100100111 | (0b100 << 9); // averaging across 128 samples
-	HAL_I2C_Mem_Write(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_MFR_ADC_CONFIG, 1, (uint8_t*) &mfrAdcCondigValue, 2, HAL_MAX_DELAY);
+	uint16_t mfrAdcConfigValue = 0b0100000100100111 | (0b011 << 9) | (0b101 << 6) | (0b101 << 3); // averaging across 64 samples, sampling 2ms
+	HAL_I2C_Mem_Write(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_MFR_ADC_CONFIG, 1, (uint8_t*) &mfrAdcConfigValue, 2, HAL_MAX_DELAY);
 
 	// calibrate
 	// Current_LSB = 0.25mA/bit -> calibration = 2048 (512 for 1mA/bit)
 	// max readout = 32768 * 0.25mA = 8.192A
 	uint16_t mfrCalibration = 2048;
 	HAL_I2C_Mem_Write(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_MFR_CALIBRATION, 1, (uint8_t*) &mfrCalibration, 2, HAL_MAX_DELAY);
+}
+
+void INA233::deinit() {
+	// power down
+	uint16_t mfrAdcConfigValue = 0b0000000000000000;
+	HAL_I2C_Mem_Write(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_MFR_ADC_CONFIG, 1, (uint8_t*) &mfrAdcConfigValue, 2, HAL_MAX_DELAY);
 }
 
 float INA233::readVoltage() {

@@ -76,6 +76,7 @@ void Error_Handler(void);
 #define Fan_Power_Ctrl_GPIO_Port GPIOB
 #define Encoder_Switch_Pin GPIO_PIN_8
 #define Encoder_Switch_GPIO_Port GPIOA
+#define Encoder_Switch_EXTI_IRQn EXTI9_5_IRQn
 #define TouchPad_Reset_Pin GPIO_PIN_10
 #define TouchPad_Reset_GPIO_Port GPIOA
 #define TouchPad_Interrupt_Pin GPIO_PIN_11

@@ -6,6 +6,7 @@
 #include "FanController.hpp"
 #include "LoadController.hpp"
 #include "Encoder.hpp"
+#include "EEPROM.hpp"
 
 #include "devices/INA233.hpp"
 #include "devices/TC74.hpp"
@@ -24,10 +25,12 @@ extern TIM_HandleTypeDef htim5;
 extern TIM_HandleTypeDef htim4;
 extern RTC_HandleTypeDef hrtc;
 
+#define TICK_TIME 0.02f // 20ms
+
 ApplicationState applicationState;
 FanController fanController(&htim2);
 LoadController loadController(&hdac);
-
+EEPROM eeprom;
 Encoder encoder;
 
 INA233 ina233(&hi2c2);
@@ -35,9 +38,7 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-#define TICK_TIME 0.02f // 20ms
-
-PID loadControllerPID(400.0f, 1000.0f, TICK_TIME, 0.0f, 3000.0f);
+PID loadControllerPID(400.0f, 2000.0f, TICK_TIME, 0.0f, 3000.0f);
 PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 
 int16_t tick = 0;
@@ -68,8 +69,8 @@ void ActiveLoad_init() {
 	// ticks for measuring fan RPM
 	HAL_TIM_Base_Start(&htim4);
 
-	// enable interrupts
-	HAL_NVIC_EnableIRQ(TIM5_IRQn);
+	eeprom.read(applicationState);
+	HAL_RTC_SetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
 }
 
 void ActiveLoad_loop() {
@@ -168,6 +169,9 @@ void ActiveLoad_EncoderTick() {
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == Fan_Sensor_Pin) {
 		ActiveLoad_fanPulse();
+	} else if (GPIO_Pin == Encoder_Switch_Pin) {
+		eeprom.write(applicationState);
+		eeprom.read(applicationState);
 	}
 }
 
@@ -175,4 +179,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	if (htim == &htim5) {
 		ActiveLoad_tick();
 	}
+}
+
+void HAL_PWR_PVDCallback() {
+	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_RESET);
+
+	loadController.setLoad(0);
+	fanController.setSpeed(0);
+
+	display.deinit();
+	ina233.deinit();
+	tc74.deinit();
+
+	eeprom.write(applicationState);
 }
