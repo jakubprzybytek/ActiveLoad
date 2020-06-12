@@ -8,13 +8,13 @@
 #include "LoadController.hpp"
 #include "Encoder.hpp"
 #include "EEPROM.hpp"
+#include "PID.hpp"
+#include "Hysteresis.hpp"
 
 #include "devices/INA233.hpp"
 #include "devices/TC74.hpp"
 #include "devices/RVT28AETNWC00.hpp"
 #include "devices/FT6206.hpp"
-
-#include "PID.hpp"
 
 #include "ActiveLoad.h"
 
@@ -27,6 +27,7 @@ extern TIM_HandleTypeDef htim4;
 extern RTC_HandleTypeDef hrtc;
 
 #define TICK_TIME 0.02f // 20ms
+#define CURRENT_STEP_FOR_VOLTAGE_LIMIT 0.1f
 
 ApplicationState applicationState;
 FanController fanController(&htim2);
@@ -41,6 +42,7 @@ FT6206 touchPad(&hi2c2);
 
 PID loadControllerPID(400.0f, 2000.0f, TICK_TIME, 0.0f, 3000.0f);
 PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
+Hysteresis fanHysteresis(5, 0, 0, 6);
 
 int16_t tick = 0;
 
@@ -82,14 +84,14 @@ void ActiveLoad_loop() {
 // tick every 20ms
 void ActiveLoad_tick() {
 
-	applicationState.voltage = ina233.readVoltage();
-	applicationState.current = ina233.readCurrent();
-	applicationState.power = ina233.readPower();
+	applicationState.voltageReadout = ina233.readVoltage();
+	applicationState.currentReadout = ina233.readCurrent();
+	applicationState.powerReadout = ina233.readPower();
 
-	applicationState.chargeMiliAmpSeconds += applicationState.current * 1000.0f * TICK_TIME;
+	applicationState.chargeMiliAmpSeconds += applicationState.currentReadout * 1000.0f * TICK_TIME;
 	applicationState.chargeAmpHours = applicationState.chargeMiliAmpSeconds / 1000.0f / 3600.0f;
 
-	applicationState.chargeMiliWattSeconds += applicationState.power * 1000.0f * TICK_TIME;
+	applicationState.chargeMiliWattSeconds += applicationState.powerReadout * 1000.0f * TICK_TIME;
 	applicationState.chargeWattHours = applicationState.chargeMiliWattSeconds / 1000.0f / 3600.0f;
 
 	// check touch panel
@@ -104,7 +106,7 @@ void ActiveLoad_tick() {
 
 	if (applicationState.loadSinkEnabled) {
 		// PID for load controller
-		applicationState.loadLevel = loadControllerPID.update(applicationState.currentLimit, applicationState.current);
+		applicationState.loadLevel = loadControllerPID.update(applicationState.currentLimit, applicationState.currentReadout);
 		loadController.setLoad(applicationState.loadLevel);
 	}
 
@@ -114,13 +116,24 @@ void ActiveLoad_tick() {
 		applicationState.temperature = tc74.readTemperature();
 
 		// PID for load controller
-		applicationState.fanDutyCycle = fanControllerPID.update(applicationState.temperature, 30.0f);
+		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, 30.0f);
+		applicationState.fanDutyCycle = fanHysteresis.update(applicationState.fanDutyCycleSetValue);
 		fanController.setSpeed(applicationState.fanDutyCycle);
 
 		// read rtc
 		RTC_DateTypeDef date;
 		HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
 		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
+
+		// apply voltageReadout limit
+		if (applicationState.loadSinkEnabled && applicationState.voltageLimitEnabled) {
+			if (applicationState.currentLimit > 0.0f && applicationState.voltageReadout <= applicationState.voltageLimit) {
+				applicationState.currentLimit -= CURRENT_STEP_FOR_VOLTAGE_LIMIT;
+				if (applicationState.currentLimitInEdit) {
+					encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
+				}
+			}
+		}
 	}
 
 	touchgfx::OSWrappers::signalVSync();
@@ -155,6 +168,12 @@ void ActiveLoad_processMessages() {
 			applicationState.loadSinkEnabled = false;
 			applicationState.loadLevel = 0;
 			loadController.setLoad(applicationState.loadLevel);
+			break;
+		case ENABLE_VOLTAGE_LIMIT:
+			applicationState.voltageLimitEnabled = true;
+			break;
+		case DISABLE_VOLTAGE_LIMIT:
+			applicationState.voltageLimitEnabled = false;
 			break;
 		}
 	}

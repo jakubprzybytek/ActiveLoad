@@ -10,16 +10,16 @@ Model::Model() :
 }
 
 void Model::tick() {
-	if (this->voltage != applicationState.voltage) {
-		this->voltage = applicationState.voltage;
+	if (this->voltage != applicationState.voltageReadout) {
+		this->voltage = applicationState.voltageReadout;
 		this->modelListener->voltageChanged(this->voltage);
 	}
-	if (this->current != applicationState.current) {
-		this->current = applicationState.current;
+	if (this->current != applicationState.currentReadout) {
+		this->current = applicationState.currentReadout;
 		this->modelListener->currentChanged(this->current);
 	}
-	if (this->power != applicationState.power) {
-		this->power = applicationState.power;
+	if (this->power != applicationState.powerReadout) {
+		this->power = applicationState.powerReadout;
 		this->modelListener->powerChanged(this->power);
 	}
 

@@ -56,6 +56,8 @@ private:
     touchgfx::Callback<MainViewBase> loadSettingsContainerSelectCurrentLimitForEditCallback;
     touchgfx::Callback<MainViewBase> loadSettingsContainerStartLoadSinkCallback;
     touchgfx::Callback<MainViewBase> loadSettingsContainerStopLoadSinkCallback;
+    touchgfx::Callback<MainViewBase> loadSettingsContainerEnableVoltageLimitCallback;
+    touchgfx::Callback<MainViewBase> loadSettingsContainerDisableVoltageLimitCallback;
 
     /*
      * Callback Handler Declarations
@@ -66,6 +68,8 @@ private:
     void loadSettingsContainerSelectCurrentLimitForEditCallbackHandler();
     void loadSettingsContainerStartLoadSinkCallbackHandler();
     void loadSettingsContainerStopLoadSinkCallbackHandler();
+    void loadSettingsContainerEnableVoltageLimitCallbackHandler();
+    void loadSettingsContainerDisableVoltageLimitCallbackHandler();
 
 };
 

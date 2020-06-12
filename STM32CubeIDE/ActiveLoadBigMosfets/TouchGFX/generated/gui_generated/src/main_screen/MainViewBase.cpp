@@ -12,7 +12,9 @@ MainViewBase::MainViewBase() :
     loadSettingsContainerSelectVoltageLimitForEditCallback(this, &MainViewBase::loadSettingsContainerSelectVoltageLimitForEditCallbackHandler),
     loadSettingsContainerSelectCurrentLimitForEditCallback(this, &MainViewBase::loadSettingsContainerSelectCurrentLimitForEditCallbackHandler),
     loadSettingsContainerStartLoadSinkCallback(this, &MainViewBase::loadSettingsContainerStartLoadSinkCallbackHandler),
-    loadSettingsContainerStopLoadSinkCallback(this, &MainViewBase::loadSettingsContainerStopLoadSinkCallbackHandler)
+    loadSettingsContainerStopLoadSinkCallback(this, &MainViewBase::loadSettingsContainerStopLoadSinkCallbackHandler),
+    loadSettingsContainerEnableVoltageLimitCallback(this, &MainViewBase::loadSettingsContainerEnableVoltageLimitCallbackHandler),
+    loadSettingsContainerDisableVoltageLimitCallback(this, &MainViewBase::loadSettingsContainerDisableVoltageLimitCallbackHandler)
 {
 
     background.setPosition(0, 0, 240, 320);
@@ -20,11 +22,11 @@ MainViewBase::MainViewBase() :
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(2);
 
-    termpControlContainer.setXY(160, 188);
+    termpControlContainer.setXY(160, 194);
 
     inputReadoutContainer.setXY(4, 4);
 
-    capacityReadoutContainer.setXY(4, 188);
+    capacityReadoutContainer.setXY(4, 194);
     capacityReadoutContainer.setRequestTimerResetCallback(capacityReadoutContainerRequestTimerResetCallback);
 
     titleTextArea.setPosition(0, 3, 236, 25);
@@ -37,6 +39,8 @@ MainViewBase::MainViewBase() :
     loadSettingsContainer.setSelectCurrentLimitForEditCallback(loadSettingsContainerSelectCurrentLimitForEditCallback);
     loadSettingsContainer.setStartLoadSinkCallback(loadSettingsContainerStartLoadSinkCallback);
     loadSettingsContainer.setStopLoadSinkCallback(loadSettingsContainerStopLoadSinkCallback);
+    loadSettingsContainer.setEnableVoltageLimitCallback(loadSettingsContainerEnableVoltageLimitCallback);
+    loadSettingsContainer.setDisableVoltageLimitCallback(loadSettingsContainerDisableVoltageLimitCallback);
 
     resetConfirmationModalWindow.setBackground(touchgfx::BitmapId(BITMAP_MODALBACKGROUND_ID), 18, 88);
     resetConfirmationModalWindow.setShadeColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
@@ -129,6 +133,22 @@ void MainViewBase::loadSettingsContainerStopLoadSinkCallbackHandler()
     //When loadSettingsContainer stopLoadSink execute C++ code
     //Execute C++ code
     this->presenter->stopLoadSink();
+}
+
+void MainViewBase::loadSettingsContainerEnableVoltageLimitCallbackHandler()
+{
+    //EnableVoltageLimit
+    //When loadSettingsContainer enableVoltageLimit execute C++ code
+    //Execute C++ code
+    this->presenter->enableVoltageLimit();
+}
+
+void MainViewBase::loadSettingsContainerDisableVoltageLimitCallbackHandler()
+{
+    //DisableVolatgeLimit
+    //When loadSettingsContainer disableVoltageLimit execute C++ code
+    //Execute C++ code
+    this->presenter->disableVoltageLimit();
 }
 
 void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)

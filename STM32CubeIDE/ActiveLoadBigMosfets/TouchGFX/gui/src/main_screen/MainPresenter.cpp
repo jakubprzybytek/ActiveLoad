@@ -3,8 +3,7 @@
 
 #include "MessageQueue.hpp"
 
-MainPresenter::MainPresenter(MainView &v) :
-		view(v) {
+MainPresenter::MainPresenter(MainView &v) : view(v) {
 }
 
 void MainPresenter::activate() {
@@ -91,4 +90,12 @@ void MainPresenter::selectVoltageLimitForEdit() {
 
 void MainPresenter::selectCurrentLimitForEdit() {
 	MessageQueue::getInstance().submit(SELECT_CURRENT_LIMIT_FOR_EDIT);
+}
+
+void MainPresenter::enableVoltageLimit() {
+	MessageQueue::getInstance().submit(ENABLE_VOLTAGE_LIMIT);
+}
+
+void MainPresenter::disableVoltageLimit() {
+	MessageQueue::getInstance().submit(DISABLE_VOLTAGE_LIMIT);
 }

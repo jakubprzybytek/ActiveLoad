@@ -48,6 +48,8 @@ public:
     void resetCounters();
     void selectVoltageLimitForEdit();
     void selectCurrentLimitForEdit();
+    void enableVoltageLimit();
+    void disableVoltageLimit();
 
 private:
     MainPresenter();

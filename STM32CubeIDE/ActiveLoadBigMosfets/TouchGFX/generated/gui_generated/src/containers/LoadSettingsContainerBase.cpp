@@ -12,65 +12,18 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     selectCurrentLimitForEditCallback(0),
     selectVoltageLimitForEditCallback(0),
     startLoadSinkCallback(0),
-    stopLoadSinkCallback(0)
+    stopLoadSinkCallback(0),
+    enableVoltageLimitCallback(0),
+    disableVoltageLimitCallback(0)
 {
     setWidth(232);
-    setHeight(96);
-    background.setPosition(0, 18, 232, 78);
+    setHeight(102);
+    background.setPosition(0, 18, 232, 84);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(45, 45, 45));
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(1);
 
-    currentUnitTextArea.setPosition(78, 73, 15, 20);
-    currentUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
-    currentUnitTextArea.setLinespacing(0);
-    currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
-
-    currentValueBox.setPosition(4, 64, 72, 29);
-    currentValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
-    currentValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(141, 181, 255));
-    currentValueBox.setBorderSize(3);
-
-    currentValueTextArea.setPosition(4, 62, 68, 30);
-    currentValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
-    currentValueTextArea.setLinespacing(0);
-    currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID52));
-
-    voltageLimitEnabledButton.setXY(91, 37);
-    voltageLimitEnabledButton.setBitmaps(touchgfx::Bitmap(BITMAP_CHECKBOX_UNCHECKED_ID), touchgfx::Bitmap(BITMAP_CHECKBOX_CHECKED_ID));
-    voltageLimitEnabledButton.setAction(buttonCallback);
-
-    voltageLimitEnableLabelTextArea.setXY(113, 40);
-    voltageLimitEnableLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
-    voltageLimitEnableLabelTextArea.setLinespacing(0);
-    voltageLimitEnableLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID67));
-
-    voltageValueBox.setPosition(4, 33, 72, 29);
-    voltageValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
-    voltageValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
-    voltageValueBox.setBorderSize(3);
-
-    voltageUnitTextArea.setPosition(78, 43, 12, 20);
-    voltageUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
-    voltageUnitTextArea.setLinespacing(0);
-    voltageUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID54));
-
-    voltageValueTextArea.setPosition(4, 31, 68, 30);
-    voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
-    voltageValueTextArea.setLinespacing(0);
-    voltageValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID68));
-
-    voltageLabelTextArea.setXY(4, 19);
-    voltageLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
-    voltageLabelTextArea.setLinespacing(0);
-    voltageLabelTextArea.setTypedText(touchgfx::TypedText(T_VOLTAGECURRENT));
-
-    labelTextArea.setPosition(2, 0, 113, 18);
-    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(226, 228, 156));
-    labelTextArea.setLinespacing(0);
-    labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));
-
-    dacValueTextArea.setPosition(105, 68, 47, 20);
+    dacValueTextArea.setPosition(105, 66, 47, 20);
     dacValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
     dacValueTextArea.setLinespacing(0);
     dacValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID69));
@@ -84,19 +37,68 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     startStopButton.setPosition(156, 33, 68, 50);
     startStopButton.setAction(flexButtonCallback);
 
+    voltageLimitEnableLabelTextArea.setXY(113, 41);
+    voltageLimitEnableLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    voltageLimitEnableLabelTextArea.setLinespacing(0);
+    voltageLimitEnableLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID67));
+
+    voltageLimitEnabledButton.setXY(91, 38);
+    voltageLimitEnabledButton.setBitmaps(touchgfx::Bitmap(BITMAP_CHECKBOX_UNCHECKED_ID), touchgfx::Bitmap(BITMAP_CHECKBOX_CHECKED_ID));
+    voltageLimitEnabledButton.setAction(buttonCallback);
+
+    currentValueBox.setPosition(4, 68, 72, 32);
+    currentValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
+    currentValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(141, 181, 255));
+    currentValueBox.setBorderSize(3);
+
+    currentUnitTextArea.setPosition(78, 77, 15, 20);
+    currentUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
+    currentUnitTextArea.setLinespacing(0);
+    currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
+
+    currentValueTextArea.setPosition(4, 67, 68, 30);
+    currentValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
+    currentValueTextArea.setLinespacing(0);
+    currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID52));
+
+    voltageValueBox.setPosition(4, 34, 72, 32);
+    voltageValueBox.setColor(touchgfx::Color::getColorFrom24BitRGB(56, 56, 56));
+    voltageValueBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(97, 97, 97));
+    voltageValueBox.setBorderSize(3);
+
+    voltageUnitTextArea.setPosition(78, 44, 12, 20);
+    voltageUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
+    voltageUnitTextArea.setLinespacing(0);
+    voltageUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID54));
+
+    voltageValueTextArea.setPosition(4, 33, 68, 30);
+    voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(120, 120, 120));
+    voltageValueTextArea.setLinespacing(0);
+    voltageValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID68));
+
+    voltageLabelTextArea.setXY(4, 19);
+    voltageLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179));
+    voltageLabelTextArea.setLinespacing(0);
+    voltageLabelTextArea.setTypedText(touchgfx::TypedText(T_VOLTAGECURRENT));
+
+    labelTextArea.setPosition(2, 0, 113, 18);
+    labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(226, 228, 156));
+    labelTextArea.setLinespacing(0);
+    labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));
+
     add(background);
-    add(currentUnitTextArea);
-    add(currentValueBox);
-    add(currentValueTextArea);
-    add(voltageLimitEnabledButton);
+    add(dacValueTextArea);
+    add(startStopButton);
     add(voltageLimitEnableLabelTextArea);
+    add(voltageLimitEnabledButton);
+    add(currentValueBox);
+    add(currentUnitTextArea);
+    add(currentValueTextArea);
     add(voltageValueBox);
     add(voltageUnitTextArea);
     add(voltageValueTextArea);
     add(voltageLabelTextArea);
     add(labelTextArea);
-    add(dacValueTextArea);
-    add(startStopButton);
 }
 
 void LoadSettingsContainerBase::initialize()
@@ -108,11 +110,17 @@ void LoadSettingsContainerBase::buttonCallbackHandler(const touchgfx::AbstractBu
 {
     if (&src == &voltageLimitEnabledButton)
     {
-        //voltageLimitTriggerInteraction
+        //toggleVoltageLimitInteraction
         //When voltageLimitEnabledButton clicked execute C++ code
         //Execute C++ code
-        voltageValueBox.setVisible(voltageLimitEnabledButton.getState());
-        voltageValueBox.invalidate();
+        if (voltageLimitEnabledButton.getState()) {
+        	emitEnableVoltageLimitCallback();
+        	voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));
+        } else {
+        	emitDisableVoltageLimitCallback();
+        	voltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(120, 120, 120));
+        }
+        voltageValueTextArea.invalidate();
     }
 }
 

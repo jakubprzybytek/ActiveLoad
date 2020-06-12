@@ -16,11 +16,12 @@ class ApplicationState {
 public:
 	RTC_TimeTypeDef time;
 
-	float voltage;
-	float current;
-	float power;
+	float voltageReadout;
+	float currentReadout;
+	float powerReadout;
 
 	bool loadSinkEnabled = false;
+	bool voltageLimitEnabled = false;
 	float voltageLimit = 5.0;
 	float currentLimit = 0.1;
 
@@ -32,6 +33,7 @@ public:
 	uint16_t loadLevel;
 
 	int8_t temperature;
+	uint8_t fanDutyCycleSetValue;
 	uint8_t fanDutyCycle;
 	uint16_t fanRPM;
 

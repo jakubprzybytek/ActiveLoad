@@ -32,9 +32,9 @@
             "CustomContainerDefinitionName": "TermpControlContainer",
             "Name": "termpControlContainer",
             "X": 160,
-            "Y": 188,
+            "Y": 194,
             "Width": 76,
-            "Height": 128,
+            "Height": 122,
             "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
@@ -60,9 +60,9 @@
             "CustomContainerDefinitionName": "CapacityReadoutContainer",
             "Name": "capacityReadoutContainer",
             "X": 4,
-            "Y": 188,
+            "Y": 194,
             "Width": 152,
-            "Height": 128,
+            "Height": 122,
             "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
@@ -405,6 +405,32 @@
               "Code": "this->presenter->stopLoadSink();",
               "Type": "ActionExecuteCode"
             }
+          },
+          {
+            "InteractionName": "EnableVoltageLimit",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerCustomTypeName": "LoadSettingsContainer enableVoltageLimit happens",
+              "TriggerComponent": "loadSettingsContainer",
+              "Type": "TriggerCustom"
+            },
+            "Action": {
+              "Code": "this->presenter->enableVoltageLimit();",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "DisableVolatgeLimit",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerCustomTypeName": "LoadSettingsContainer disableVoltageLimit happens",
+              "TriggerComponent": "loadSettingsContainer",
+              "Type": "TriggerCustom"
+            },
+            "Action": {
+              "Code": "this->presenter->disableVoltageLimit();",
+              "Type": "ActionExecuteCode"
+            }
           }
         ],
         "Name": "Main",
@@ -476,7 +502,7 @@
             "LineSpacing": 0,
             "Name": "currentUnitTextArea",
             "X": 86,
-            "Y": 70,
+            "Y": 64,
             "Width": 15,
             "Height": 20,
             "Type": "TextArea",
@@ -522,13 +548,13 @@
               "Blue": 157
             },
             "Alpha": 255,
-            "AutoSize": false,
+            "AutoSize": true,
             "LineSpacing": 0,
             "Name": "voltageUnitTextArea",
             "X": 86,
-            "Y": 42,
-            "Width": 12,
-            "Height": 20,
+            "Y": 36,
+            "Width": 14,
+            "Height": 25,
             "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
@@ -686,244 +712,8 @@
             "X": 0,
             "Y": 18,
             "Width": 232,
-            "Height": 78,
+            "Height": 84,
             "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId51",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "currentUnitTextArea",
-            "X": 78,
-            "Y": 73,
-            "Width": 15,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Color": {
-              "Red": 56,
-              "Green": 56,
-              "Blue": 56
-            },
-            "BorderColor": {
-              "Red": 141,
-              "Green": 181,
-              "Blue": 255
-            },
-            "BorderSize": 3,
-            "Alpha": 255,
-            "Name": "currentValueBox",
-            "X": 4,
-            "Y": 64,
-            "Width": 72,
-            "Height": 29,
-            "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": true,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId52",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "currentValueTextArea",
-            "X": 4,
-            "Y": 62,
-            "Width": 68,
-            "Height": 30,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "InitialStatePressed": false,
-            "Pressed": "checkbox-checked.png",
-            "Released": "checkbox-unchecked.png",
-            "Alpha": 255,
-            "Name": "voltageLimitEnabledButton",
-            "X": 91,
-            "Y": 37,
-            "Width": 20,
-            "Height": 20,
-            "Type": "ToggleButton",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId67",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "voltageLimitEnableLabelTextArea",
-            "X": 113,
-            "Y": 40,
-            "Width": 37,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Color": {
-              "Red": 56,
-              "Green": 56,
-              "Blue": 56
-            },
-            "BorderColor": {
-              "Red": 97,
-              "Green": 97,
-              "Blue": 97
-            },
-            "BorderSize": 3,
-            "Alpha": 255,
-            "Name": "voltageValueBox",
-            "X": 4,
-            "Y": 33,
-            "Width": 72,
-            "Height": 29,
-            "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": true,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId54",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "voltageUnitTextArea",
-            "X": 78,
-            "Y": 43,
-            "Width": 12,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId68",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "voltageValueTextArea",
-            "X": 4,
-            "Y": 31,
-            "Width": 68,
-            "Height": 30,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "voltageCurrent",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "voltageLabelTextArea",
-            "X": 4,
-            "Y": 19,
-            "Width": 95,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId50",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 226,
-              "Green": 228,
-              "Blue": 156
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "labelTextArea",
-            "X": 2,
-            "Y": 0,
-            "Width": 113,
-            "Height": 18,
-            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -947,7 +737,7 @@
             },
             "Name": "dacValueTextArea",
             "X": 105,
-            "Y": 68,
+            "Y": 66,
             "Width": 47,
             "Height": 20,
             "Type": "TextArea",
@@ -1022,18 +812,254 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId67",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "voltageLimitEnableLabelTextArea",
+            "X": 113,
+            "Y": 41,
+            "Width": 37,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "checkbox-checked.png",
+            "Released": "checkbox-unchecked.png",
+            "Alpha": 255,
+            "Name": "voltageLimitEnabledButton",
+            "X": 91,
+            "Y": 38,
+            "Width": 20,
+            "Height": 20,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 56,
+              "Green": 56,
+              "Blue": 56
+            },
+            "BorderColor": {
+              "Red": 141,
+              "Green": 181,
+              "Blue": 255
+            },
+            "BorderSize": 3,
+            "Alpha": 255,
+            "Name": "currentValueBox",
+            "X": 4,
+            "Y": 68,
+            "Width": 72,
+            "Height": 32,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId51",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "currentUnitTextArea",
+            "X": 78,
+            "Y": 77,
+            "Width": 15,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId52",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "currentValueTextArea",
+            "X": 4,
+            "Y": 67,
+            "Width": 68,
+            "Height": 30,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 56,
+              "Green": 56,
+              "Blue": 56
+            },
+            "BorderColor": {
+              "Red": 97,
+              "Green": 97,
+              "Blue": 97
+            },
+            "BorderSize": 3,
+            "Alpha": 255,
+            "Name": "voltageValueBox",
+            "X": 4,
+            "Y": 34,
+            "Width": 72,
+            "Height": 32,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId54",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "voltageUnitTextArea",
+            "X": 78,
+            "Y": 44,
+            "Width": 12,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId68",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 120,
+              "Green": 120,
+              "Blue": 120
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "voltageValueTextArea",
+            "X": 4,
+            "Y": 33,
+            "Width": 68,
+            "Height": 30,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "voltageCurrent",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "voltageLabelTextArea",
+            "X": 4,
+            "Y": 19,
+            "Width": 95,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId50",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 226,
+              "Green": 228,
+              "Blue": 156
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 2,
+            "Y": 0,
+            "Width": 113,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
           {
-            "InteractionName": "voltageLimitTriggerInteraction",
+            "InteractionName": "toggleVoltageLimitInteraction",
             "HasCompletedTrigger": false,
             "Trigger": {
               "TriggerComponent": "voltageLimitEnabledButton",
               "Type": "TriggerClicked"
             },
             "Action": {
-              "Code": "voltageValueBox.setVisible(voltageLimitEnabledButton.getState());\r\nvoltageValueBox.invalidate();",
+              "Code": "if (voltageLimitEnabledButton.getState()) {\r\n\temitEnableVoltageLimitCallback();\r\n\tvoltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(221, 218, 218));\r\n} else {\r\n\temitDisableVoltageLimitCallback();\r\n\tvoltageValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(120, 120, 120));\r\n}\r\nvoltageValueTextArea.invalidate();",
               "Type": "ActionExecuteCode"
             }
           },
@@ -1070,290 +1096,23 @@
             "Name": "stopLoadSink",
             "Description": "Stops the load sink",
             "HasValue": false
+          },
+          {
+            "Name": "enableVoltageLimit",
+            "Description": "Enables voltage limit",
+            "HasValue": false
+          },
+          {
+            "Name": "disableVoltageLimit",
+            "Description": "Disables voltage limit",
+            "HasValue": false
           }
         ],
         "Name": "LoadSettingsContainer",
         "X": 0,
         "Y": 0,
         "Width": 232,
-        "Height": 96
-      },
-      {
-        "Components": [
-          {
-            "Color": {
-              "Red": 45,
-              "Green": 45,
-              "Blue": 45
-            },
-            "BorderColor": {
-              "Red": 100,
-              "Green": 100,
-              "Blue": 100
-            },
-            "BorderSize": 1,
-            "Alpha": 255,
-            "Name": "background",
-            "X": 0,
-            "Y": 18,
-            "Width": 76,
-            "Height": 110,
-            "Type": "BoxWithBorder",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId18",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 129,
-              "Green": 168,
-              "Blue": 119
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "labelTextArea",
-            "X": 2,
-            "Y": 0,
-            "Width": 43,
-            "Height": 18,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId25",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "fanRpmValueTextArea",
-            "X": 2,
-            "Y": 104,
-            "Width": 44,
-            "Height": 22,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId24",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "fanRpmLabelTextArea",
-            "X": 4,
-            "Y": 93,
-            "Width": 23,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId26",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "fanRPMUnitTextArea",
-            "X": 47,
-            "Y": 109,
-            "Width": 29,
-            "Height": 18,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId22",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 221,
-              "Green": 218,
-              "Blue": 218
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "fanDutyCycleValueTextArea",
-            "X": 2,
-            "Y": 68,
-            "Width": 44,
-            "Height": 22,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId23",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "fanDutyCycleLabelTextArea",
-            "X": 4,
-            "Y": 56,
-            "Width": 19,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId17",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "radiatorTemperatureUnitTextArea",
-            "X": 50,
-            "Y": 37,
-            "Width": 15,
-            "Height": 20,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId19",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 96,
-              "Blue": 96
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "radiatorTemperatureValueTextArea",
-            "X": 2,
-            "Y": 32,
-            "Width": 44,
-            "Height": 22,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId21",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 180,
-              "Green": 179,
-              "Blue": 179
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "radiatorTemperatureLabelTextArea",
-            "X": 4,
-            "Y": 19,
-            "Width": 46,
-            "Height": 14,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId48",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 158,
-              "Green": 157,
-              "Blue": 157
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "fanDutyCycleUnitTextArea",
-            "X": 50,
-            "Y": 73,
-            "Width": 15,
-            "Height": 18,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          }
-        ],
-        "Interactions": [],
-        "Name": "TermpControlContainer",
-        "X": 0,
-        "Y": 0,
-        "Width": 76,
-        "Height": 128
+        "Height": 102
       },
       {
         "Components": [
@@ -1374,7 +1133,7 @@
             "X": 0,
             "Y": 18,
             "Width": 152,
-            "Height": 110,
+            "Height": 104,
             "Type": "BoxWithBorder",
             "Visible": true,
             "Draggable": false,
@@ -1418,7 +1177,7 @@
             "LineSpacing": 0,
             "Name": "capacityAmpHoursUnitTextArea",
             "X": 100,
-            "Y": 84,
+            "Y": 80,
             "Width": 19,
             "Height": 18,
             "Type": "TextArea",
@@ -1445,7 +1204,7 @@
             },
             "Name": "capacityAmpHoursValueTextArea",
             "X": 7,
-            "Y": 79,
+            "Y": 75,
             "Width": 90,
             "Height": 23,
             "Type": "TextArea",
@@ -1468,7 +1227,7 @@
             "LineSpacing": 0,
             "Name": "capacityLabelTextArea",
             "X": 4,
-            "Y": 63,
+            "Y": 59,
             "Width": 47,
             "Height": 14,
             "Type": "TextArea",
@@ -1540,7 +1299,7 @@
             "LineSpacing": 0,
             "Name": "capacityWattHoursUnitTextArea",
             "X": 100,
-            "Y": 107,
+            "Y": 103,
             "Width": 23,
             "Height": 18,
             "Type": "TextArea",
@@ -1567,7 +1326,7 @@
             },
             "Name": "capacityWattHoursValueTextArea",
             "X": 7,
-            "Y": 102,
+            "Y": 98,
             "Width": 90,
             "Height": 23,
             "Type": "TextArea",
@@ -1667,7 +1426,284 @@
         "X": 0,
         "Y": 0,
         "Width": 152,
-        "Height": 128
+        "Height": 122
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 45,
+              "Green": 45,
+              "Blue": 45
+            },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 18,
+            "Width": 76,
+            "Height": 104,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId18",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 129,
+              "Green": 168,
+              "Blue": 119
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 2,
+            "Y": 0,
+            "Width": 43,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId25",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "fanRpmValueTextArea",
+            "X": 2,
+            "Y": 98,
+            "Width": 44,
+            "Height": 22,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId24",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "fanRpmLabelTextArea",
+            "X": 4,
+            "Y": 87,
+            "Width": 23,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId26",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "fanRPMUnitTextArea",
+            "X": 47,
+            "Y": 103,
+            "Width": 29,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId22",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 221,
+              "Green": 218,
+              "Blue": 218
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "fanDutyCycleValueTextArea",
+            "X": 2,
+            "Y": 64,
+            "Width": 44,
+            "Height": 22,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId23",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "fanDutyCycleLabelTextArea",
+            "X": 4,
+            "Y": 52,
+            "Width": 19,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId17",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "radiatorTemperatureUnitTextArea",
+            "X": 50,
+            "Y": 35,
+            "Width": 15,
+            "Height": 20,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId19",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 96,
+              "Blue": 96
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "radiatorTemperatureValueTextArea",
+            "X": 2,
+            "Y": 30,
+            "Width": 44,
+            "Height": 22,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId21",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 180,
+              "Green": 179,
+              "Blue": 179
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "radiatorTemperatureLabelTextArea",
+            "X": 4,
+            "Y": 19,
+            "Width": 46,
+            "Height": 14,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId48",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 158,
+              "Green": 157,
+              "Blue": 157
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "fanDutyCycleUnitTextArea",
+            "X": 50,
+            "Y": 69,
+            "Width": 15,
+            "Height": 18,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "TermpControlContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 76,
+        "Height": 122
       }
     ],
     "TextEntries": [

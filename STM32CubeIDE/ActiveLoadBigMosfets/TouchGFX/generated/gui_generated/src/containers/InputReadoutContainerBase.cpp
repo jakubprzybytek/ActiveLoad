@@ -19,7 +19,7 @@ InputReadoutContainerBase::InputReadoutContainerBase()
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
-    currentUnitTextArea.setPosition(86, 70, 15, 20);
+    currentUnitTextArea.setPosition(86, 64, 15, 20);
     currentUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     currentUnitTextArea.setLinespacing(0);
     currentUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID30));
@@ -29,7 +29,7 @@ InputReadoutContainerBase::InputReadoutContainerBase()
     currentValueTextArea.setLinespacing(0);
     currentValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID31));
 
-    voltageUnitTextArea.setPosition(86, 42, 12, 20);
+    voltageUnitTextArea.setXY(86, 36);
     voltageUnitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(158, 157, 157));
     voltageUnitTextArea.setLinespacing(0);
     voltageUnitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));

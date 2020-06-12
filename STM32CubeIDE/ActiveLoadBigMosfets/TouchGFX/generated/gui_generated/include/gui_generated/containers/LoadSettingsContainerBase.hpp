@@ -7,10 +7,10 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 
 class LoadSettingsContainerBase : public touchgfx::Container
@@ -38,6 +38,14 @@ public:
     void setStopLoadSinkCallback(touchgfx::GenericCallback<>& callback)
     {
         this->stopLoadSinkCallback = &callback;
+    }
+    void setEnableVoltageLimitCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->enableVoltageLimitCallback = &callback;
+    }
+    void setDisableVoltageLimitCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->disableVoltageLimitCallback = &callback;
     }
 
 protected:
@@ -76,23 +84,37 @@ protected:
             this->stopLoadSinkCallback->execute();
         }
     }
+    virtual void emitEnableVoltageLimitCallback()
+    {
+        if (enableVoltageLimitCallback && enableVoltageLimitCallback->isValid())
+        {
+            this->enableVoltageLimitCallback->execute();
+        }
+    }
+    virtual void emitDisableVoltageLimitCallback()
+    {
+        if (disableVoltageLimitCallback && disableVoltageLimitCallback->isValid())
+        {
+            this->disableVoltageLimitCallback->execute();
+        }
+    }
 
     /*
      * Member Declarations
      */
     touchgfx::BoxWithBorder background;
-    touchgfx::TextArea currentUnitTextArea;
-    touchgfx::ClickListener< touchgfx::BoxWithBorder > currentValueBox;
-    touchgfx::TextAreaWithOneWildcard currentValueTextArea;
-    touchgfx::ToggleButton voltageLimitEnabledButton;
+    touchgfx::TextAreaWithOneWildcard dacValueTextArea;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ToggleButtonTrigger > > startStopButton;
     touchgfx::TextArea voltageLimitEnableLabelTextArea;
+    touchgfx::ToggleButton voltageLimitEnabledButton;
+    touchgfx::ClickListener< touchgfx::BoxWithBorder > currentValueBox;
+    touchgfx::TextArea currentUnitTextArea;
+    touchgfx::TextAreaWithOneWildcard currentValueTextArea;
     touchgfx::ClickListener< touchgfx::BoxWithBorder > voltageValueBox;
     touchgfx::TextArea voltageUnitTextArea;
     touchgfx::TextAreaWithOneWildcard voltageValueTextArea;
     touchgfx::TextArea voltageLabelTextArea;
     touchgfx::TextArea labelTextArea;
-    touchgfx::TextAreaWithOneWildcard dacValueTextArea;
-    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ToggleButtonTrigger > > startStopButton;
 
 private:
 
@@ -109,6 +131,8 @@ private:
     touchgfx::GenericCallback<>* selectVoltageLimitForEditCallback;
     touchgfx::GenericCallback<>* startLoadSinkCallback;
     touchgfx::GenericCallback<>* stopLoadSinkCallback;
+    touchgfx::GenericCallback<>* enableVoltageLimitCallback;
+    touchgfx::GenericCallback<>* disableVoltageLimitCallback;
 
     /*
      * Callback Handler Declarations
