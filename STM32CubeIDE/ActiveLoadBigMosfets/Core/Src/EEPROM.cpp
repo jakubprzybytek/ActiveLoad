@@ -32,10 +32,12 @@ void EEPROM::write(ApplicationState &applicationState) {
 void EEPROM::read(ApplicationState &applicationState) {
 	uint32_t eepromAddress = 0x08080000;
 
-	if (*((__IO uint16_t*) eepromAddress) == EEPROM_DATA_VERSION) {
-		eepromAddress += 2;
-		writes = *((__IO uint16_t*) eepromAddress);
-		eepromAddress += 2;
+	uint16_t versionFromEeprom = *((__IO uint16_t*) eepromAddress);
+	eepromAddress += 2;
+	this->writes = *((__IO uint16_t*) eepromAddress);
+	eepromAddress += 2;
+
+	if (versionFromEeprom == EEPROM_DATA_VERSION) {
 		applicationState.chargeMiliAmpSeconds = *((__IO uint32_t*) eepromAddress);
 		applicationState.chargeMiliAmpSeconds <<= 32;
 		eepromAddress += 4;

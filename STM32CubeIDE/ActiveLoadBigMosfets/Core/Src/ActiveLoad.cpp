@@ -40,7 +40,7 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-PID loadControllerPID(400.0f, 2000.0f, TICK_TIME, 0.0f, 3000.0f);
+PID loadControllerPID(400.0f, 1000.0f, TICK_TIME, 0.0f, 3000.0f);
 PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 Hysteresis fanHysteresis(5, 0, 0, 6);
 
@@ -214,8 +214,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == Fan_Sensor_Pin) {
 		ActiveLoad_fanPulse();
 	} else if (GPIO_Pin == Encoder_Switch_Pin) {
-		eeprom.write(applicationState);
-		eeprom.read(applicationState);
+		//eeprom.write(applicationState);
+		//eeprom.read(applicationState);
 	}
 }
 
