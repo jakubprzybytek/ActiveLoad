@@ -31,6 +31,7 @@ public:
     void currentChanged(float current);
     void powerChanged(float power);
 
+    void loadSinkEnabledChanged(bool loadSinkEnabled);
     void voltageLimitChanged(float voltageLimit);
     void currentLimitChanged(float currentLimit);
     void dacValueChanged(uint16_t dacValue);

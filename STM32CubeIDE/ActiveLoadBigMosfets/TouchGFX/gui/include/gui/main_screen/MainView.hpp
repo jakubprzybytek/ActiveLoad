@@ -16,6 +16,7 @@ public:
     void setCurrent(float current);
     void setPower(float power);
 
+    void setLoadSinkEnabled(bool loadSinkEnabled);
     void setVoltageLimit(float volteageLimit);
     void setCurrentLimit(float currentLimit);
     void setDacValue(uint16_t dacValue);

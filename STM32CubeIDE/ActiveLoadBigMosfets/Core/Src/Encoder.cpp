@@ -12,13 +12,17 @@ uint16_t Encoder::getValue() {
 }
 
 void Encoder::up() {
-	if (this->value < this->maxValue) {
+	if (this->value < this->maxValue - this->step) {
 		this->value += this->step;
+	} else {
+		this->value = this->maxValue;
 	}
 }
 
 void Encoder::down() {
-	if (this->value > this->minValue) {
+	if (this->value > this->minValue + this->step) {
 		this->value -= this->step;
+	} else {
+		this->value = this->minValue;
 	}
 }

@@ -19,6 +19,7 @@ public:
     virtual void currentChanged(float current) {}
     virtual void powerChanged(float power) {}
 
+    virtual void loadSinkEnabledChanged(bool loadSinkEnabled) {}
     virtual void voltageLimitChanged(float voltageLimit) {}
     virtual void currentLimitChanged(float currentLimit) {}
     virtual void dacValueChanged(uint16_t dacValue) {}

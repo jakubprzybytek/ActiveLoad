@@ -36,6 +36,11 @@ void LoadSettingsContainer::currentValueBoxClickHandler(const BoxWithBorder &b, 
 	}
 }
 
+void LoadSettingsContainer::setLoadSinkEnabled(bool loadSinkEnabled) {
+	startStopButton.setPressed(loadSinkEnabled);
+	startStopButton.invalidate();
+}
+
 void LoadSettingsContainer::setVoltageLimit(float voltageLimit) {
 	Unicode::snprintfFloat(voltageLimitBuffer, TEXTAREA_SIZE, "%.1f", voltageLimit);
 	voltageValueTextArea.invalidate();

@@ -27,7 +27,7 @@ extern TIM_HandleTypeDef htim4;
 extern RTC_HandleTypeDef hrtc;
 
 #define TICK_TIME 0.02f // 20ms
-#define CURRENT_STEP_FOR_VOLTAGE_LIMIT 0.1f
+#define CURRENT_STEP_FOR_VOLTAGE_LIMIT 0.05f
 
 ApplicationState applicationState;
 FanController fanController(&htim2);
@@ -125,10 +125,17 @@ void ActiveLoad_tick() {
 		HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
 		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 
-		// apply voltageReadout limit
+		// apply voltage limit
 		if (applicationState.loadSinkEnabled && applicationState.voltageLimitEnabled) {
 			if (applicationState.currentLimit > 0.0f && applicationState.voltageReadout <= applicationState.voltageLimit) {
-				applicationState.currentLimit -= CURRENT_STEP_FOR_VOLTAGE_LIMIT;
+
+				if (applicationState.currentLimit > CURRENT_STEP_FOR_VOLTAGE_LIMIT) {
+					applicationState.currentLimit -= CURRENT_STEP_FOR_VOLTAGE_LIMIT;
+				} else {
+					applicationState.currentLimit = 0.0f;
+					applicationState.loadSinkEnabled = false;
+				}
+
 				if (applicationState.currentLimitInEdit) {
 					encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
 				}

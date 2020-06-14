@@ -20,20 +20,24 @@ void MainView::setCurrent(float current) {
 	inputReadoutContainer.setCurrent(current);
 }
 
-void MainView::setVoltageLimit(float voltageLimit) {
-	loadSettingsContainer.setVoltageLimit(voltageLimit);
-}
-
-void MainView::setCurrentLimit(float currentLimit) {
-	loadSettingsContainer.setCurrentLimit(currentLimit);
-}
-
 void MainView::setDacValue(uint16_t dacValue) {
 	loadSettingsContainer.setDacValue(dacValue);
 }
 
 void MainView::setPower(float power) {
 	inputReadoutContainer.setPower(power);
+}
+
+void MainView::setLoadSinkEnabled(bool loadSinkEnabled) {
+	loadSettingsContainer.setLoadSinkEnabled(loadSinkEnabled);
+}
+
+void MainView::setVoltageLimit(float voltageLimit) {
+	loadSettingsContainer.setVoltageLimit(voltageLimit);
+}
+
+void MainView::setCurrentLimit(float currentLimit) {
+	loadSettingsContainer.setCurrentLimit(currentLimit);
 }
 
 void MainView::setTime(uint8_t hour, uint8_t minute, uint8_t second) {

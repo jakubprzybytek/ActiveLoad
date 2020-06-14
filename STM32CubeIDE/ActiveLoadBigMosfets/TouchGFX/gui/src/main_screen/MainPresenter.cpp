@@ -10,6 +10,7 @@ void MainPresenter::activate() {
 	this->view.setVoltage(this->model->getVoltage());
 	this->view.setCurrent(this->model->getCurrent());
 	this->view.setPower(this->model->getPower());
+	this->view.setLoadSinkEnabled(this->model->getLoadSinkEnabled());
 	this->view.setVoltageLimit(this->model->getVoltageLimit());
 	this->view.setCurrentLimit(this->model->getCurrentLimit());
 	this->view.setDacValue(this->model->getDacValue());
@@ -34,6 +35,10 @@ void MainPresenter::currentChanged(float current) {
 
 void MainPresenter::powerChanged(float power) {
 	this->view.setPower(power);
+}
+
+void MainPresenter::loadSinkEnabledChanged(bool loadSinkEnabled) {
+	this->view.setLoadSinkEnabled(loadSinkEnabled);
 }
 
 void MainPresenter::voltageLimitChanged(float voltageLimit) {
@@ -93,9 +98,11 @@ void MainPresenter::selectCurrentLimitForEdit() {
 }
 
 void MainPresenter::enableVoltageLimit() {
+	this->model->setLoadSinkEnabled(true);
 	MessageQueue::getInstance().submit(ENABLE_VOLTAGE_LIMIT);
 }
 
 void MainPresenter::disableVoltageLimit() {
+	this->model->setLoadSinkEnabled(false);
 	MessageQueue::getInstance().submit(DISABLE_VOLTAGE_LIMIT);
 }

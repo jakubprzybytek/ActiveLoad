@@ -5,13 +5,13 @@
 
 class ModelListener;
 
-class Model
-{
+class Model {
 private:
 	float voltage;
 	float current;
 	float power;
 
+	bool loadSinkEnabled = false;
 	float voltageLimit;
 	float currentLimit;
 
@@ -29,72 +29,80 @@ private:
 	uint16_t fanRPM;
 
 public:
-    Model();
+	Model();
 
-    void bind(ModelListener* listener) {
-        modelListener = listener;
-    }
+	void bind(ModelListener *listener) {
+		modelListener = listener;
+	}
 
-    void tick();
+	void tick();
 
-    float getVoltage() {
-    	return this->voltage;
-    }
+	float getVoltage() {
+		return this->voltage;
+	}
 
-    float getCurrent() {
-    	return this->current;
-    }
+	float getCurrent() {
+		return this->current;
+	}
 
-    float getPower() {
-    	return this->power;
-    }
+	float getPower() {
+		return this->power;
+	}
 
-    float getVoltageLimit() {
-    	return this->voltageLimit;
-    }
+	void setLoadSinkEnabled(bool loadSinkEnabled) {
+		this->loadSinkEnabled = loadSinkEnabled;
+	}
 
-    float getCurrentLimit() {
-    	return this->currentLimit;
-    }
+	bool getLoadSinkEnabled() {
+		return this->loadSinkEnabled;
+	}
 
-    uint16_t getDacValue() {
-    	return this->dacValue;
-    }
+	float getVoltageLimit() {
+		return this->voltageLimit;
+	}
 
-    uint8_t getHour() {
-    	return this->hour;
-    }
+	float getCurrentLimit() {
+		return this->currentLimit;
+	}
 
-    uint8_t getMinute() {
-    	return this->minute;
-    }
+	uint16_t getDacValue() {
+		return this->dacValue;
+	}
 
-    uint8_t getSecond() {
-    	return this->second;
-    }
+	uint8_t getHour() {
+		return this->hour;
+	}
 
-    float getCapacityAmpHours() {
-    	return this->capacityAmpHours;
-    }
+	uint8_t getMinute() {
+		return this->minute;
+	}
 
-    float getCapacityWattHours() {
-    	return this->capacityWattHours;
-    }
+	uint8_t getSecond() {
+		return this->second;
+	}
 
-    int8_t getTemperature() {
-    	return this->temperature;
-    }
+	float getCapacityAmpHours() {
+		return this->capacityAmpHours;
+	}
 
-    uint8_t getFanDutyCycle() {
-    	return this->fanDutyCycle;
-    }
+	float getCapacityWattHours() {
+		return this->capacityWattHours;
+	}
 
-    uint16_t getFanRPM() {
-    	return this->fanRPM;
-    }
+	int8_t getTemperature() {
+		return this->temperature;
+	}
+
+	uint8_t getFanDutyCycle() {
+		return this->fanDutyCycle;
+	}
+
+	uint16_t getFanRPM() {
+		return this->fanRPM;
+	}
 
 protected:
-    ModelListener* modelListener;
+	ModelListener *modelListener;
 };
 
 #endif // MODEL_HPP

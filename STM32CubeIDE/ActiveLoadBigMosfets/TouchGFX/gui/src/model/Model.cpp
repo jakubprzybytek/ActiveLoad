@@ -23,6 +23,10 @@ void Model::tick() {
 		this->modelListener->powerChanged(this->power);
 	}
 
+	if (this->loadSinkEnabled != applicationState.loadSinkEnabled) {
+		this->loadSinkEnabled = applicationState.loadSinkEnabled;
+		this->modelListener->loadSinkEnabledChanged(this->loadSinkEnabled);
+	}
 	if (this->voltageLimit != applicationState.voltageLimit) {
 		this->voltageLimit = applicationState.voltageLimit;
 		this->modelListener->voltageLimitChanged(this->voltageLimit);

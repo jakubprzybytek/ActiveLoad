@@ -25,6 +25,7 @@ public:
 	void voltageValueBoxClickHandler(const BoxWithBorder &b, const ClickEvent &e);
 	void currentValueBoxClickHandler(const BoxWithBorder &b, const ClickEvent &e);
 
+	void setLoadSinkEnabled(bool loadSinkEnabled);
 	void setVoltageLimit(float voltageLimit);
 	void setCurrentLimit(float currentLimit);
 	void setDacValue(uint16_t dacValue);
