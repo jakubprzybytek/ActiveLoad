@@ -5,17 +5,15 @@
 
 void RVT28AETNWC00::init() {
 
-	HAL_GPIO_WritePin(Display_Reset_GPIO_Port, Display_Select_Pin, GPIO_PIN_RESET);
-
-	HAL_GPIO_WritePin(Display_Reset_GPIO_Port, Display_Reset_Pin, GPIO_PIN_SET);
+	Display_Reset_GPIO_Port->BSRR = (uint32_t)Display_Reset_Pin;
 	HAL_Delay(50);
-	HAL_GPIO_WritePin(Display_Reset_GPIO_Port, Display_Reset_Pin, GPIO_PIN_RESET);
+	Display_Reset_GPIO_Port->BSRR = (uint32_t)Display_Reset_Pin << 16;
 	HAL_Delay(50);
-	HAL_GPIO_WritePin(Display_Reset_GPIO_Port, Display_Reset_Pin, GPIO_PIN_SET);
+	Display_Reset_GPIO_Port->BSRR = (uint32_t)Display_Reset_Pin;
 	HAL_Delay(50);
 
-	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Display_Read_GPIO_Port, Display_Read_Pin, GPIO_PIN_SET);
+	Display_Write_GPIO_Port->BSRR = (uint32_t)Display_Write_Pin;
+	Display_Read_GPIO_Port->BSRR = (uint32_t)Display_Read_Pin;
 
 	writeCommand(0x01); // Software reset
 	HAL_Delay(5);
@@ -136,24 +134,27 @@ void RVT28AETNWC00::deinit() {
 
 void RVT28AETNWC00::writeCommand(uint8_t command) {
 
-	HAL_GPIO_WritePin(Display_Data_Command_GPIO_Port, Display_Data_Command_Pin, GPIO_PIN_RESET);
+	Display_Data_Command_GPIO_Port->BSRR = (uint32_t)Display_Data_Command_Pin << 16;
 
-	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_RESET);
+	Display_Write_GPIO_Port->BSRR = (uint32_t)Display_Write_Pin << 16;
+	asm("nop");
 	GPIOC->ODR = command;
-	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_SET);
+	Display_Write_GPIO_Port->BSRR = (uint32_t)Display_Write_Pin;
+	asm("nop");
 }
 
 void RVT28AETNWC00::writeData(uint16_t data) {
 
-	HAL_GPIO_WritePin(Display_Data_Command_GPIO_Port, Display_Data_Command_Pin, GPIO_PIN_SET);
+	Display_Data_Command_GPIO_Port->BSRR = (uint32_t)Display_Data_Command_Pin;
 
-	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_RESET);
+	Display_Write_GPIO_Port->BSRR = (uint32_t)Display_Write_Pin << 16;
+	asm("nop");
 	GPIOC->ODR = data;
-	HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_SET);
+	Display_Write_GPIO_Port->BSRR = (uint32_t)Display_Write_Pin;
+	asm("nop");
 }
 
 void RVT28AETNWC00::writeData(uint16_t *pixels, uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
-
 	uint16_t endY = y + height - 1;
 
 	writeCommand(0x2a); // Column set
@@ -170,12 +171,12 @@ void RVT28AETNWC00::writeData(uint16_t *pixels, uint16_t x, uint16_t y, uint16_t
 
 	writeCommand(0x2c);
 
-	HAL_GPIO_WritePin(Display_Data_Command_GPIO_Port, Display_Data_Command_Pin, GPIO_PIN_SET);
+	Display_Data_Command_GPIO_Port->BSRR = (uint32_t)Display_Data_Command_Pin;
 
 	for (uint16_t i = 0; i < width * height; i++) {
-		HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_RESET);
+		Display_Write_GPIO_Port->BSRR = (uint32_t)Display_Write_Pin << 16;
+		asm("nop");
 		GPIOC->ODR = pixels[i];
-		HAL_GPIO_WritePin(Display_Write_GPIO_Port, Display_Write_Pin, GPIO_PIN_SET);
+		Display_Write_GPIO_Port->BSRR = (uint32_t)Display_Write_Pin;
 	}
-
 }
