@@ -110,21 +110,8 @@ void ActiveLoad_tick() {
 		loadController.setLoad(applicationState.loadLevel);
 	}
 
-	// once a second
-	if (tick == 0) {
-		// read temperature
-		applicationState.temperature = tc74.readTemperature();
-
-		// PID for load controller
-		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, 30.0f);
-		applicationState.fanDutyCycle = fanHysteresis.update(applicationState.fanDutyCycleSetValue);
-		fanController.setSpeed(applicationState.fanDutyCycle);
-
-		// read rtc
-		RTC_DateTypeDef date;
-		HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
-		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-
+	// every 500ms
+	if (tick % 25 == 0) {
 		// apply voltage limit
 		if (applicationState.loadSinkEnabled && applicationState.voltageLimitEnabled) {
 			if (applicationState.currentLimit > 0.0f && applicationState.voltageReadout <= applicationState.voltageLimit) {
@@ -141,6 +128,22 @@ void ActiveLoad_tick() {
 				}
 			}
 		}
+	}
+
+	// once a second
+	if (tick == 0) {
+		// read temperature
+		applicationState.temperature = tc74.readTemperature();
+
+		// PID for load controller
+		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, 30.0f);
+		applicationState.fanDutyCycle = fanHysteresis.update(applicationState.fanDutyCycleSetValue);
+		fanController.setSpeed(applicationState.fanDutyCycle);
+
+		// read rtc
+		RTC_DateTypeDef date;
+		HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
+		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 	}
 
 	touchgfx::OSWrappers::signalVSync();
