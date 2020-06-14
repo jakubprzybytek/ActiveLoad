@@ -548,13 +548,13 @@ static void MX_GPIO_Init(void)
                           |GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_Pin Load_Op_Amps_Ctrl_Pin Fan_Power_Ctrl_Pin Display_Read_Pin 
-                           Display_Write_Pin Display_Data_Command_Pin Display_Select_Pin */
+                           Display_Select_Pin */
   GPIO_InitStruct.Pin = LED_Pin|Load_Op_Amps_Ctrl_Pin|Fan_Power_Ctrl_Pin|Display_Read_Pin 
-                          |Display_Write_Pin|Display_Data_Command_Pin|Display_Select_Pin;
+                          |Display_Select_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -578,6 +578,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(TouchPad_Interrupt_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Display_Write_Pin Display_Data_Command_Pin */
+  GPIO_InitStruct.Pin = Display_Write_Pin|Display_Data_Command_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Fan_Sensor_Pin */
   GPIO_InitStruct.Pin = Fan_Sensor_Pin;
