@@ -50,13 +50,7 @@ void ActiveLoad_init() {
 	fanController.setSpeed(0);
 	loadController.setLoad(0);
 
-	MX_TouchGFX_Init();
-
 	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-
-	display.init();
-	touchPad.init();
-	HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_SET);
 
 	ina233.init();
 
@@ -74,6 +68,12 @@ void ActiveLoad_init() {
 
 	eeprom.read(applicationState);
 	HAL_RTC_SetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
+
+	display.init();
+	touchPad.init();
+	HAL_GPIO_WritePin(Display_LED_Ctrl_GPIO_Port, Display_LED_Ctrl_Pin, GPIO_PIN_SET);
+
+	MX_TouchGFX_Init();
 }
 
 void ActiveLoad_loop() {
