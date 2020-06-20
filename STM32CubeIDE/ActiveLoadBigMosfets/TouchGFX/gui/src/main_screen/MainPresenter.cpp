@@ -7,12 +7,12 @@ MainPresenter::MainPresenter(MainView &v) : view(v) {
 }
 
 void MainPresenter::activate() {
-	this->view.setVoltage(this->model->getVoltage());
-	this->view.setCurrent(this->model->getCurrent());
-	this->view.setPower(this->model->getPower());
+	this->view.setVoltage(this->model->getVoltage() / 1000.0f);
+	this->view.setCurrent(this->model->getCurrent() / 1000.0f);
+	this->view.setPower(this->model->getPower() / 1000.0f);
 	this->view.setLoadSinkEnabled(this->model->getLoadSinkEnabled());
-	this->view.setVoltageLimit(this->model->getVoltageLimit());
-	this->view.setCurrentLimit(this->model->getCurrentLimit());
+	this->view.setVoltageLimit(this->model->getVoltageLimit() / 1000.0f);
+	this->view.setCurrentLimit(this->model->getCurrentLimit() / 1000.0f);
 	this->view.setDacValue(this->model->getDacValue());
 	this->view.setTime(this->model->getHour(), this->model->getMinute(), this->model->getSecond());
 	this->view.setCapacityAmpHours(this->model->getCapacityAmpHours());
@@ -25,28 +25,28 @@ void MainPresenter::activate() {
 void MainPresenter::deactivate() {
 }
 
-void MainPresenter::voltageChanged(float voltage) {
-	this->view.setVoltage(voltage);
+void MainPresenter::voltageChanged(uint16_t voltage) {
+	this->view.setVoltage(voltage / 1000.0f);
 }
 
-void MainPresenter::currentChanged(float current) {
-	this->view.setCurrent(current);
+void MainPresenter::currentChanged(uint16_t current) {
+	this->view.setCurrent(current / 1000.0f);
 }
 
-void MainPresenter::powerChanged(float power) {
-	this->view.setPower(power);
+void MainPresenter::powerChanged(uint32_t power) {
+	this->view.setPower(power / 1000.0f);
 }
 
 void MainPresenter::loadSinkEnabledChanged(bool loadSinkEnabled) {
 	this->view.setLoadSinkEnabled(loadSinkEnabled);
 }
 
-void MainPresenter::voltageLimitChanged(float voltageLimit) {
-	this->view.setVoltageLimit(voltageLimit);
+void MainPresenter::voltageLimitChanged(uint16_t voltageLimit) {
+	this->view.setVoltageLimit(voltageLimit / 1000.0f);
 }
 
-void MainPresenter::currentLimitChanged(float currentLimit) {
-	this->view.setCurrentLimit(currentLimit);
+void MainPresenter::currentLimitChanged(uint16_t currentLimit) {
+	this->view.setCurrentLimit(currentLimit / 1000.0f);
 }
 
 void MainPresenter::dacValueChanged(uint16_t dacValue) {

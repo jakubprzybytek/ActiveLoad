@@ -15,13 +15,13 @@ public:
         model = m;
     }
 
-    virtual void voltageChanged(float voltage) {}
-    virtual void currentChanged(float current) {}
-    virtual void powerChanged(float power) {}
+    virtual void voltageChanged(uint16_t voltage) {}
+    virtual void currentChanged(uint16_t current) {}
+    virtual void powerChanged(uint32_t power) {}
 
     virtual void loadSinkEnabledChanged(bool loadSinkEnabled) {}
-    virtual void voltageLimitChanged(float voltageLimit) {}
-    virtual void currentLimitChanged(float currentLimit) {}
+    virtual void voltageLimitChanged(uint16_t voltageLimit) {}
+    virtual void currentLimitChanged(uint16_t currentLimit) {}
     virtual void dacValueChanged(uint16_t dacValue) {}
 
     virtual void timeChanged(uint8_t hour, uint8_t minute, uint8_t second) {}

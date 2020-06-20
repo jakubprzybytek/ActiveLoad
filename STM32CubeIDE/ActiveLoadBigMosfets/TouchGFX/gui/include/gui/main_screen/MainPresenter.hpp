@@ -27,13 +27,13 @@ public:
 
     virtual ~MainPresenter() {};
 
-    void voltageChanged(float voltage);
-    void currentChanged(float current);
-    void powerChanged(float power);
+    void voltageChanged(uint16_t voltage);
+    void currentChanged(uint16_t current);
+    void powerChanged(uint32_t power);
 
     void loadSinkEnabledChanged(bool loadSinkEnabled);
-    void voltageLimitChanged(float voltageLimit);
-    void currentLimitChanged(float currentLimit);
+    void voltageLimitChanged(uint16_t voltageLimit);
+    void currentLimitChanged(uint16_t currentLimit);
     void dacValueChanged(uint16_t dacValue);
 
     void timeChanged(uint8_t hour, uint8_t minute, uint8_t second);

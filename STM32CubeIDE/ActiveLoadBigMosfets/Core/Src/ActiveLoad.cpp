@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include <touchgfx/hal/OSWrappers.hpp>
 #include "app_touchgfx.h"
 
@@ -27,7 +29,9 @@ extern TIM_HandleTypeDef htim4;
 extern RTC_HandleTypeDef hrtc;
 
 #define TICK_TIME 0.02f // 20ms
-#define CURRENT_STEP_FOR_VOLTAGE_LIMIT 0.05f
+#define CURRENT_STEP_FOR_VOLTAGE_LIMIT 50
+
+using namespace std;
 
 ApplicationState applicationState;
 FanController fanController(&htim2);
@@ -40,7 +44,7 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-PID loadControllerPID(400.0f, 1000.0f, TICK_TIME, 0.0f, 3000.0f);
+PID loadControllerPID(0.4f, 1.0f, TICK_TIME, 0.0f, 3000.0f);
 PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 Hysteresis fanHysteresis(5, 0, 0, 6);
 
@@ -54,7 +58,7 @@ void ActiveLoad_init() {
 
 	ina233.init();
 
-	encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
+	encoder.reset(applicationState.currentLimit, 0, 8000, 100);
 
 	// encoder
 	htim3.Instance->CNT = 50;
@@ -88,10 +92,10 @@ void ActiveLoad_tick() {
 	applicationState.currentReadout = ina233.readCurrent();
 	applicationState.powerReadout = ina233.readPower();
 
-	applicationState.chargeMiliAmpSeconds += applicationState.currentReadout * 1000.0f * TICK_TIME;
+	applicationState.chargeMiliAmpSeconds += llround(applicationState.currentReadout * TICK_TIME);
 	applicationState.chargeAmpHours = applicationState.chargeMiliAmpSeconds / 1000.0f / 3600.0f;
 
-	applicationState.chargeMiliWattSeconds += applicationState.powerReadout * 1000.0f * TICK_TIME;
+	applicationState.chargeMiliWattSeconds += llround(applicationState.powerReadout * TICK_TIME);
 	applicationState.chargeWattHours = applicationState.chargeMiliWattSeconds / 1000.0f / 3600.0f;
 
 	// check touch panel
@@ -114,17 +118,17 @@ void ActiveLoad_tick() {
 	if (tick % 25 == 0) {
 		// apply voltage limit
 		if (applicationState.loadSinkEnabled && applicationState.voltageLimitEnabled) {
-			if (applicationState.currentLimit > 0.0f && applicationState.voltageReadout <= applicationState.voltageLimit) {
+			if (applicationState.currentLimit > 0 && applicationState.voltageReadout <= applicationState.voltageLimit) {
 
 				if (applicationState.currentLimit > CURRENT_STEP_FOR_VOLTAGE_LIMIT) {
 					applicationState.currentLimit -= CURRENT_STEP_FOR_VOLTAGE_LIMIT;
 				} else {
-					applicationState.currentLimit = 0.0f;
+					applicationState.currentLimit = 0;
 					applicationState.loadSinkEnabled = false;
 				}
 
 				if (applicationState.currentLimitInEdit) {
-					encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
+					encoder.reset(applicationState.currentLimit, 0, 8000, 100);
 				}
 			}
 		}
@@ -156,11 +160,11 @@ void ActiveLoad_processMessages() {
 	while (MessageQueue::getInstance().messageWaiting()) {
 		switch (MessageQueue::getInstance().getMessage()) {
 		case SELECT_VOLTAGE_LIMIT_FOR_EDIT:
-			encoder.reset(applicationState.voltageLimit * 1000, 5000, 30000, 100);
+			encoder.reset(applicationState.voltageLimit, 5000, 30000, 100);
 			applicationState.currentLimitInEdit = false;
 			break;
 		case SELECT_CURRENT_LIMIT_FOR_EDIT:
-			encoder.reset(applicationState.currentLimit * 1000, 0, 8000, 100);
+			encoder.reset(applicationState.currentLimit, 0, 8000, 100);
 			applicationState.currentLimitInEdit = true;
 			break;
 		case RESET_COUNTERS:
@@ -213,9 +217,9 @@ void ActiveLoad_EncoderTick() {
 	}
 
 	if (applicationState.currentLimitInEdit) {
-		applicationState.currentLimit = (float) encoder.getValue() * 0.001;
+		applicationState.currentLimit = encoder.getValue();
 	} else {
-		applicationState.voltageLimit = (float) encoder.getValue() * 0.001;
+		applicationState.voltageLimit = encoder.getValue();
 	}
 	htim3.Instance->CNT = 50;
 }

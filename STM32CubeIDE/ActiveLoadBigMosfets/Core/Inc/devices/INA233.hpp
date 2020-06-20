@@ -27,9 +27,9 @@ public:
 	void init();
 	void deinit();
 
-	float readVoltage();
-	float readCurrent();
-	float readPower();
+	uint16_t readVoltage();
+	uint16_t readCurrent();
+	uint32_t readPower();
 };
 
 #endif /* INC_DEVICES_INA233_HPP_ */

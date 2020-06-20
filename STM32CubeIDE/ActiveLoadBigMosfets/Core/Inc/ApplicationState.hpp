@@ -16,14 +16,14 @@ class ApplicationState {
 public:
 	RTC_TimeTypeDef time;
 
-	float voltageReadout;
-	float currentReadout;
-	float powerReadout;
+	uint16_t voltageReadout; // mV
+	uint16_t currentReadout; // mA
+	uint32_t powerReadout;   // mW
 
 	bool loadSinkEnabled = false;
 	bool voltageLimitEnabled = false;
-	float voltageLimit = 5.0;
-	float currentLimit = 0.1;
+	uint16_t voltageLimit = 5000; // mV
+	uint16_t currentLimit = 100; // mA
 
 	uint64_t chargeMiliAmpSeconds;
 	float chargeAmpHours;

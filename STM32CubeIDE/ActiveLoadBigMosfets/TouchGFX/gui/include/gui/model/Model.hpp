@@ -7,13 +7,13 @@ class ModelListener;
 
 class Model {
 private:
-	float voltage;
-	float current;
-	float power;
+	uint16_t voltage;
+	uint16_t current;
+	uint32_t power;
 
 	bool loadSinkEnabled = false;
-	float voltageLimit;
-	float currentLimit;
+	uint16_t voltageLimit;
+	uint16_t currentLimit;
 
 	uint16_t dacValue;
 

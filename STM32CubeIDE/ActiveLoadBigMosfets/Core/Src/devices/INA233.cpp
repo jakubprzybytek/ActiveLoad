@@ -5,9 +5,13 @@
  *      Author: Chipotle
  */
 
+#include <cmath>
+
 #include "stm32l1xx_hal.h"
 
 #include "devices/INA233.hpp"
+
+using namespace std;
 
 void INA233::init() {
 	// set up averaging
@@ -27,20 +31,20 @@ void INA233::deinit() {
 	HAL_I2C_Mem_Write(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_MFR_ADC_CONFIG, 1, (uint8_t*) &mfrAdcConfigValue, 2, HAL_MAX_DELAY);
 }
 
-float INA233::readVoltage() {
+uint16_t INA233::readVoltage() {
 	uint16_t voltageRaw;
 	HAL_I2C_Mem_Read(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_READ_VIN, 1, (uint8_t*) &voltageRaw, 2, HAL_MAX_DELAY);
-	return (float) voltageRaw * 0.00125f;
+	return lround(voltageRaw * 1.25f); // Voltage_LSB = 1.25mV
 }
 
-float INA233::readCurrent() {
+uint16_t INA233::readCurrent() {
 	uint16_t currentRaw;
 	HAL_I2C_Mem_Read(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_READ_IIN, 1, (uint8_t*) &currentRaw, 2, HAL_MAX_DELAY);
-	return (float) currentRaw * 0.00025f; // Current_LSB
+	return lround(currentRaw * 0.25f); // Current_LSB = 0.25mA
 }
 
-float INA233::readPower() {
+uint32_t INA233::readPower() {
 	uint16_t powerRaw;
 	HAL_I2C_Mem_Read(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_READ_PIN, 1, (uint8_t*) &powerRaw, 2, HAL_MAX_DELAY);
-	return (float) powerRaw * 0.00625f; // Power_LSB = Current_LSB * 25
+	return lround(powerRaw * 6.25f); // Power_LSB = Current_LSB * 25
 }
