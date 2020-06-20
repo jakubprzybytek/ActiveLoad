@@ -44,7 +44,7 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-PID loadControllerPID(0.4f, 1.0f, TICK_TIME, 0.0f, 3000.0f);
+PID loadControllerPID(0.3f, 1.5f, TICK_TIME, 0.0f, 3000.0f);
 PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 Hysteresis fanHysteresis(5, 0, 0, 6);
 
@@ -147,6 +147,10 @@ void ActiveLoad_tick() {
 		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, TARGET_SINK_TEMPERATURE);
 		applicationState.fanDutyCycle = fanHysteresis.update(applicationState.fanDutyCycleSetValue);
 		fanController.setSpeed(applicationState.fanDutyCycle);
+
+		if (applicationState.fanDutyCycle == 0) {
+			applicationState.fanRPM = 0;
+		}
 	}
 
 	touchgfx::OSWrappers::signalVSync();
