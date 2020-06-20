@@ -22,9 +22,9 @@ void EEPROM::write(ApplicationState &applicationState) {
 	eepromAddress += 4;
 	while (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_WORD, eepromAddress, applicationState.chargeMiliWattSeconds) != HAL_OK) {}
 	eepromAddress += 4;
-	while (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, eepromAddress++, applicationState.time.Hours) != HAL_OK) {}
-	while (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, eepromAddress++, applicationState.time.Minutes) != HAL_OK) {}
-	while (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, eepromAddress++, applicationState.time.Seconds) != HAL_OK) {}
+	while (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, eepromAddress++, applicationState.timer.hours) != HAL_OK) {}
+	while (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, eepromAddress++, applicationState.timer.minutes) != HAL_OK) {}
+	while (HAL_FLASHEx_DATAEEPROM_Program(FLASH_TYPEPROGRAMDATA_BYTE, eepromAddress++, applicationState.timer.seconds) != HAL_OK) {}
 
 	while (HAL_FLASHEx_DATAEEPROM_Lock() != HAL_OK) {}
 }
@@ -49,8 +49,8 @@ void EEPROM::read(ApplicationState &applicationState) {
 		applicationState.chargeMiliWattSeconds += *((__IO uint32_t*) eepromAddress);
 		eepromAddress += 4;
 
-		applicationState.time.Hours = *((__IO uint8_t*) eepromAddress++);
-		applicationState.time.Minutes = *((__IO uint8_t*) eepromAddress++);
-		applicationState.time.Seconds = *((__IO uint8_t*) eepromAddress++);
+		applicationState.timer.hours = *((__IO uint8_t*) eepromAddress++);
+		applicationState.timer.minutes = *((__IO uint8_t*) eepromAddress++);
+		applicationState.timer.seconds = *((__IO uint8_t*) eepromAddress++);
 	}
 }

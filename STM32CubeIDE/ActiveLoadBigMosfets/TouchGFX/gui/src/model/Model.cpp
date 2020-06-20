@@ -40,10 +40,10 @@ void Model::tick() {
 		this->modelListener->dacValueChanged(this->dacValue);
 	}
 
-	if (this->second != applicationState.time.Seconds) {
-		this->hour = applicationState.time.Hours;
-		this->minute = applicationState.time.Minutes;
-		this->second = applicationState.time.Seconds;
+	if (this->second != applicationState.timer.seconds) {
+		this->hour = applicationState.timer.hours;
+		this->minute = applicationState.timer.minutes;
+		this->second = applicationState.timer.seconds;
 		this->modelListener->timeChanged(this->hour, this->minute, this->second);
 	}
 	if (this->capacityAmpHours != applicationState.chargeAmpHours) {

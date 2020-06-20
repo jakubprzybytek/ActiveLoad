@@ -26,10 +26,10 @@ extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim5;
 extern TIM_HandleTypeDef htim4;
-extern RTC_HandleTypeDef hrtc;
 
 #define TICK_TIME 0.02f // 20ms
 #define CURRENT_STEP_FOR_VOLTAGE_LIMIT 50
+#define TARGET_SINK_TEMPERATURE 30.0f
 
 using namespace std;
 
@@ -71,7 +71,6 @@ void ActiveLoad_init() {
 	HAL_TIM_Base_Start(&htim4);
 
 	eeprom.read(applicationState);
-	HAL_RTC_SetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
 
 	display.init();
 	touchPad.init();
@@ -136,18 +135,18 @@ void ActiveLoad_tick() {
 
 	// once a second
 	if (tick == 0) {
+		if (applicationState.loadSinkEnabled) {
+			// tick the timer
+			applicationState.timer.tick();
+		}
+
 		// read temperature
 		applicationState.temperature = tc74.readTemperature();
 
 		// PID for load controller
-		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, 30.0f);
+		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, TARGET_SINK_TEMPERATURE);
 		applicationState.fanDutyCycle = fanHysteresis.update(applicationState.fanDutyCycleSetValue);
 		fanController.setSpeed(applicationState.fanDutyCycle);
-
-		// read rtc
-		RTC_DateTypeDef date;
-		HAL_RTC_GetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
-		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 	}
 
 	touchgfx::OSWrappers::signalVSync();
@@ -170,10 +169,7 @@ void ActiveLoad_processMessages() {
 		case RESET_COUNTERS:
 			applicationState.chargeMiliAmpSeconds = 0;
 			applicationState.chargeMiliWattSeconds = 0;
-			applicationState.time.Hours = 0;
-			applicationState.time.Minutes = 0;
-			applicationState.time.Seconds = 0;
-			HAL_RTC_SetTime(&hrtc, &applicationState.time, RTC_FORMAT_BIN);
+			applicationState.timer.reset();
 			break;
 		case START_LOAD_SINK:
 			applicationState.loadSinkEnabled = true;

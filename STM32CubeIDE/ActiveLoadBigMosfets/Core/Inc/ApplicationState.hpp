@@ -11,10 +11,12 @@
 #include <stdio.h>
 #include <stm32l1xx_hal.h>
 
+#include "Timer.hpp"
+
 class ApplicationState {
 
 public:
-	RTC_TimeTypeDef time;
+	Timer timer;
 
 	uint16_t voltageReadout; // mV
 	uint16_t currentReadout; // mA
