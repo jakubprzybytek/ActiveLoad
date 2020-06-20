@@ -57,25 +57,25 @@ MainViewBase::MainViewBase() :
     resetTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID66));
     resetConfirmationModalWindow.add(resetTextArea);
 
-    cancelButton1.setBoxWithBorderPosition(0, 0, 66, 50);
-    cancelButton1.setBorderSize(3);
-    cancelButton1.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(2, 73, 109), touchgfx::Color::getColorFrom24BitRGB(5, 133, 175), touchgfx::Color::getColorFrom24BitRGB(24, 112, 201), touchgfx::Color::getColorFrom24BitRGB(81, 143, 204));
-    cancelButton1.setText(TypedText(T_SINGLEUSEID73));
-    cancelButton1.setTextPosition(0, 16, 66, 50);
-    cancelButton1.setTextColors(touchgfx::Color::getColorFrom24BitRGB(158, 213, 250), touchgfx::Color::getColorFrom24BitRGB(73, 107, 163));
-    cancelButton1.setPosition(28, 75, 66, 50);
-    cancelButton1.setAction(flexButtonCallback);
-    resetConfirmationModalWindow.add(cancelButton1);
+    cancelButton.setBoxWithBorderPosition(0, 0, 66, 50);
+    cancelButton.setBorderSize(3);
+    cancelButton.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(2, 73, 109), touchgfx::Color::getColorFrom24BitRGB(5, 133, 175), touchgfx::Color::getColorFrom24BitRGB(24, 112, 201), touchgfx::Color::getColorFrom24BitRGB(81, 143, 204));
+    cancelButton.setText(TypedText(T_SINGLEUSEID73));
+    cancelButton.setTextPosition(0, 16, 66, 50);
+    cancelButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(158, 213, 250), touchgfx::Color::getColorFrom24BitRGB(73, 107, 163));
+    cancelButton.setPosition(28, 75, 66, 50);
+    cancelButton.setAction(flexButtonCallback);
+    resetConfirmationModalWindow.add(cancelButton);
 
-    resetButton1.setBoxWithBorderPosition(0, 0, 66, 50);
-    resetButton1.setBorderSize(3);
-    resetButton1.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(112, 23, 23), touchgfx::Color::getColorFrom24BitRGB(112, 23, 23), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
-    resetButton1.setText(TypedText(T_SINGLEUSEID74));
-    resetButton1.setTextPosition(0, 16, 66, 50);
-    resetButton1.setTextColors(touchgfx::Color::getColorFrom24BitRGB(252, 219, 219), touchgfx::Color::getColorFrom24BitRGB(252, 219, 219));
-    resetButton1.setPosition(114, 75, 66, 50);
-    resetButton1.setAction(flexButtonCallback);
-    resetConfirmationModalWindow.add(resetButton1);
+    resetButton.setBoxWithBorderPosition(0, 0, 66, 50);
+    resetButton.setBorderSize(3);
+    resetButton.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(112, 23, 23), touchgfx::Color::getColorFrom24BitRGB(112, 23, 23), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
+    resetButton.setText(TypedText(T_SINGLEUSEID74));
+    resetButton.setTextPosition(0, 16, 66, 50);
+    resetButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(252, 219, 219), touchgfx::Color::getColorFrom24BitRGB(252, 219, 219));
+    resetButton.setPosition(114, 75, 66, 50);
+    resetButton.setAction(flexButtonCallback);
+    resetConfirmationModalWindow.add(resetButton);
 
     add(background);
     add(termpControlContainer);
@@ -153,18 +153,18 @@ void MainViewBase::loadSettingsContainerDisableVoltageLimitCallbackHandler()
 
 void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-    if (&src == &cancelButton1)
+    if (&src == &cancelButton)
     {
         //HideResetConfirmationModelWindowInteraction
-        //When cancelButton1 clicked hide resetConfirmationModalWindow
+        //When cancelButton clicked hide resetConfirmationModalWindow
         //Hide resetConfirmationModalWindow
         resetConfirmationModalWindow.setVisible(false);
         resetConfirmationModalWindow.invalidate();
     }
-    else if (&src == &resetButton1)
+    else if (&src == &resetButton)
     {
         //ConfirmResetCounters
-        //When resetButton1 clicked hide resetConfirmationModalWindow
+        //When resetButton clicked hide resetConfirmationModalWindow
         //Hide resetConfirmationModalWindow
         resetConfirmationModalWindow.setVisible(false);
         resetConfirmationModalWindow.invalidate();

@@ -42,8 +42,8 @@ protected:
     touchgfx::ModalWindow resetConfirmationModalWindow;
     touchgfx::Image warningImage;
     touchgfx::TextArea resetTextArea;
-    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > cancelButton1;
-    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > resetButton1;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > cancelButton;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > resetButton;
 
 private:
 

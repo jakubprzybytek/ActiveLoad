@@ -1,8 +1,8 @@
 #include <gui/containers/LoadSettingsContainer.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
-LoadSettingsContainer::LoadSettingsContainer() :
-		voltageValueBoxClickedCallback(this, &LoadSettingsContainer::voltageValueBoxClickHandler),
-		currentValueBoxClickedCallback(this, &LoadSettingsContainer::currentValueBoxClickHandler) {
+LoadSettingsContainer::LoadSettingsContainer() : voltageValueBoxClickedCallback(this, &LoadSettingsContainer::voltageValueBoxClickHandler), currentValueBoxClickedCallback(
+		this, &LoadSettingsContainer::currentValueBoxClickHandler) {
 	voltageValueBox.setClickAction(voltageValueBoxClickedCallback);
 	currentValueBox.setClickAction(currentValueBoxClickedCallback);
 }
@@ -37,6 +37,7 @@ void LoadSettingsContainer::currentValueBoxClickHandler(const BoxWithBorder &b, 
 }
 
 void LoadSettingsContainer::setLoadSinkEnabled(bool loadSinkEnabled) {
+	startStopButton.setText(loadSinkEnabled ? TypedText(T_STOP) : TypedText(T_START));
 	startStopButton.setPressed(loadSinkEnabled);
 	startStopButton.invalidate();
 }

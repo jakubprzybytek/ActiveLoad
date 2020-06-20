@@ -99,7 +99,7 @@
             "X": 4,
             "Y": 92,
             "Width": 232,
-            "Height": 96,
+            "Height": 102,
             "Type": "CustomContainerInstance",
             "Visible": true,
             "Draggable": false,
@@ -200,7 +200,7 @@
                     }
                   }
                 ],
-                "Name": "cancelButton1",
+                "Name": "cancelButton",
                 "X": 28,
                 "Y": 75,
                 "Width": 66,
@@ -265,7 +265,7 @@
                     }
                   }
                 ],
-                "Name": "resetButton1",
+                "Name": "resetButton",
                 "X": 114,
                 "Y": 75,
                 "Width": 66,
@@ -322,7 +322,7 @@
             "InteractionName": "HideResetConfirmationModelWindowInteraction",
             "HasCompletedTrigger": false,
             "Trigger": {
-              "TriggerComponent": "cancelButton1",
+              "TriggerComponent": "cancelButton",
               "Type": "TriggerClicked"
             },
             "Action": {
@@ -360,7 +360,7 @@
             "InteractionName": "ConfirmResetCounters",
             "HasCompletedTrigger": true,
             "Trigger": {
-              "TriggerComponent": "resetButton1",
+              "TriggerComponent": "resetButton",
               "Type": "TriggerClicked"
             },
             "Action": {

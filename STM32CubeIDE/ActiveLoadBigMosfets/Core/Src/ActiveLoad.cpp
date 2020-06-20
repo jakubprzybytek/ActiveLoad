@@ -124,6 +124,8 @@ void ActiveLoad_tick() {
 				} else {
 					applicationState.currentLimit = 0;
 					applicationState.loadSinkEnabled = false;
+					applicationState.loadLevel = 0;
+					loadController.setLoad(applicationState.loadLevel);
 				}
 
 				if (applicationState.currentLimitInEdit) {
