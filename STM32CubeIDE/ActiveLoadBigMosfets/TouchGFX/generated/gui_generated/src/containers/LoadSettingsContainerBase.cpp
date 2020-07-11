@@ -34,7 +34,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     startStopButton.setText(TypedText(T_START));
     startStopButton.setTextPosition(0, 12, 68, 50);
     startStopButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(210, 246, 212), touchgfx::Color::getColorFrom24BitRGB(252, 219, 219));
-    startStopButton.setPosition(156, 33, 68, 50);
+    startStopButton.setPosition(158, 23, 68, 50);
     startStopButton.setAction(flexButtonCallback);
 
     voltageLimitEnableLabelTextArea.setXY(113, 41);
@@ -86,6 +86,15 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));
 
+    debugButton.setBoxWithBorderPosition(0, 0, 46, 24);
+    debugButton.setBorderSize(2);
+    debugButton.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(107, 107, 107), touchgfx::Color::getColorFrom24BitRGB(0, 153, 204), touchgfx::Color::getColorFrom24BitRGB(151, 151, 151), touchgfx::Color::getColorFrom24BitRGB(51, 102, 153));
+    debugButton.setText(TypedText(T_SINGLEUSEID77));
+    debugButton.setTextPosition(0, 5, 46, 24);
+    debugButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(180, 179, 179), touchgfx::Color::getColorFrom24BitRGB(10, 10, 10));
+    debugButton.setPosition(180, 76, 46, 24);
+    debugButton.setAction(flexButtonCallback);
+
     add(background);
     add(dacValueTextArea);
     add(startStopButton);
@@ -99,6 +108,7 @@ LoadSettingsContainerBase::LoadSettingsContainerBase() :
     add(voltageValueTextArea);
     add(voltageLabelTextArea);
     add(labelTextArea);
+    add(debugButton);
 }
 
 void LoadSettingsContainerBase::initialize()
@@ -139,5 +149,12 @@ void LoadSettingsContainerBase::flexButtonCallbackHandler(const touchgfx::Abstra
         	startStopButton.setText(TypedText(T_START));
         }
         startStopButton.invalidate();
+    }
+    else if (&src == &debugButton)
+    {
+        //switchToDebugScreen
+        //When debugButton clicked change screen to Debug
+        //Go to Debug with no screen transition
+        application().gotoDebugScreenNoTransition();
     }
 }

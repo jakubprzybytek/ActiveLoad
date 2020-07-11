@@ -184,6 +184,18 @@
     <Filter Include="Source Files\generated\gui_generated\main_screen">
       <UniqueIdentifier>49365FB7-6339-B00B-8C73-F2DD46C98A4A</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\debug_screen">
+      <UniqueIdentifier>85265035-0BE1-E4B9-9FA1-86F603499E5D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\debug_screen">
+      <UniqueIdentifier>02C42719-5B34-8033-559B-4D554B0C4A1B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\debug_screen">
+      <UniqueIdentifier>6FE18676-429E-D8F7-21BD-46B7622F0DAC</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\debug_screen">
+      <UniqueIdentifier>9D1A0004-AA6A-CF88-0693-62F18D90437C</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -245,6 +257,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\LoadSettingsContainerBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\debug_screen\DebugPresenter.cpp">
+      <Filter>Source Files\gui\debug_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\debug_screen\DebugView.cpp">
+      <Filter>Source Files\gui\debug_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\debug_screen\DebugViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\debug_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -714,6 +735,15 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\common\ColourPalette.hpp">
       <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\debug_screen\DebugPresenter.hpp">
+      <Filter>Header Files\gui\debug_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\debug_screen\DebugView.hpp">
+      <Filter>Header Files\gui\debug_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\debug_screen\DebugViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\debug_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

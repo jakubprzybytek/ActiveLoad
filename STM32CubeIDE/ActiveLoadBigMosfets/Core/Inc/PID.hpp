@@ -26,7 +26,7 @@ public:
 	PID(float kP, float kI, float T, float limitMin, float limitMax) : kP (kP), kI (kI), T(T), limitMin(limitMin), limitMax(limitMax) {}
 
 	float update(float setpoint, float measurement);
-
+	void reset();
 };
 
 #endif /* INC_PID_HPP_ */

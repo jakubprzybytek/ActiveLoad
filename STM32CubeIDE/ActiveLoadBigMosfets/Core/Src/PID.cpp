@@ -19,3 +19,8 @@ float PID::update(float setpoint, float measurement) {
 
 	return out > this->limitMin ? (out < this->limitMax ? out : this->limitMax) : this->limitMin;
 }
+
+void PID::reset() {
+	this->integrator = 0.0f;
+	this->previousError = 0.0f;
+}

@@ -1,5 +1,6 @@
 build/MINGW32_NT-6.2/gui/src/containers/TermpControlContainer.o: \
  gui/src/containers/TermpControlContainer.cpp \
+ generated/texts/include/texts/TextKeysAndLanguages.hpp \
  gui/include/gui/containers/TermpControlContainer.hpp \
  generated/gui_generated/include/gui_generated/containers/TermpControlContainerBase.hpp \
  gui/include/gui/common/FrontendApplication.hpp \
@@ -48,7 +49,10 @@ build/MINGW32_NT-6.2/gui/src/containers/TermpControlContainer.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/FontManager.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp
+
+generated/texts/include/texts/TextKeysAndLanguages.hpp:
 
 gui/include/gui/containers/TermpControlContainer.hpp:
 
@@ -147,3 +151,5 @@ gui/include/gui/model/Model.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:

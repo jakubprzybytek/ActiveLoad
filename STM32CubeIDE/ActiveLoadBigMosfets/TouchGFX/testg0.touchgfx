@@ -436,6 +436,118 @@
         "Name": "Main",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 46,
+              "Green": 46,
+              "Blue": 46
+            },
+            "BorderColor": {
+              "Red": 100,
+              "Green": 100,
+              "Blue": 100
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 0,
+            "Width": 240,
+            "Height": 320,
+            "Type": "BoxWithBorder",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "TextId": "SingleUseId78",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 65,
+                  "Green": 65,
+                  "Blue": 65
+                },
+                "ColorPressed": {
+                  "Red": 10,
+                  "Green": 10,
+                  "Blue": 10
+                }
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 35,
+                "Height": 27,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 2,
+                "ColorReleased": {
+                  "Red": 209,
+                  "Green": 209,
+                  "Blue": 179
+                },
+                "ColorPressed": {
+                  "Red": 187,
+                  "Green": 187,
+                  "Blue": 187
+                },
+                "ColorBorderReleased": {
+                  "Red": 246,
+                  "Green": 241,
+                  "Blue": 210
+                },
+                "ColorBorderPressed": {
+                  "Red": 255,
+                  "Green": 230,
+                  "Blue": 190
+                }
+              }
+            ],
+            "Name": "closeScreenButton",
+            "X": 203,
+            "Y": 0,
+            "Width": 35,
+            "Height": 27,
+            "Type": "FlexButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "closeDebugScreen",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "closeScreenButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main",
+              "Type": "ActionGotoScreen"
+            }
+          }
+        ],
+        "Name": "Debug",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
       }
     ],
     "CustomContainerDefinitions": [
@@ -802,8 +914,8 @@
               }
             ],
             "Name": "startStopButton",
-            "X": 156,
-            "Y": 33,
+            "X": 158,
+            "Y": 23,
             "Width": 68,
             "Height": 50,
             "Type": "FlexButton",
@@ -1048,6 +1160,71 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "X": 0,
+                "Y": 5,
+                "TextId": "SingleUseId77",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 180,
+                  "Green": 179,
+                  "Blue": 179
+                },
+                "ColorPressed": {
+                  "Red": 10,
+                  "Green": 10,
+                  "Blue": 10
+                }
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 46,
+                "Height": 24,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 2,
+                "ColorReleased": {
+                  "Red": 107,
+                  "Green": 107,
+                  "Blue": 107
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 151,
+                  "Green": 151,
+                  "Blue": 151
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "debugButton",
+            "X": 180,
+            "Y": 76,
+            "Width": 46,
+            "Height": 24,
+            "Type": "FlexButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -1073,6 +1250,19 @@
             "Action": {
               "Code": "if (startStopButton.getPressed()) {\r\n\temitStartLoadSinkCallback();\r\n\tstartStopButton.setText(TypedText(T_STOP));\r\n} else {\r\n\temitStopLoadSinkCallback();\r\n\tstartStopButton.setText(TypedText(T_START));\r\n}\r\nstartStopButton.invalidate();",
               "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "switchToDebugScreen",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "debugButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Debug",
+              "Type": "ActionGotoScreen"
             }
           }
         ],
@@ -1874,6 +2064,18 @@
       {
         "TextEntryId": "SingleUseId74",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId77",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId78",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "defaultPlaceholder",
+        "IsResource": true
       }
     ],
     "Name": "testg0",

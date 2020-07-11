@@ -12,6 +12,7 @@
 #include "EEPROM.hpp"
 #include "PID.hpp"
 #include "Hysteresis.hpp"
+#include "DebugLogger.hpp"
 
 #include "devices/INA233.hpp"
 #include "devices/TC74.hpp"
@@ -44,11 +45,13 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-PID loadControllerPID(0.3f, 1.5f, TICK_TIME, 0.0f, 3000.0f);
+PID loadControllerPID(0.05f, 0.75f, TICK_TIME, 0.0f, 3000.0f);
 PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 Hysteresis fanHysteresis(5, 0, 0, 6);
 
 int16_t tick = 0;
+
+DebugLogger logger;
 
 void ActiveLoad_init() {
 	fanController.setSpeed(0);
@@ -97,21 +100,23 @@ void ActiveLoad_tick() {
 	applicationState.chargeMiliWattSeconds += llround(applicationState.powerReadout * TICK_TIME);
 	applicationState.chargeWattHours = applicationState.chargeMiliWattSeconds / 1000.0f / 3600.0f;
 
-	// check touch panel
-	if (touchPad.checkIfTouched()) {
-		applicationState.touched = true;
-		touchPad.getTouch(applicationState.touchX, applicationState.touchY);
-	} else {
-		applicationState.touched = false;
-	}
-
-	ActiveLoad_processMessages();
-
+	//if (tick % 10 == 0 && applicationState.loadSinkEnabled) {
 	if (applicationState.loadSinkEnabled) {
 		// PID for load controller
 		applicationState.loadLevel = loadControllerPID.update(applicationState.currentLimit, applicationState.currentReadout);
 		loadController.setLoad(applicationState.loadLevel);
 	}
+
+	// check touch panel
+	if (touchPad.checkIfTouched()) {
+		applicationState.touched = true;
+		touchPad.getTouch(applicationState.touchX, applicationState.touchY);
+		logger.log("TP, x: %d, y: %d", applicationState.touchX, applicationState.touchY);
+	} else {
+		applicationState.touched = false;
+	}
+
+	ActiveLoad_processMessages();
 
 	// every 500ms
 	if (tick % 25 == 0) {
@@ -144,6 +149,7 @@ void ActiveLoad_tick() {
 
 		// read temperature
 		applicationState.temperature = tc74.readTemperature();
+		logger.log("TC74 read: %d", applicationState.temperature);
 
 		// PID for load controller
 		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, TARGET_SINK_TEMPERATURE);
@@ -184,6 +190,7 @@ void ActiveLoad_processMessages() {
 			applicationState.loadSinkEnabled = false;
 			applicationState.loadLevel = 0;
 			loadController.setLoad(applicationState.loadLevel);
+			loadControllerPID.reset();
 			break;
 		case ENABLE_VOLTAGE_LIMIT:
 			applicationState.voltageLimitEnabled = true;

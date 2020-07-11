@@ -115,6 +115,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard voltageValueTextArea;
     touchgfx::TextArea voltageLabelTextArea;
     touchgfx::TextArea labelTextArea;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > > debugButton;
 
 private:
 

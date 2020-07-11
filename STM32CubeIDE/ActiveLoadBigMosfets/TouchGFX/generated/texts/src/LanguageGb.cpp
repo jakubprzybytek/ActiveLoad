@@ -9,46 +9,49 @@ extern const uint32_t indicesGb[];
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE =
 {
-    175, // T_SingleUseId17
+    184, // T_SingleUseId17
     132, // T_SingleUseId18
     97, // T_SingleUseId19
-    79, // T_SingleUseId21
+    88, // T_SingleUseId21
     97, // T_SingleUseId22
-    155, // T_SingleUseId23
-    159, // T_SingleUseId24
+    161, // T_SingleUseId23
+    165, // T_SingleUseId24
     97, // T_SingleUseId25
-    167, // T_SingleUseId26
-    120, // T_SingleUseId27
-    186, // T_SingleUseId30
+    169, // T_SingleUseId26
+    150, // T_SingleUseId27
+    194, // T_SingleUseId30
     97, // T_SingleUseId31
-    190, // T_SingleUseId33
+    192, // T_SingleUseId33
     97, // T_SingleUseId34
     138, // T_SingleUseId36
     97, // T_SingleUseId37
-    188, // T_SingleUseId38
-    99, // T_SingleUseId39
-    181, // T_SingleUseId40
+    190, // T_SingleUseId38
+    106, // T_SingleUseId39
+    187, // T_SingleUseId40
     97, // T_SingleUseId41
-    88, // T_SingleUseId42
+    79, // T_SingleUseId42
     41, // T_SingleUseId45
     97, // T_SingleUseId46
     0, // T_SingleUseId47
-    184, // T_SingleUseId48
-    163, // T_off
+    196, // T_SingleUseId48
+    173, // T_off
     67, // T_SingleUseId50
-    186, // T_SingleUseId51
+    194, // T_SingleUseId51
     97, // T_SingleUseId52
-    190, // T_SingleUseId54
+    192, // T_SingleUseId54
     54, // T_SingleUseId66
-    113, // T_SingleUseId67
+    99, // T_SingleUseId67
     23, // T_voltageCurrent
     97, // T_SingleUseId68
     97, // T_SingleUseId69
-    178, // T_SingleUseId70
+    181, // T_SingleUseId70
     97, // T_SingleUseId71
-    144, // T_start
-    150, // T_stop
-    126, // T_SingleUseId72
-    106, // T_SingleUseId73
-    171  // T_SingleUseId74
+    126, // T_start
+    156, // T_stop
+    120, // T_SingleUseId72
+    113, // T_SingleUseId73
+    177, // T_SingleUseId74
+    144, // T_SingleUseId77
+    198, // T_SingleUseId78
+    97  // T_defaultPlaceholder
 };

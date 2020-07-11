@@ -1,5 +1,6 @@
 *.atsuo
 Debug
+STM32CubeIDE/ActiveLoadBigMosfets/TouchGFX/build
 
 # For PCBs designed using KiCad: http://www.kicad-pcb.org/
 

@@ -1,7 +1,9 @@
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 
+#if not defined (SIMULATOR)
 #include "MessageQueue.hpp"
+#endif
 
 MainPresenter::MainPresenter(MainView &v) : view(v) {
 }
@@ -78,31 +80,45 @@ void MainPresenter::fanRPMChanged(uint16_t fanRPM) {
 }
 
 void MainPresenter::startLoadSink() {
+#if not defined (SIMULATOR)
 	MessageQueue::getInstance().submit(START_LOAD_SINK);
+#endif
 }
 
 void MainPresenter::stopLoadSink() {
+#if not defined (SIMULATOR)
 	MessageQueue::getInstance().submit(STOP_LOAD_SINK);
+#endif
 }
 
 void MainPresenter::resetCounters() {
+#if not defined (SIMULATOR)
 	MessageQueue::getInstance().submit(RESET_COUNTERS);
+#endif
 }
 
 void MainPresenter::selectVoltageLimitForEdit() {
+#if not defined (SIMULATOR)
 	MessageQueue::getInstance().submit(SELECT_VOLTAGE_LIMIT_FOR_EDIT);
+#endif
 }
 
 void MainPresenter::selectCurrentLimitForEdit() {
+#if not defined (SIMULATOR)
 	MessageQueue::getInstance().submit(SELECT_CURRENT_LIMIT_FOR_EDIT);
+#endif
 }
 
 void MainPresenter::enableVoltageLimit() {
 	this->model->setLoadSinkEnabled(true);
+#if not defined (SIMULATOR)
 	MessageQueue::getInstance().submit(ENABLE_VOLTAGE_LIMIT);
+#endif
 }
 
 void MainPresenter::disableVoltageLimit() {
 	this->model->setLoadSinkEnabled(false);
+#if not defined (SIMULATOR)
 	MessageQueue::getInstance().submit(DISABLE_VOLTAGE_LIMIT);
+#endif
 }

@@ -1,15 +1,23 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
+#if not defined (SIMULATOR)
 #include "ApplicationState.hpp"
+#include "DebugLogger.hpp"
 
 extern ApplicationState applicationState;
+extern DebugLogger logger;
+#endif
 
-Model::Model() :
-		modelListener(0) {
+#if defined (SIMULATOR)
+#include "stm32l1xx_hal.h"
+#endif
+
+Model::Model() : modelListener(0) {
 }
 
 void Model::tick() {
+#if not defined (SIMULATOR)
 	if (this->voltage != applicationState.voltageReadout) {
 		this->voltage = applicationState.voltageReadout;
 		this->modelListener->voltageChanged(this->voltage);
@@ -67,4 +75,10 @@ void Model::tick() {
 		this->fanRPM = applicationState.fanRPM;
 		this->modelListener->fanRPMChanged(this->fanRPM);
 	}
+
+	while (logger.hasLineToConsume()) {
+		this->modelListener->lineLogged(logger.consumeLine());
+	}
+
+	#endif
 }

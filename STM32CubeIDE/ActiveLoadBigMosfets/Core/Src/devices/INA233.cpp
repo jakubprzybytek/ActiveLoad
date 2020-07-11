@@ -14,8 +14,9 @@
 using namespace std;
 
 void INA233::init() {
-	// set up averaging
-	uint16_t mfrAdcConfigValue = 0b0100000100100111 | (0b011 << 9) | (0b101 << 6) | (0b101 << 3); // averaging across 64 samples, sampling 2ms
+	// averaging across 64 samples, sampling 2ms
+	// total conversion time = 128ms
+	uint16_t mfrAdcConfigValue = 0b0100000100100111 | (0b011 << 9) | (0b101 << 6) | (0b101 << 3);
 	HAL_I2C_Mem_Write(this->hi2c, INA233_I2C_ADDRESS, INA233_COMMAND_MFR_ADC_CONFIG, 1, (uint8_t*) &mfrAdcConfigValue, 2, HAL_MAX_DELAY);
 
 	// calibrate

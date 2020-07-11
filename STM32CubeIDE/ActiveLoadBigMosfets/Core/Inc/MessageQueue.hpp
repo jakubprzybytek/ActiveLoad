@@ -40,6 +40,4 @@ public:
 	uint8_t getMessage();
 };
 
-
-
 #endif /* INC_MESSAGEQUEUE_HPP_ */

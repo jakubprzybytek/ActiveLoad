@@ -32,6 +32,8 @@ public:
     virtual void fanDutyCycleChanged(uint8_t fanDutyCycle) {}
     virtual void fanRPMChanged(uint16_t fanRPM) {}
 
+    virtual void lineLogged(char *line) {}
+
 protected:
     Model* model;
 };

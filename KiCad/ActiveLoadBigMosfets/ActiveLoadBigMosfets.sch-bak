@@ -5499,6 +5499,8 @@ Wire Wire Line
 	5050 5000 5150 5000
 Text Notes 6000 4000 0    50   ~ 0
 Cl=(Cl1*Cl2)/(Cl1+Cl2) + Cs\nAssuming Cs=6p\nFor Cl=18p\nCl1/2=24p
+Text Notes 5800 4150 0    50   ~ 0
+C25 should be gone (smaller?)
 Wire Bus Line
 	19100 4450 19100 4800
 Wire Bus Line
