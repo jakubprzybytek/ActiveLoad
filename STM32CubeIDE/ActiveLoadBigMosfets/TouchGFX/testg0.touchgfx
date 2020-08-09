@@ -473,7 +473,7 @@
               {
                 "Type": "TextButtonStyle",
                 "X": 0,
-                "Y": 0,
+                "Y": 6,
                 "TextId": "SingleUseId78",
                 "TextRotation": "0",
                 "ColorReleased": {
@@ -491,8 +491,8 @@
                 "Type": "BoxWithBorderButtonStyle",
                 "X": 0,
                 "Y": 0,
-                "Width": 35,
-                "Height": 27,
+                "Width": 47,
+                "Height": 38,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 2,
                 "ColorReleased": {
@@ -518,10 +518,10 @@
               }
             ],
             "Name": "closeScreenButton",
-            "X": 203,
+            "X": 193,
             "Y": 0,
-            "Width": 35,
-            "Height": 27,
+            "Width": 47,
+            "Height": 38,
             "Type": "FlexButton",
             "Visible": true,
             "Draggable": false,

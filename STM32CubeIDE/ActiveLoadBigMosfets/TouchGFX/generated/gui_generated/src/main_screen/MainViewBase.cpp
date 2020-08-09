@@ -74,6 +74,7 @@ MainViewBase::MainViewBase() :
     resetButton.setTextPosition(0, 16, 66, 50);
     resetButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(252, 219, 219), touchgfx::Color::getColorFrom24BitRGB(252, 219, 219));
     resetButton.setPosition(114, 75, 66, 50);
+    resetButton.setAction(flexButtonCallback);
     resetConfirmationModalWindow.add(resetButton);
 
     add(background);
@@ -159,5 +160,18 @@ void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonConta
         //Hide resetConfirmationModalWindow
         resetConfirmationModalWindow.setVisible(false);
         resetConfirmationModalWindow.invalidate();
+    }
+    else if (&src == &resetButton)
+    {
+        //ConfirmResetCounters
+        //When resetButton clicked hide resetConfirmationModalWindow
+        //Hide resetConfirmationModalWindow
+        resetConfirmationModalWindow.setVisible(false);
+        resetConfirmationModalWindow.invalidate();
+
+        //PerformResetCounters
+        //When ConfirmResetCounters completed execute C++ code
+        //Execute C++ code
+        this->presenter->resetCounters();
     }
 }

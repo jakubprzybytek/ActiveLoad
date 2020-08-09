@@ -14,13 +14,13 @@ DebugViewBase::DebugViewBase() :
     background.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(100, 100, 100));
     background.setBorderSize(2);
 
-    closeScreenButton.setBoxWithBorderPosition(0, 0, 35, 27);
+    closeScreenButton.setBoxWithBorderPosition(0, 0, 47, 38);
     closeScreenButton.setBorderSize(2);
     closeScreenButton.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(209, 209, 179), touchgfx::Color::getColorFrom24BitRGB(187, 187, 187), touchgfx::Color::getColorFrom24BitRGB(246, 241, 210), touchgfx::Color::getColorFrom24BitRGB(255, 230, 190));
     closeScreenButton.setText(TypedText(T_SINGLEUSEID78));
-    closeScreenButton.setTextPosition(0, 0, 35, 27);
+    closeScreenButton.setTextPosition(0, 6, 47, 38);
     closeScreenButton.setTextColors(touchgfx::Color::getColorFrom24BitRGB(65, 65, 65), touchgfx::Color::getColorFrom24BitRGB(10, 10, 10));
-    closeScreenButton.setPosition(203, 0, 35, 27);
+    closeScreenButton.setPosition(193, 0, 47, 38);
     closeScreenButton.setAction(flexButtonCallback);
 
     add(background);

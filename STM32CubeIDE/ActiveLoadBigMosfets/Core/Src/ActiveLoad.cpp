@@ -21,6 +21,8 @@
 
 #include "ActiveLoad.h"
 
+#define TERMAL_SHUTDOWN_LIMIT 55
+
 extern DAC_HandleTypeDef hdac;
 extern I2C_HandleTypeDef hi2c2;
 extern TIM_HandleTypeDef htim2;
@@ -45,7 +47,7 @@ TC74 tc74(&hi2c2);
 RVT28AETNWC00 display;
 FT6206 touchPad(&hi2c2);
 
-PID loadControllerPID(0.05f, 0.75f, TICK_TIME, 0.0f, 3000.0f);
+PID loadControllerPID(0.05f, 0.75f, TICK_TIME, 0.0f, 4000.0f);
 PID fanControllerPID(5.0f, 0.0f, 1.0f, 0.0f, 100.0f);
 Hysteresis fanHysteresis(5, 0, 0, 6);
 
@@ -85,6 +87,13 @@ void ActiveLoad_init() {
 void ActiveLoad_loop() {
 	MX_TouchGFX_Process();
 	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+}
+
+void shutdownLoad() {
+	applicationState.currentLimit = 0;
+	applicationState.loadSinkEnabled = false;
+	applicationState.loadLevel = 0;
+	loadController.setLoad(applicationState.loadLevel);
 }
 
 // tick every 20ms
@@ -127,10 +136,7 @@ void ActiveLoad_tick() {
 				if (applicationState.currentLimit > CURRENT_STEP_FOR_VOLTAGE_LIMIT) {
 					applicationState.currentLimit -= CURRENT_STEP_FOR_VOLTAGE_LIMIT;
 				} else {
-					applicationState.currentLimit = 0;
-					applicationState.loadSinkEnabled = false;
-					applicationState.loadLevel = 0;
-					loadController.setLoad(applicationState.loadLevel);
+					shutdownLoad();
 				}
 
 				if (applicationState.currentLimitInEdit) {
@@ -150,6 +156,11 @@ void ActiveLoad_tick() {
 		// read temperature
 		applicationState.temperature = tc74.readTemperature();
 		logger.log("TC74 read: %d", applicationState.temperature);
+
+		// thermal shutdown
+		if (applicationState.temperature >= TERMAL_SHUTDOWN_LIMIT) {
+			shutdownLoad();
+		}
 
 		// PID for load controller
 		applicationState.fanDutyCycleSetValue = fanControllerPID.update(applicationState.temperature, TARGET_SINK_TEMPERATURE);
