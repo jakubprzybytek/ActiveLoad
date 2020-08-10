@@ -23,9 +23,9 @@ void FanController::stopFan() {
 
 void FanController::setSpeed(uint8_t dutyCycle) {
 
-	if (dutyCycle > 80) {
-		dutyCycle = 80;
-	}
+//	if (dutyCycle > 80) {
+//		dutyCycle = 80;
+//	}
 
 	if (dutyCycle == 0 && running == true) {
 		stopFan();
